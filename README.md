@@ -4,13 +4,13 @@
 
 ## 当前建设进度
 
-平台目前维护 **140项候选资源**，经人工质量复核后形成 **125项前台精选教学资源**：
+平台目前维护 **150项候选资源**，经人工质量复核后形成 **135项前台精选教学资源**：
 
-- **125项进入前台精选教学资源库**；
+- **135项进入前台精选教学资源库**；
 - **15项培养方案/项目介绍等仅适合课程体系对标的页面退出主资源库前台**；
 - **“顶尖高校课程”为第一资源专区，共22项，其中国内高校6项、海外高校16项**；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于课程资源第一位；
-- **“经典教材与专著”为第二资源专区，共24本/套**；
+- **“经典教材与专著”为第二资源专区，共34本/套，其中文教材与专著10项、英文教材与专著24项**；
 - 平台采用 **6个核心资源专区＋3条独立教师学习路径** 的前台结构。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
@@ -30,11 +30,11 @@
 1. **顶尖高校课程（22项）**  
    第一专区。优先收录有讲义、课件、代码、习题、考试、视频、syllabus、虚拟实验或完整课程结构的高质量课程；前台分为**国内高校6项**与**海外高校16项**。
 
-2. **经典教材与专著（24项）**  
-   第二专区。用于建立AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学和因果推断的系统知识框架。
+2. **经典教材与专著（34项）**  
+   第二专区。前台分为**中文教材与专著10项**与**英文教材与专著24项**。中文组优先补充国内原创教材和高质量中译本，覆盖金融智能、人工智能与量化交易、Python量化金融、金融机器学习、金融数据分析、金融计算与金融科技。
 
 3. **AI＋金融/金融工程前沿（13项）**  
-   聚合金融机器学习、深度学习、强化学习、金融LLM、Agent及其他前沿AI金融应用。
+   聚合金融机器学习、深度学习、强化学习、金融LLM、Agent及其他AI金融前沿应用。
 
 4. **工具、代码与实验（31项）**  
    统一组织量化工具、Python库、Notebook、优化、定价、回测和数据实验。
@@ -60,30 +60,32 @@
 5. **Artificial Intelligence in FinTech** — 复旦大学
 6. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院
 
-> 东北财经大学《机器学习与金融应用》目前能从官方培养方案和教务信息确认课程真实存在，也能确认课程代码、学时与实验安排，但暂未找到公开的课程主页、课件、代码、实验材料或独立教学大纲。因此保留在后台候选/对标库，不计入前台精选课程。
+> 东北财经大学《机器学习与金融应用》目前只能从官方培养方案和教务信息确认课程存在，暂未找到公开课程主页、课件、代码、实验材料或独立教学大纲，因此保留在后台候选/对标库，不计入前台精选课程。
 
 ### 海外高校（16项）
 
-- Stanford GSB — *Machine Learning & Causal Inference: A Short Course*
-- Stanford Digital Economy Lab — *The AI Awakening: Implications for the Economy and Society*
-- MIT — *AI and Finance*
-- Wharton — *AI and Data Science in Finance*
-- NYU Tandon — *Machine Learning in Financial Engineering*
-- Princeton ORFE — *Stochastic Optimization and Machine Learning in Finance*
-- EPFL — *Machine Learning in Finance*
-- University of Chicago — *Machine Learning for Economists*
-- University of Toronto Engineering — *A.I. in Finance*
-- University of Toronto Economics — *Machine Learning Applications in Macroeconomic Finance*
-- ETH Zürich — *Machine Learning in Finance & Insurance*
-- ETH Zürich — *Machine Learning for Finance & Complex Systems*
-- MIT OpenCourseWare — *Finance Theory I*
-- MIT OpenCourseWare — *Analytics of Finance*
-- Princeton ORFE — *Introduction to Financial Mathematics*
-- Yale Open Courses — *Financial Markets*
+包括 Stanford GSB、Stanford Digital Economy Lab、MIT、Wharton、NYU Tandon、Princeton ORFE、EPFL、ETH Zürich、University of Chicago、University of Toronto 与 Yale Open Courses 等课程。
 
 ## 经典教材与专著
 
-该专区目前收录 **24本/套** 核心书目，覆盖四条主线：
+### 中文教材与专著（10项）
+
+1. **金融智能** — 张晓燕主编，吴辉航、李志勇、张欣然副主编
+2. **人工智能与量化交易** — 张军欢
+3. **Python量化金融与人工智能** — 朱顺泉
+4. **金融机器学习（中文版）** — Marcos López de Prado 著，林华等译
+5. **Python金融大数据分析（第2版，中文版）** — Yves Hilpisch 著，姚军译
+6. **量化投资从理论到实践** — 温硕、陈婷秀
+7. **Python量化投资：技术、模型与策略** — 赵志强、刘志伟
+8. **Python金融数据分析（微课视频版·题库版）** — 李蕾、张春越、郭瑞波、高炜
+9. **金融计算与量化投资——MATLAB金融工具箱的应用** — 李合龙、胡云鹤、袁宜晨、杨苏鹏
+10. **金融科技实务教程** — 林健武、袁先智、马小峰、罗彤、何丽峰
+
+中文组优先考虑三个标准：与AI＋金融工程直接相关；能支持课堂或实验；出版社/作者提供代码、课件、视频、案例、题库或明确教学体系。中译本明确标注“中文版”，便于与英文原著区分。
+
+### 英文教材与专著（24项）
+
+英文组继续覆盖四条主线：
 
 - AI＋金融 / 金融工程
 - 机器学习 / 概率机器学习 / 深度学习基础
@@ -109,6 +111,13 @@
 | 时效性 | 5 |
 
 详细说明见 [`docs/resource-selection.md`](docs/resource-selection.md)。
+
+## 数据文件
+
+- `data/resources-books-cn.tsv`：中文教材与专著
+- `data/resources-books.tsv`、`data/resources-books-extra.tsv`：英文教材与专著
+- `data/resources-courses-extra.tsv`：扩展高校课程
+- `data/curation.json`：排序、降权与前台隐藏规则
 
 ## GitHub Pages
 
