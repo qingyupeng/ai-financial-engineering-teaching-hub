@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-methods-practice';
+const BUILD_VERSION = '20260911-methods-tools-labs';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -29,7 +29,7 @@ const coreZones = [
   },
   {
     id: 'zone-methods',
-    name: 'AI＋金融工程方法与实践',
+    name: 'AI＋金融工程方法、工具与实验',
     number: '03',
     description: '精选金融LLM与智能体、金融机器学习与因果方法、量化交易与金融工程工具、计算金融与计算经济学实验；强调领域专用、可运行、可复现和高教学增量。',
     sourceZones: ['AI＋金融工程专题', '金融工程AI工具箱', 'Python / Jupyter实验库']
@@ -244,7 +244,7 @@ function render(){
         content = renderCourseGroups(items);
       } else if (group.name === '经典教材与专著') {
         content = renderBookGroups(items);
-      } else if (group.name === 'AI＋金融工程方法与实践') {
+      } else if (group.name === 'AI＋金融工程方法、工具与实验') {
         content = renderMethodGroups(items);
       } else {
         content = `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
