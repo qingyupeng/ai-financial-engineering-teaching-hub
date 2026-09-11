@@ -1,0 +1,51 @@
+{
+  "updated": "2026-09-11",
+  "principle": "优先展示具有实质教学内容、可直接用于备课/授课/实验/作业/自学的资源；仅有课程名称、培养方案或简要介绍的页面不进入主资源库前列，必要时从主资源库隐藏。",
+  "featured_order": [
+    "机器学习与资产定价",
+    "Finance Theory I",
+    "Analytics of Finance",
+    "Machine Learning in Finance & Insurance",
+    "Machine Learning for Finance & Complex Systems",
+    "上交所期权初中高级课程",
+    "上交所期权学习汇编书籍",
+    "上交所期权学苑",
+    "Qlib Quick Start",
+    "Machine Learning for Trading",
+    "FinRL",
+    "PyPortfolioOpt",
+    "Riskfolio-Lib Examples",
+    "CVXPY Quadratic Program Example",
+    "Stochastic Volatility with PyMC",
+    "ARCH Volatility Processes",
+    "FRED API",
+    "Kenneth R. French Data Library",
+    "Daily Treasury Par Yield Curve Rates",
+    "BIS Exchange-Traded Derivatives Statistics"
+  ],
+  "deprioritized": [
+    "Academic Resources",
+    "CME Group Education",
+    "The Options Institute",
+    "AI4Finance Foundation",
+    "Financial Services Resources",
+    "Jupyter Documentation"
+  ],
+  "hidden_from_main_library": [
+    "MS Financial Engineering Curriculum",
+    "Machine Learning and AI Concentration",
+    "Machine Learning & Computational Statistics",
+    "BS Operations Research: Financial Engineering Track",
+    "MSCF Curriculum",
+    "MSCF Data Science Curriculum",
+    "MSc Mathematical and Computational Finance",
+    "ORFE Graduate Courses",
+    "Master of Financial Engineering Curriculum",
+    "MSc Risk Management & Financial Engineering",
+    "MSc Mathematics and Finance",
+    "清华经管AI＋金融课程群",
+    "金融专业硕士课程体系：金融科技与人工智能方向",
+    "金融MBA课程体系中的AI金融模块"
+  ],
+  "note": "hidden_from_main_library中的页面保留在候选数据中，仅供课程体系与培养方案对标，不计入前台精选教学资源。"
+}
