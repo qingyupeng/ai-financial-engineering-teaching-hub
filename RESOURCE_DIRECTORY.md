@@ -1,18 +1,17 @@
-# AI＋金融工程高质量资源目录（前台精选149项）
+# AI＋金融工程高质量资源目录（前台精选118项）
 
-> 更新时间：2026-09-11。平台维护164项候选资源，经人工复核后形成 **149项前台精选教学资源**。信息架构采用 **6个核心资源专区＋独立教师学习路径**。
+> 更新时间：2026-09-11。平台维护164项候选资源，经人工复核后形成 **118项前台精选教学资源**。信息架构采用 **5个核心资源专区＋独立教师学习路径**。
 
-## 六个核心专区
+## 五个核心专区
 
 | 核心专区 | 数量 | 说明 |
 |---|---:|---|
 | **1. 顶尖高校课程** | **24** | 国内7项＋海外17项高质量课程资源 |
 | **2. 经典教材与专著** | **34** | 中文10项＋英文24项 |
-| **3. AI＋金融/金融工程前沿** | **11** | 金融Agent、金融LLM、RL交易、金融ML、AI＋经济学/因果ML |
-| **4. 工具、代码与实验** | **42** | 交易引擎＋回测＋Python/Jupyter＋量化经济学＋通用AI工具 |
-| **5. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
-| **6. AI赋能教学** | **8** | 备课、编程、金融工作流、评价、科研工作流与教学反馈 |
-| **合计** | **149** | |
+| **3. AI＋金融工程方法与实践** | **22** | 金融LLM/Agent＋金融ML/因果＋量化工具＋计算金融/经济学 |
+| **4. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
+| **5. AI赋能教学** | **8** | 备课、编程、评价、金融工作流、科研工作流与教学反馈 |
+| **合计** | **118** | |
 
 ## 1. 顶尖高校课程（24项）
 
@@ -97,82 +96,55 @@
 23. The Effect: An Introduction to Research Design and Causality
 24. Causal Inference and Machine Learning: In Economics, Social, and Health Sciences
 
-## 3. AI＋金融/金融工程前沿（11项）
+## 3. AI＋金融工程方法与实践（22项）
 
-本专区完成“换血”后，只保留金融、金融工程、交易或经济学领域的专用AI资源，不再以通用机器学习文档充当“前沿”。
+> 本专区由原“AI＋金融/金融工程前沿”和“工具、代码与实验”合并，并从原53项相关资源中重新精选。前台只保留领域专用性强、可运行、可复现、教学增量明显的资源。
+
+### 金融LLM与智能体（6项）
 
 1. **TradingAgents** — TauricResearch
 2. **AI Hedge Fund** — virattt
 3. **AI-Trader** — HKU Data Intelligence Lab / Chao Huang
-4. **FinGPT**
-5. **FinRobot**
-6. **FinRL**
-7. **FinRL-Meta**
+4. **Vibe-Trading** — HKU Data Intelligence Lab / Chao Huang
+5. **FinGPT**
+6. **FinRobot**
+
+### 金融机器学习与因果方法（4项）
+
+7. **FinRL**
 8. **Machine Learning for Trading**
 9. **EconML** — PyWhy / Microsoft Research ALICE
-10. **DoubleML** — DoubleML
-11. **AI4Finance Foundation**
+10. **DoubleML**
 
-其中：
-- **金融Agent主线**：TradingAgents、AI Hedge Fund、AI-Trader、FinRobot；
-- **金融LLM主线**：FinGPT；
-- **强化学习与智能交易主线**：FinRL、FinRL-Meta；
-- **金融机器学习主线**：Machine Learning for Trading；
-- **AI＋经济学/因果机器学习主线**：EconML、DoubleML。
+### 量化交易与金融工程工具（8项）
 
-## 4. 工具、代码与实验（42项）
+11. **Qlib**
+12. **QuantLib**
+13. **PyPortfolioOpt**
+14. **Riskfolio-Lib**
+15. **QuantConnect LEAN**
+16. **NautilusTrader**
+17. **vectorbt**
+18. **backtesting.py**
 
-### 金融工程、交易、AI与量化经济学工具（20项）
+### 计算金融与计算经济学（4项）
 
-1. **Vibe-Trading** — HKU Data Intelligence Lab / Chao Huang
-2. **QuantConnect LEAN** — QuantConnect
-3. **NautilusTrader** — Nautech Systems
-4. **vectorbt** — polakowo
-5. Qlib
-6. QuantLib
-7. PyPortfolioOpt
-8. Riskfolio-Lib
-9. CVXPY Tutorial
-10. Options Calculator
-11. OpenBB Documentation
-12. backtesting.py
-13. py_vollib
-14. **QuantEcon.py** — QuantEcon
-15. **HARK** — Econ-ARK
-16. PyTorch Tutorials
-17. XGBoost Tutorials
-18. scikit-learn User Guide
-19. TensorFlow Time Series Forecasting
-20. Text Classification with Transformers
+19. **QuantEcon.py**
+20. **HARK**
+21. **CVXPY Tutorial**
+22. **ARCH Volatility Processes**
 
-> PyTorch、XGBoost、scikit-learn、TensorFlow与Transformers教程均为高质量资源，但因其属于通用AI/ML方法工具，本轮从“AI＋金融/金融工程前沿”迁入本专区。
+### 前台精简规则
 
-### Python / Jupyter实验与数据处理（22项）
+以下类型默认保留在后台候选库，不进入本专区前台：
 
-21. FRED API
-22. EDGAR Application Programming Interfaces
-23. ARCH Volatility Processes
-24. Qlib Quick Start
-25. Black-Litterman with PyPortfolioOpt
-26. Riskfolio-Lib Examples
-27. statsmodels Time Series Analysis
-28. statsmodels User Guide
-29. CVXPY Quadratic Program Example
-30. Stochastic Volatility with PyMC
-31. pandas Time Series
-32. Plotly Financial Charts
-33. backtesting.py Quick Start
-34. pandas Getting Started Tutorials
-35. statsmodels Forecasting Notebook
-36. NumPy Documentation
-37. NumPy Quickstart
-38. pandas Documentation
-39. Matplotlib Tutorials
-40. Plotly Candlestick Charts
-41. SciPy Optimize
-42. Jupyter Documentation
+- NumPy、pandas、Matplotlib、Jupyter等通用基础文档；
+- PyTorch、XGBoost、scikit-learn、TensorFlow等通用AI教程；
+- Qlib Quick Start、Riskfolio-Lib Examples、backtesting.py Quick Start等与主项目重复的入口；
+- 只有组织导航意义、缺少明确教学增量的页面；
+- 与已保留资源功能高度重合的条目。
 
-## 5. 金融机构与市场案例（30项）
+## 4. 金融机构与市场案例（30项）
 
 ### 金融机构与交易所教育资源（19项）
 
@@ -210,18 +182,16 @@
 29. Options 101
 30. How Financial Indices Do Their Thing
 
-## 6. AI赋能教学（8项）
+## 5. AI赋能教学（8项）
 
 1. **智能体与社会科学研究（Agentic Coding in Social Sciences Research）** — 王彬
-2. **Financial Services Resources**
-3. **ChatGPT for Financial Services Solution Kit**
-4. Data Analysis with ChatGPT
-5. Finance Workflows with ChatGPT Work
-6. Finance Use Cases and Prompts
-7. ChatGPT Workflows for Finance Teams
-8. ChatGPT for Excel and Google Sheets
-
-> Financial Services Resources 与 ChatGPT for Financial Services Solution Kit 本轮从“前沿”迁入本专区，因为它们的核心价值是金融场景AI工作流与应用教学，而不是金融工程研究方法本身。
+2. Data Analysis with ChatGPT
+3. Finance Workflows with ChatGPT Work
+4. Finance Use Cases and Prompts
+5. ChatGPT Workflows for Finance Teams
+6. ChatGPT for Excel and Google Sheets
+7. Financial Services Resources
+8. ChatGPT for Financial Services Solution Kit
 
 ## 独立模块：教师学习路径
 
@@ -231,19 +201,16 @@
 
 ## 数据维护说明
 
-- `data/resources-books-cn.tsv`：中文教材与专著10项
-- `data/resources-books.tsv`、`data/resources-books-extra.tsv`：英文教材与专著24项
-- `data/resources-courses-extra.tsv`：扩展高校课程
-- `data/resources-curated-additions.tsv`：经人工核验新增的智能体、AI金融与AI经济学资源
-- `data/resources-github-quality.tsv`：人工核验的高质量GitHub金融、交易与经济学资源
-- `data/curation.json`：排序、降权与隐藏规则
-- `assets/app.js`：前台专区映射与重分类规则
+- 候选资源总数：164项
+- 前台精选：118项
+- 后台候选/对标：46项
+- `data/curation.json` 记录前台排序、降权与隐藏规则
+- 后台候选资源不删除，后续如质量、维护状态或教学用途发生变化，可重新进入前台评估
 
 ## 使用与维护原则
 
 1. 外部资源优先保留高校、出版社、交易所、监管机构、金融机构或项目官方链接。
-2. 主资源库的“访问官方资源”必须尽量指向课程主页、讲义、代码、实验平台、视频、syllabus等**实质教学资源**，不能仅以培养方案证明课程存在。
-3. “AI＋金融/金融工程前沿”要求较高的**领域专用性**；通用AI教程即使质量高，也优先归入工具区。
-4. GitHub stars只作为社区影响力参考，不代替教学价值、专业相关性、可复现性与维护活跃度判断。
-5. 教材优先链接出版社、高校作者团队或可靠官方书目入口，不重新上传受版权保护的教材全文。
-6. **不设置固定数量上限**；只要资源质量足够高、具有实质教学价值，即可继续加入，同时定期淘汰失效、内容过弱或分类不准确的资源。
+2. 主资源库的“访问官方资源”必须尽量指向课程主页、讲义、代码、实验平台、视频、syllabus等实质教学资源，不能仅以培养方案证明课程存在。
+3. 第三专区坚持“少而精”：新资源若不能在质量、代表性或教学增量上明显补充现有22项，原则上先进入后台候选库。
+4. 教材优先链接出版社、高校作者团队或可靠官方书目入口，不重新上传受版权保护的教材全文。
+5. 不设置候选资源数量上限，但前台精选库坚持持续淘汰和动态替换。
