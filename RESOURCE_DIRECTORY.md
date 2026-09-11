@@ -1,20 +1,20 @@
-# AI＋金融工程高质量资源目录（前台精选120项）
+# AI＋金融工程高质量资源目录（前台精选126项）
 
-> 更新时间：2026-09-11。平台维护134项候选资源，经人工复核后形成 **120项前台精选教学资源**。信息架构采用 **6个核心资源专区＋独立教师学习路径**。
+> 更新时间：2026-09-11。平台维护140项候选资源，经人工复核后形成 **126项前台精选教学资源**。信息架构采用 **6个核心资源专区＋独立教师学习路径**。
 
 ## 六个核心专区
 
 | 核心专区 | 数量 | 说明 |
 |---|---:|---|
 | **1. 经典教材与专著** | **24** | 系统知识框架与长期自学主线 |
-| **2. 顶尖高校课程** | **17** | AI＋金融、金融工程、AI＋经济学的高质量课程资源 |
+| **2. 顶尖高校课程** | **23** | 国内7项＋海外16项高质量课程资源 |
 | **3. AI＋金融/金融工程前沿** | **13** | 金融ML、深度学习、RL、LLM、Agent等 |
 | **4. 工具、代码与实验** | **31** | 量化工具＋Python/Jupyter实验统一入口 |
 | **5. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
 | **6. AI赋能教学** | **5** | 备课、讲解、编程、评价与教学反馈 |
-| **合计** | **120** | |
+| **合计** | **126** | |
 
-> “教师学习路径”不再作为资源专区，而作为跨专区的使用导航层独立保留。
+> “教师学习路径”不作为资源专区，而作为跨专区的使用导航层独立保留。
 
 ## 1. 经典教材与专著（24项）
 
@@ -54,11 +54,21 @@
 23. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
 24. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
 
-## 2. 顶尖高校课程（17项）
+## 2. 顶尖高校课程（23项）
 
-### AI＋金融 / 金融工程
+### 国内高校（7项）
 
 1. **机器学习与资产定价** — 北京大学金融工程实验室
+2. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
+3. **机器学习与智能金融** — 中央财经大学金融学院
+4. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
+5. **Artificial Intelligence in FinTech** — 复旦大学
+6. **机器学习与金融应用** — 东北财经大学
+7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院金融工程系
+
+### 海外高校（16项）
+
+1. **Machine Learning & Causal Inference: A Short Course** — Stanford GSB / SIEPR
 2. **Machine Learning in Finance** — EPFL Financial Engineering
 3. **AI and Finance** — MIT
 4. **Machine Learning in Finance & Insurance** — ETH Zürich
@@ -66,22 +76,25 @@
 6. **AI and Data Science in Finance** — University of Pennsylvania, Wharton
 7. **Machine Learning in Financial Engineering** — New York University, Tandon
 8. **Stochastic Optimization and Machine Learning in Finance** — Princeton University ORFE
-9. **A.I. in Finance** — University of Toronto Engineering
-10. **Finance Theory I** — MIT OpenCourseWare
-11. **Analytics of Finance** — MIT OpenCourseWare
-12. **Introduction to Financial Mathematics** — Princeton University ORFE
-13. **Financial Markets** — Yale Open Courses
+9. **The AI Awakening: Implications for the Economy and Society** — Stanford Digital Economy Lab
+10. **Machine Learning for Economists** — The University of Chicago
+11. **A.I. in Finance** — University of Toronto Engineering
+12. **Machine Learning Applications in Macroeconomic Finance** — University of Toronto Economics
+13. **Finance Theory I** — MIT OpenCourseWare
+14. **Analytics of Finance** — MIT OpenCourseWare
+15. **Introduction to Financial Mathematics** — Princeton University ORFE
+16. **Financial Markets** — Yale Open Courses
 
-### AI＋经济学 / 宏观金融 / 因果机器学习
+### 国内课程筛选说明
 
-14. **Machine Learning & Causal Inference: A Short Course** — Stanford Graduate School of Business / SIEPR
-15. **The AI Awakening: Implications for the Economy and Society** — Stanford Digital Economy Lab
-16. **Machine Learning for Economists** — The University of Chicago
-17. **Machine Learning Applications in Macroeconomic Finance** — University of Toronto Economics
+本轮新增国内课程仍坚持“实质教学材料优先”：
 
-### 本轮深度检索的质量取舍
-
-本轮还检索到 Columbia 的 *AI Applications in Finance*、*Advanced Machine Learning for Finance*，Duke 的 *Machine Learning for FinTech*，Cornell 的 *Financial Data, Markets, and Mayhem for Scientists and Engineers*，Yale 的 *Financial Econometrics and Machine Learning*、*Machine Learning for Economic Analysis*，以及 Stanford 的 *Machine Learning in Economics*、*Computational Economics and Machine Learning* 等课程。它们主题高度相关，但目前公开网页主要是课程说明或catalog信息，开放讲义、代码、视频或syllabus的可获得性弱于本轮入选课程，因此暂不进入主资源库。
+- 清华大学课程公开完整周次安排、作业、编码作业与课程项目要求，并明确Python为默认编程语言；
+- 中央财经大学公开慕课、配套课件和代码；
+- 湖南大学提供基于机器学习的资产定价虚拟仿真实验系统，并获省级一流课程；
+- 复旦大学公开完整课程syllabus，包含Python编程、案例和课程项目；
+- 东北财经大学课程54学时中含36学时实验；
+- 对外经济贸易大学公开量化投资、金融计算和多项金融工程实验资料。
 
 ## 3. AI＋金融/金融工程前沿（13项）
 
@@ -186,21 +199,17 @@
 
 ## 独立模块：教师学习路径
 
-学习路径不属于资源类型，而是跨专区调用资源的导航机制。目前保留三条路线：
-
 - **A 金融工程教师AI入门**：生成式AI → Prompt → AI辅助Python → 数据分析 → 教学规范
 - **B AI＋金融工程进阶**：Python → 机器学习 → 金融数据建模 → 风险与资产配置 → 深度学习/强化学习
 - **C 生成式AI赋能教学全过程**：备课 → 讲解 → 习题案例 → 编程辅导 → 作业试题 → 辅助评价 → 教学反馈
 
 ## 数据维护说明
 
-底层数据仍保留较细的原始标签，前端通过映射将其归并到6个核心专区。这样既简化教师浏览体验，又不损失后台维护粒度。
-
 - `data/resources.json`：首批资源
 - `data/resources-extra-1.tsv`、`resources-extra-2.tsv`、`resources-extra-3.tsv`：扩展资源
 - `data/resources-books.tsv`：首批14本经典教材与专著
 - `data/resources-books-extra.tsv`：新增10本核心教材与专著
-- `data/resources-courses-extra.tsv`：深度检索新增10项顶尖高校课程
+- `data/resources-courses-extra.tsv`：顶尖高校课程扩展数据，目前含16项新增课程
 - `data/curation.json`：排序、降权与隐藏规则
 
 ## 使用与维护原则
@@ -208,4 +217,4 @@
 1. 外部资源优先保留高校、出版社、交易所、监管机构、金融机构或项目官方链接。
 2. 教材只提供官方页面、开放版本或作者许可的资源入口，不重新上传受版权保护的教材全文。
 3. 每项资源必须能对应《金融工程》的具体模块、AI/计算方法或教师教学流程。
-4. 前台精选资源当前达到120项，后续原则上以“新增一项、评估一项、必要时淘汰一项”的方式维持精品规模，而不继续机械扩容。
+4. **不再设置120项硬性上限**；只要资源质量足够高、具有实质教学价值，即可继续加入，同时定期淘汰失效或内容过弱的资源。
