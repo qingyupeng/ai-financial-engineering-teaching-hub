@@ -1,6 +1,6 @@
-# AI＋金融工程高质量资源目录（前台精选100项）
+# AI＋金融工程高质量资源目录（前台精选110项）
 
-> 更新时间：2026-09-11。平台维护114项候选资源，经人工复核后，14项仅含培养方案/项目介绍的页面退出前台主资源库，新增14本“经典教材与专著”，最终形成 **100项前台精选教学资源**。北京大学金融工程实验室“机器学习与资产定价”置于第一位。
+> 更新时间：2026-09-11。平台维护124项候选资源，经人工复核后，14项仅含培养方案/项目介绍的页面退出前台主资源库；“经典教材与专著”扩充至24本/套，最终形成 **110项前台精选教学资源**。北京大学金融工程实验室“机器学习与资产定价”仍置于第一位。
 
 ## 质量原则
 
@@ -12,13 +12,13 @@
 |---|---:|
 | 顶尖高校课程 | 7 |
 | 金融机构教育资源 | 19 |
-| 经典教材与专著 | 14 |
+| 经典教材与专著 | 24 |
 | AI＋金融工程专题 | 13 |
 | 金融工程AI工具箱 | 9 |
 | Python / Jupyter实验库 | 22 |
 | 教学案例库 | 11 |
 | AI辅助教学方法 | 5 |
-| **合计** | **100** |
+| **合计** | **110** |
 
 ## 1. 顶尖高校课程（7项）
 
@@ -54,30 +54,43 @@
 18. Options Pricing — Options Industry Council
 19. All Options Strategies — Options Industry Council
 
-## 3. 经典教材与专著（14项）
+## 3. 经典教材与专著（24项）
 
 ### AI＋金融 / 金融工程
 
 1. **Machine Learning in Finance: From Theory to Practice** — Matthew F. Dixon, Igor Halperin, Paul Bilokon
-2. **Advances in Financial Machine Learning** — Marcos López de Prado
-3. **Machine Learning for Asset Managers** — Marcos M. López de Prado
-4. **Artificial Intelligence in Finance** — Yves Hilpisch
-5. **Machine Learning for Algorithmic Trading, 2nd Edition** — Stefan Jansen
+2. **Machine Learning for Algorithmic Trading, 2nd Edition** — Stefan Jansen
+3. **Probabilistic Machine Learning for Finance and Investing** — Deepak K. Kanungo
+4. **Machine Learning for Finance** — James Le, Jannes Klaas
+5. **Advances in Financial Machine Learning** — Marcos López de Prado
+6. **Machine Learning for Asset Managers** — Marcos M. López de Prado
+7. **Artificial Intelligence in Finance** — Yves Hilpisch
+8. **Financial Signal Processing and Machine Learning** — Ali N. Akansu, Sanjeev R. Kulkarni, Dmitry Malioutov (eds.)
 
-### 机器学习方法基础
+### 机器学习 / 概率机器学习 / 深度学习基础
 
-6. **The Elements of Statistical Learning** — Trevor Hastie, Robert Tibshirani, Jerome Friedman
-7. **An Introduction to Statistical Learning: with Applications in Python** — Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor
-8. **Statistical Learning with Sparsity: The Lasso and Generalizations** — Trevor Hastie, Robert Tibshirani, Martin Wainwright
-9. **Computer Age Statistical Inference** — Bradley Efron, Trevor Hastie
+9. **The Elements of Statistical Learning** — Trevor Hastie, Robert Tibshirani, Jerome Friedman
+10. **An Introduction to Statistical Learning: with Applications in Python** — Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor
+11. **Statistical Learning with Sparsity: The Lasso and Generalizations** — Trevor Hastie, Robert Tibshirani, Martin Wainwright
+12. **Computer Age Statistical Inference** — Bradley Efron, Trevor Hastie
+13. **Pattern Recognition and Machine Learning** — Christopher M. Bishop
+14. **Probabilistic Machine Learning: An Introduction** — Kevin P. Murphy
+15. **Probabilistic Machine Learning: Advanced Topics** — Kevin P. Murphy
+16. **Deep Learning** — Ian Goodfellow, Yoshua Bengio, Aaron Courville
+17. **Deep Learning: Foundations and Concepts** — Christopher M. Bishop, Hugh Bishop
+18. **Reinforcement Learning: An Introduction, 2nd Edition** — Richard S. Sutton, Andrew G. Barto
 
-### AI / 机器学习＋经济学与因果推断
+### AI / 机器学习＋经济学
 
-10. **The Economics of Artificial Intelligence: An Agenda** — Ajay Agrawal, Joshua Gans, Avi Goldfarb (eds.)
-11. **Prediction Machines: The Simple Economics of Artificial Intelligence** — Ajay Agrawal, Joshua Gans, Avi Goldfarb
-12. **Causal Inference: The Mixtape** — Scott Cunningham
-13. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
-14. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
+19. **The Economics of Artificial Intelligence: An Agenda** — Ajay Agrawal, Joshua Gans, Avi Goldfarb (eds.)
+20. **Prediction Machines: The Simple Economics of Artificial Intelligence** — Ajay Agrawal, Joshua Gans, Avi Goldfarb
+
+### 因果推断＋机器学习
+
+21. **Applied Causal Inference Powered by ML and AI** — Victor Chernozhukov, Christian Hansen, Nathan Kallus, Martin Spindler, Vasilis Syrgkanis
+22. **Causal Inference: The Mixtape** — Scott Cunningham
+23. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
+24. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
 
 ## 4. AI＋金融工程专题（13项）
 
@@ -158,7 +171,8 @@
 
 - `data/resources.json`：首批资源
 - `data/resources-extra-1.tsv`、`resources-extra-2.tsv`、`resources-extra-3.tsv`：扩展资源
-- `data/resources-books.tsv`：经典教材与专著
+- `data/resources-books.tsv`：首批14本经典教材与专著
+- `data/resources-books-extra.tsv`：新增10本核心教材与专著
 - `data/curation.json`：排序、降权与隐藏规则
 
 每项资源的评分、教学价值、建议用途、官方链接、难度和核验日期均保存在结构化数据文件中，由网站前端统一加载。
@@ -168,4 +182,4 @@
 1. 外部资源优先保留高校、出版社、交易所、监管机构、金融机构或项目官方链接。
 2. 教材只提供官方页面、开放版本或作者许可的资源入口，不重新上传受版权保护的教材全文。
 3. 每项资源必须能对应《金融工程》的具体模块、AI/计算方法或教师教学流程。
-4. 后续采用“新增一项、评估一项、核验一项、必要时淘汰一项”的维护机制，保持前台资源库约100项的精品规模。
+4. 后续采用“新增一项、评估一项、核验一项、必要时淘汰一项”的维护机制，保持前台资源库在80–120项目标区间内并优先保证质量。
