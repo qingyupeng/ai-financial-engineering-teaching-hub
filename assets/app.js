@@ -12,6 +12,15 @@ let curation = { featured_order: [], deprioritized: [], hidden_from_main_library
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
+const bookSpotlightOrder = [
+  'Machine Learning in Finance: From Theory to Practice',
+  'Machine Learning for Algorithmic Trading, 2nd Edition',
+  'Advances in Financial Machine Learning',
+  'Artificial Intelligence in Finance',
+  'The Economics of Artificial Intelligence: An Agenda',
+  'Causal Inference and Machine Learning: In Economics, Social, and Health Sciences'
+];
+
 function parseTSV(text){
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
@@ -86,6 +95,100 @@ function updateRubric(){
   }
 }
 
+function injectBookshelfStyles(){
+  if (document.querySelector('#bookshelfStyles')) return;
+  const style = document.createElement('style');
+  style.id = 'bookshelfStyles';
+  style.textContent = `
+    .zones-grid article{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+    .zones-grid article:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,58,99,.10);border-color:#b9cad9}
+    .bookshelf-section{background:#fff7e8;border-top:1px solid #ead8b4;border-bottom:1px solid #ead8b4}
+    .bookshelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .book-card{background:#fff;border:1px solid #e7d7b8;border-radius:18px;padding:22px;display:flex;flex-direction:column;min-height:300px}
+    .book-kicker{font-size:.75rem;font-weight:900;color:#9a6713;letter-spacing:.06em;margin-bottom:8px}
+    .book-card h3{margin:0 0 8px;font-size:1.08rem;line-height:1.45}
+    .book-card .source{margin-bottom:12px}
+    .book-card p{color:var(--muted)}
+    .book-card a{margin-top:auto;font-weight:800;color:var(--primary-2);text-decoration:none}
+    .bookshelf-actions{display:flex;gap:12px;align-items:center}
+    @media(max-width:980px){.bookshelf-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.bookshelf-grid{grid-template-columns:1fr}.bookshelf-actions{display:block}.bookshelf-actions .btn{margin-top:10px}}
+  `;
+  document.head.appendChild(style);
+}
+
+function filterToZone(zone){
+  zoneFilter.value = zone;
+  searchInput.value = '';
+  levelFilter.value = '';
+  render();
+  document.querySelector('#resources')?.scrollIntoView({behavior:'smooth'});
+}
+
+function activateZoneCards(){
+  document.querySelectorAll('.zones-grid article').forEach(card => {
+    const zone = card.querySelector('h3')?.textContent?.trim();
+    if (!zone || zone === '教师学习路径') return;
+    card.setAttribute('role','button');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-label',`查看${zone}`);
+    const openZone = () => filterToZone(zone);
+    card.addEventListener('click',openZone);
+    card.addEventListener('keydown',e=>{ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openZone(); } });
+  });
+}
+
+function renderBookshelf(){
+  const books = resources.filter(r => r.zone === '经典教材与专著');
+  if (!books.length) return;
+
+  let section = document.querySelector('#bookshelf');
+  if (!section) {
+    section = document.createElement('section');
+    section.id = 'bookshelf';
+    section.className = 'bookshelf-section';
+    const resourceSection = document.querySelector('#resources');
+    resourceSection?.parentNode?.insertBefore(section,resourceSection);
+  }
+
+  const spotlight = bookSpotlightOrder
+    .map(title => books.find(b => b.title === title))
+    .filter(Boolean);
+
+  section.innerHTML = `
+    <div class="container section">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">核心书架</span>
+          <h2>经典教材与专著</h2>
+        </div>
+        <div class="bookshelf-actions">
+          <p>系统覆盖AI＋金融工程、AI＋金融，以及机器学习＋经济学与因果推断。当前收录 <strong>${books.length}</strong> 本/套。</p>
+          <button id="showAllBooks" class="btn secondary" type="button">查看全部${books.length}本</button>
+        </div>
+      </div>
+      <div class="bookshelf-grid">
+        ${spotlight.map((b,i)=>`<article class="book-card">
+          <span class="book-kicker">推荐 ${String(i+1).padStart(2,'0')} · ${b.ai_topic}</span>
+          <h3>${b.title}</h3>
+          <p class="source">${b.source}</p>
+          <p><span class="card-section-label">为什么值得读</span>${b.teaching_value}</p>
+          <a href="${b.url}" target="_blank" rel="noopener noreferrer">查看教材/配套资源 ↗</a>
+        </article>`).join('')}
+      </div>
+    </div>`;
+
+  document.querySelector('#showAllBooks')?.addEventListener('click',()=>filterToZone('经典教材与专著'));
+
+  const nav = document.querySelector('.nav');
+  if (nav && !nav.querySelector('a[href="#bookshelf"]')) {
+    const link = document.createElement('a');
+    link.href = '#bookshelf';
+    link.textContent = '经典教材';
+    nav.insertBefore(link,nav.firstChild);
+  }
+}
+
 async function loadResources(){
   try {
     const [baseResponse, batch1, batch2, batch3, booksResponse, curationResponse] = await Promise.all([
@@ -120,6 +223,7 @@ async function loadResources(){
       zoneFilter.appendChild(option);
     });
     render();
+    renderBookshelf();
   } catch (error) {
     console.error(error);
     resourceGrid.innerHTML = '<div class="empty">资源目录加载失败，请稍后刷新页面。</div>';
@@ -129,5 +233,7 @@ async function loadResources(){
 [searchInput,zoneFilter,levelFilter].forEach(el => el.addEventListener('input',render));
 resetFilters.addEventListener('click',()=>{ searchInput.value=''; zoneFilter.value=''; levelFilter.value=''; render(); });
 
+injectBookshelfStyles();
+activateZoneCards();
 updateRubric();
 loadResources();
