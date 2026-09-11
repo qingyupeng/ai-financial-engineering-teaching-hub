@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-frontier-refresh';
+const BUILD_VERSION = '20260911-methods-practice';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -28,44 +28,55 @@ const coreZones = [
     sourceZones: ['经典教材与专著']
   },
   {
-    id: 'zone-frontier',
-    name: 'AI＋金融/金融工程前沿',
+    id: 'zone-methods',
+    name: 'AI＋金融工程方法与实践',
     number: '03',
-    description: '聚焦金融Agent、金融LLM、强化学习交易、金融机器学习以及AI＋经济学与因果机器学习，减少通用AI文档占比。',
-    sourceZones: ['AI＋金融工程专题']
-  },
-  {
-    id: 'zone-labs',
-    name: '工具、代码与实验',
-    number: '04',
-    description: '量化交易引擎、回测框架、Python/Jupyter、优化、定价、金融数据与量化经济学工具，强调可运行和可复现实验。',
-    sourceZones: ['金融工程AI工具箱', 'Python / Jupyter实验库']
+    description: '精选金融LLM与智能体、金融机器学习与因果方法、量化交易与金融工程工具、计算金融与计算经济学实验；强调领域专用、可运行、可复现和高教学增量。',
+    sourceZones: ['AI＋金融工程专题', '金融工程AI工具箱', 'Python / Jupyter实验库']
   },
   {
     id: 'zone-cases',
     name: '金融机构与市场案例',
-    number: '05',
+    number: '04',
     description: '交易所和金融机构教育资源、真实金融数据、市场制度、衍生品案例以及课堂讨论素材。',
     sourceZones: ['金融机构教育资源', '教学案例库']
   },
   {
     id: 'zone-teaching',
     name: 'AI赋能教学',
-    number: '06',
+    number: '05',
     description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、金融工作流、教师科研工作流和教学反馈组织资源。',
     sourceZones: ['AI辅助教学方法']
   }
 ];
 
 const zoneOverrides = new Map([
-  ['PyTorch Tutorials', '工具、代码与实验'],
-  ['XGBoost Tutorials', '工具、代码与实验'],
-  ['scikit-learn User Guide', '工具、代码与实验'],
-  ['TensorFlow Time Series Forecasting', '工具、代码与实验'],
-  ['Text Classification with Transformers', '工具、代码与实验'],
   ['Financial Services Resources', 'AI赋能教学'],
   ['ChatGPT for Financial Services Solution Kit', 'AI赋能教学']
 ]);
+
+const methodGroups = [
+  {
+    title: '金融LLM与智能体',
+    subtitle: '聚焦多智能体投研、自主交易、金融大模型与Agent工作流，优先保留具有完整代码、架构和可复现实验的项目。',
+    titles: ['TradingAgents', 'AI Hedge Fund', 'AI-Trader', 'Vibe-Trading', 'FinGPT', 'FinRobot']
+  },
+  {
+    title: '金融机器学习与因果方法',
+    subtitle: '覆盖强化学习交易、金融机器学习、机器学习与计量经济学结合，以及因果机器学习。',
+    titles: ['FinRL', 'Machine Learning for Trading', 'EconML', 'DoubleML']
+  },
+  {
+    title: '量化交易与金融工程工具',
+    subtitle: '保留成熟度高、社区活跃、适合课程实验与项目训练的交易、回测、定价、组合优化和风险管理工具。',
+    titles: ['Qlib', 'QuantLib', 'PyPortfolioOpt', 'Riskfolio-Lib', 'QuantConnect LEAN', 'NautilusTrader', 'vectorbt', 'backtesting.py']
+  },
+  {
+    title: '计算金融与计算经济学',
+    subtitle: '面向优化、波动率建模、动态经济模型和异质性主体计算，强调可直接改造为Notebook实验。',
+    titles: ['QuantEcon.py', 'HARK', 'CVXPY Tutorial', 'ARCH Volatility Processes']
+  }
+];
 
 const domesticCourseMarkers = [
   '北京大学',
@@ -191,6 +202,14 @@ function renderBookGroups(items){
   ].join('');
 }
 
+function renderMethodGroups(items){
+  return methodGroups.map(group => {
+    const titleSet = new Set(group.titles);
+    const groupItems = items.filter(item => titleSet.has(item.title));
+    return renderSubgroup(group.title, group.subtitle, groupItems);
+  }).join('');
+}
+
 function updateZoneCounts(){
   document.querySelectorAll('[data-zone-count]').forEach(node => {
     const zoneName = node.getAttribute('data-zone-count');
@@ -207,7 +226,7 @@ function render(){
 
   resultCount.textContent = filtering
     ? `筛选结果：${filtered.length} / ${resources.length} 项资源`
-    : `按 6 个专区分组展示，共 ${resources.length} 项精选教学资源`;
+    : `按 5 个专区分组展示，共 ${resources.length} 项精选教学资源`;
 
   const sections = coreZones.map(group => {
     const allInZone = resources.filter(r => coreZone(r) === group.name);
@@ -225,6 +244,8 @@ function render(){
         content = renderCourseGroups(items);
       } else if (group.name === '经典教材与专著') {
         content = renderBookGroups(items);
+      } else if (group.name === 'AI＋金融工程方法与实践') {
+        content = renderMethodGroups(items);
       } else {
         content = `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
       }
@@ -260,7 +281,7 @@ function updateRubric(){
     <div><strong>10</strong><span>AI/计算融合程度</span></div>
     <div><strong>5</strong><span>获取便利性</span></div>
     <div><strong>5</strong><span>时效性</span></div>`;
-  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、金融/经济专用AI项目、代码实验、真实数据和可复用教学材料优先；通用AI文档归入工具区，仅有课程名称、培养方案或简短介绍的页面不进入主资源库前列。';
+  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、领域专用AI项目、成熟金融工程工具和可复现实验优先；通用文档、重复Quick Start、组织导航页和教学增量较低的条目保留在后台候选库，不进入前台精选。';
 }
 
 function activateZoneCards(){
