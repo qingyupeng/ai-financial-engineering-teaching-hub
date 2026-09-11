@@ -6,15 +6,15 @@
 
 | 核心专区 | 数量 | 说明 |
 |---|---:|---|
-| **1. 顶尖高校课程** | **23** | 国内7项＋海外16项高质量课程资源 |
+| **1. 顶尖高校课程** | **24** | 国内7项＋海外17项高质量课程资源 |
 | **2. 经典教材与专著** | **34** | 中文10项＋英文24项 |
-| **3. AI＋金融/金融工程前沿** | **15** | 金融ML、RL、LLM、Agent、AI量化宏观等 |
+| **3. AI＋金融/金融工程前沿** | **14** | 金融ML、RL、LLM、Agent、自主交易等 |
 | **4. 工具、代码与实验** | **32** | 量化工具＋Python/Jupyter实验＋Agent交易研究框架 |
 | **5. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
 | **6. AI赋能教学** | **6** | 备课、编程、评价、科研工作流与教学反馈 |
 | **合计** | **140** | |
 
-## 1. 顶尖高校课程（23项）
+## 1. 顶尖高校课程（24项）
 
 ### 国内高校（7项）
 
@@ -28,7 +28,7 @@
 
 > **后台候选：东北财经大学《机器学习与金融应用》**。目前只能从培养方案和教务信息确认课程存在，尚未找到公开课程主页、课件、代码、实验项目或独立教学大纲，因此不作为前台可直接访问资源。
 
-### 海外高校（16项）
+### 海外高校（17项）
 
 1. **Machine Learning & Causal Inference: A Short Course** — Stanford GSB / SIEPR
 2. **Machine Learning in Finance** — EPFL Financial Engineering
@@ -42,10 +42,11 @@
 10. **Machine Learning for Economists** — The University of Chicago
 11. **A.I. in Finance** — University of Toronto Engineering
 12. **Machine Learning Applications in Macroeconomic Finance** — University of Toronto Economics
-13. **Finance Theory I** — MIT OpenCourseWare
-14. **Analytics of Finance** — MIT OpenCourseWare
-15. **Introduction to Financial Mathematics** — Princeton University ORFE
-16. **Financial Markets** — Yale Open Courses
+13. **Quantitative Macroeconomics with AI and Machine Learning** — Zhigang Feng · University of Nebraska–Omaha
+14. **Finance Theory I** — MIT OpenCourseWare
+15. **Analytics of Finance** — MIT OpenCourseWare
+16. **Introduction to Financial Mathematics** — Princeton University ORFE
+17. **Financial Markets** — Yale Open Courses
 
 ## 2. 经典教材与专著（34项）
 
@@ -96,23 +97,22 @@
 23. The Effect: An Introduction to Research Design and Causality
 24. Causal Inference and Machine Learning: In Economics, Social, and Health Sciences
 
-## 3. AI＋金融/金融工程前沿（15项）
+## 3. AI＋金融/金融工程前沿（14项）
 
-1. **Quantitative Macroeconomics with AI and Machine Learning** — Zhigang Feng
-2. **AI-Trader** — HKU Data Intelligence Lab / Chao Huang
-3. FinRL
-4. Machine Learning for Trading
-5. FinGPT
-6. AI4Finance Foundation
-7. PyTorch Tutorials
-8. FinRobot
-9. FinRL-Meta
-10. Text Classification with Transformers
-11. Financial Services Resources
-12. XGBoost Tutorials
-13. ChatGPT for Financial Services Solution Kit
-14. TensorFlow Time Series Forecasting
-15. scikit-learn User Guide
+1. **AI-Trader** — HKU Data Intelligence Lab / Chao Huang
+2. FinRL
+3. Machine Learning for Trading
+4. FinGPT
+5. AI4Finance Foundation
+6. PyTorch Tutorials
+7. FinRobot
+8. FinRL-Meta
+9. Text Classification with Transformers
+10. Financial Services Resources
+11. XGBoost Tutorials
+12. ChatGPT for Financial Services Solution Kit
+13. TensorFlow Time Series Forecasting
+14. scikit-learn User Guide
 
 ## 4. 工具、代码与实验（32项）
 
