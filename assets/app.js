@@ -8,9 +8,23 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-ai-cases';
-const normalize = (value='') => String(value).toLowerCase().trim();
-const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
+const BUILD_VERSION = '20260911-site-audit';
+const normalize = (value = '') => String(value).toLowerCase().trim();
+const escapeHtml = (value = '') => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;');
+
+function safeUrl(value = '') {
+  try {
+    const url = new URL(String(value));
+    return ['http:', 'https:'].includes(url.protocol) ? url.href : '#';
+  } catch {
+    return '#';
+  }
+}
 
 const coreZones = [
   {
@@ -45,15 +59,10 @@ const coreZones = [
     id: 'zone-teaching',
     name: 'AI赋能教学',
     number: '05',
-    description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、金融工作流、教师科研工作流和教学反馈组织资源。',
+    description: '精选高校教师可直接复用的Agentic Research、LLM社会科学研究、课程设计、作业与评价、课堂AI政策和真实教学实践资源。',
     sourceZones: ['AI辅助教学方法']
   }
 ];
-
-const zoneOverrides = new Map([
-  ['Financial Services Resources', 'AI赋能教学'],
-  ['ChatGPT for Financial Services Solution Kit', 'AI赋能教学']
-]);
 
 const methodGroups = [
   {
@@ -111,199 +120,198 @@ const caseGroups = [
   }
 ];
 
-const domesticCourseMarkers = [
-  '北京大学',
-  '清华大学',
-  '中央财经大学',
-  '湖南大学',
-  '复旦大学',
-  '东北财经大学',
-  '对外经济贸易大学',
-  '中山大学'
+const teachingGroups = [
+  {
+    title: '教师科研与 Agentic Research',
+    subtitle: '面向经济金融与社会科学教师的智能体研究、LLM研究方法、Notebook训练与项目式科研工作流。',
+    titles: [
+      '智能体与社会科学研究（Agentic Coding in Social Sciences Research）',
+      'Vibe Researching with Coding Agents / Open Scholar Skill',
+      'LLMs for Social Science',
+      'Large Language Models for the Economic and Social Sciences'
+    ]
+  },
+  {
+    title: '课程设计与教学实践',
+    subtitle: '聚焦课程重构、作业设计、课堂AI政策、评价与学术诚信，以及高校教师的真实生成式AI教学实践。',
+    titles: [
+      'AI Pedagogy Project',
+      'Teach with Generative AI / Harvard GenAI Library for Teaching and Learning'
+    ]
+  }
 ];
 
-function coreZone(resource){
-  const override = zoneOverrides.get(resource.title);
-  if (override) return override;
-  const group = coreZones.find(g => g.sourceZones.includes(resource.zone));
+const domesticCourseMarkers = [
+  '北京大学', '清华大学', '中央财经大学', '湖南大学',
+  '复旦大学', '东北财经大学', '对外经济贸易大学', '中山大学'
+];
+
+function coreZone(resource) {
+  const group = coreZones.find(item => item.sourceZones.includes(resource.zone));
   return group ? group.name : resource.zone;
 }
 
-function isDomesticCourse(resource){
+function isDomesticCourse(resource) {
   if (coreZone(resource) !== '顶尖高校课程') return false;
   return domesticCourseMarkers.some(marker => String(resource.source || '').includes(marker));
 }
 
-function isChineseBook(resource){
+function isChineseBook(resource) {
   return coreZone(resource) === '经典教材与专著' && normalize(resource.language).includes('中文');
 }
 
-function parseTSV(text){
+function parseTSV(text) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
   const headers = lines[0].split('\t');
   return lines.slice(1).filter(Boolean).map(line => {
     const values = line.split('\t');
     const item = {};
-    headers.forEach((h,i) => item[h] = values[i] ?? '');
+    headers.forEach((header, index) => item[header] = values[index] ?? '');
     item.score = Number(item.score || 0);
-    item.tags = String(item.tags || '').split(';').map(x=>x.trim()).filter(Boolean);
+    item.tags = String(item.tags || '').split(';').map(tag => tag.trim()).filter(Boolean);
     return item;
   });
 }
 
-function curationRank(resource){
+function curationRank(resource) {
   const featuredIndex = curation.featured_order.indexOf(resource.title);
   if (featuredIndex >= 0) return featuredIndex;
-  if (curation.deprioritized.includes(resource.title)) return 10000 + (100 - Number(resource.score || 0));
-  return 1000 + (100 - Number(resource.score || 0));
+  return 10000 + (100 - Number(resource.score || 0));
 }
 
-function applyCuration(items){
-  const hidden = new Set(curation.hidden_from_main_library || []);
-  return items
-    .filter(r => !hidden.has(r.title))
-    .sort((a,b) => curationRank(a) - curationRank(b) || a.title.localeCompare(b.title, 'zh-CN'));
+function validResource(resource) {
+  return Boolean(
+    resource && resource.title && resource.source && resource.zone &&
+    Number.isFinite(Number(resource.score)) && safeUrl(resource.url) !== '#'
+  );
 }
 
-function resourceMatches(resource, q, level){
+function applyCuration(items) {
+  const featured = new Set(curation.featured_order || []);
+  const byTitle = new Map();
+  items.filter(validResource).forEach(item => byTitle.set(item.title, item));
+  return [...byTitle.values()]
+    .filter(item => featured.has(item.title))
+    .sort((a, b) => curationRank(a) - curationRank(b) || a.title.localeCompare(b.title, 'zh-CN'));
+}
+
+function resourceMatches(resource, query, level) {
   const displayZone = coreZone(resource);
   const haystack = normalize([
-    resource.title,
-    resource.source,
-    resource.zone,
-    displayZone,
-    resource.finance_module,
-    resource.ai_topic,
-    resource.level,
-    resource.language,
+    resource.title, resource.source, resource.zone, displayZone,
+    resource.finance_module, resource.ai_topic, resource.level, resource.language,
+    resource.teaching_value, resource.suggested_use,
     ...(resource.tags || [])
   ].join(' '));
-  return (!q || haystack.includes(q)) && (!level || resource.level === level);
+  return (!query || haystack.includes(query)) && (!level || resource.level === level);
 }
 
-function renderCard(resource){
-  const grade = gradeClass(resource.score);
-  const tags = [resource.finance_module, resource.ai_topic, resource.level]
+function renderCard(resource) {
+  const tags = [resource.finance_module, resource.ai_topic, resource.level, resource.language]
     .filter(Boolean)
-    .map(x => `<span class="chip">${x}</span>`)
+    .map(value => `<span class="chip">${escapeHtml(value)}</span>`)
     .join('');
-  const badge = curation.featured_order.includes(resource.title)
-    ? '<span class="badge">重点教学资源</span>'
-    : `<span class="badge">${coreZone(resource)}</span>`;
+  const url = safeUrl(resource.url);
+  const link = url === '#'
+    ? '<span class="resource-link-disabled">链接待核验</span>'
+    : `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">访问原始资源 ↗</a>`;
 
   return `<article class="resource-card">
-    <div class="card-top">${badge}<span class="grade ${grade}">${grade}级 · ${resource.score}</span></div>
-    <h3>${resource.title}</h3>
-    <p class="source">${resource.source}</p>
+    <div class="card-top"><span class="badge">${escapeHtml(coreZone(resource))}</span><span class="score">评分 ${Number(resource.score)}</span></div>
+    <h3>${escapeHtml(resource.title)}</h3>
+    <p class="source">${escapeHtml(resource.source)}</p>
     <div class="meta">${tags}</div>
-    <p><span class="card-section-label">教学价值</span>${resource.teaching_value}</p>
-    <p><span class="card-section-label">建议用途</span>${resource.suggested_use}</p>
+    <p><span class="card-section-label">教学价值</span>${escapeHtml(resource.teaching_value)}</p>
+    <p><span class="card-section-label">建议用途</span>${escapeHtml(resource.suggested_use)}</p>
     <div class="card-footer">
-      <a href="${resource.url}" target="_blank" rel="noopener noreferrer">访问官方资源 ↗</a>
-      <span class="verified">核验 ${resource.last_verified}</span>
+      ${link}
+      <span class="verified">核验 ${escapeHtml(resource.last_verified)}</span>
     </div>
   </article>`;
 }
 
-function renderSubgroup(title, subtitle, items){
+function renderSubgroup(title, subtitle, items) {
   if (!items.length) return '';
   return `<div class="course-subgroup">
     <div class="course-subgroup-head">
-      <div><h4>${title}</h4><p>${subtitle}</p></div>
+      <div><h4>${escapeHtml(title)}</h4><p>${escapeHtml(subtitle)}</p></div>
       <span>${items.length} 项</span>
     </div>
     <div class="resource-grid">${items.map(renderCard).join('')}</div>
   </div>`;
 }
 
-function renderCourseGroups(items){
+function renderCourseGroups(items) {
   const domestic = items.filter(isDomesticCourse);
-  const overseas = items.filter(r => !isDomesticCourse(r));
+  const overseas = items.filter(resource => !isDomesticCourse(resource));
   return [
     renderSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资、智能体和机器学习课程。', domestic),
-    renderSubgroup('海外高校', '国际顶尖高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
+    renderSubgroup('海外高校', '国际高水平高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
   ].join('');
 }
 
-function renderBookGroups(items){
+function renderBookGroups(items) {
   const chinese = items.filter(isChineseBook);
-  const english = items.filter(r => !isChineseBook(r));
+  const english = items.filter(resource => !isChineseBook(resource));
   return [
     renderSubgroup('中文教材与专著', '国内原创教材与高质量中译本，优先选择具有代码、案例、课件、视频或明确教学体系的AI＋金融、金融工程和量化投资书目。', chinese),
     renderSubgroup('英文教材与专著', '国际经典教材与前沿专著，覆盖金融机器学习、概率机器学习、深度学习、强化学习、AI经济学与因果推断。', english)
   ].join('');
 }
 
-function renderMethodGroups(items){
-  return methodGroups.map(group => {
+function renderConfiguredGroups(items, groups) {
+  const configuredTitles = new Set(groups.flatMap(group => group.titles));
+  const grouped = groups.map(group => {
     const titleSet = new Set(group.titles);
-    const groupItems = items.filter(item => titleSet.has(item.title));
-    return renderSubgroup(group.title, group.subtitle, groupItems);
+    return renderSubgroup(group.title, group.subtitle, items.filter(item => titleSet.has(item.title)));
   }).join('');
+  const unmatched = items.filter(item => !configuredTitles.has(item.title));
+  return grouped + renderSubgroup('其他精选资源', '通过质量筛选但尚未归入上述二级板块的资源。', unmatched);
 }
 
-function renderCaseGroups(items){
-  return caseGroups.map(group => {
-    const titleSet = new Set(group.titles);
-    const groupItems = items.filter(item => titleSet.has(item.title));
-    return renderSubgroup(group.title, group.subtitle, groupItems);
-  }).join('');
-}
-
-function updateZoneCounts(){
+function updateZoneCounts() {
   document.querySelectorAll('[data-zone-count]').forEach(node => {
     const zoneName = node.getAttribute('data-zone-count');
-    const count = resources.filter(r => coreZone(r) === zoneName).length;
+    const count = resources.filter(resource => coreZone(resource) === zoneName).length;
     node.textContent = `${count} 项资源`;
   });
 }
 
-function render(){
-  const q = normalize(searchInput.value);
+function render() {
+  const query = normalize(searchInput.value);
   const level = levelFilter.value;
-  const filtered = resources.filter(r => resourceMatches(r, q, level));
-  const filtering = Boolean(q || level);
+  const filtered = resources.filter(resource => resourceMatches(resource, query, level));
+  const filtering = Boolean(query || level);
 
   resultCount.textContent = filtering
     ? `筛选结果：${filtered.length} / ${resources.length} 项资源`
     : `按 5 个专区分组展示，共 ${resources.length} 项精选教学资源`;
 
   const sections = coreZones.map(group => {
-    const allInZone = resources.filter(r => coreZone(r) === group.name);
-    const items = allInZone.filter(r => resourceMatches(r, q, level));
-
+    const allInZone = resources.filter(resource => coreZone(resource) === group.name);
+    const items = allInZone.filter(resource => resourceMatches(resource, query, level));
     if (filtering && !items.length) return '';
 
-    const countLabel = filtering
-      ? `${items.length} / ${allInZone.length}`
-      : `${allInZone.length}`;
-
+    const countLabel = filtering ? `${items.length} / ${allInZone.length}` : `${allInZone.length}`;
     let content = '<div class="empty">该专区暂无匹配资源。</div>';
+
     if (items.length) {
-      if (group.name === '顶尖高校课程') {
-        content = renderCourseGroups(items);
-      } else if (group.name === '经典教材与专著') {
-        content = renderBookGroups(items);
-      } else if (group.name === 'AI＋金融工程方法、工具与实验') {
-        content = renderMethodGroups(items);
-      } else if (group.name === '案例') {
-        content = renderCaseGroups(items);
-      } else {
-        content = `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
-      }
+      if (group.name === '顶尖高校课程') content = renderCourseGroups(items);
+      else if (group.name === '经典教材与专著') content = renderBookGroups(items);
+      else if (group.name === 'AI＋金融工程方法、工具与实验') content = renderConfiguredGroups(items, methodGroups);
+      else if (group.name === '案例') content = renderConfiguredGroups(items, caseGroups);
+      else if (group.name === 'AI赋能教学') content = renderConfiguredGroups(items, teachingGroups);
+      else content = `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
     }
 
-    return `<section id="${group.id}" class="zone-resource-block" aria-labelledby="${group.id}-title">
+    return `<section id="${escapeHtml(group.id)}" class="zone-resource-block" aria-labelledby="${escapeHtml(group.id)}-title">
       <div class="zone-resource-head">
         <div class="zone-resource-heading">
-          <span class="zone-number">${group.number}</span>
-          <div>
-            <h3 id="${group.id}-title">${group.name}</h3>
-            <p>${group.description}</p>
-          </div>
+          <span class="zone-number">${escapeHtml(group.number)}</span>
+          <div><h3 id="${escapeHtml(group.id)}-title">${escapeHtml(group.name)}</h3><p>${escapeHtml(group.description)}</p></div>
         </div>
-        <div class="zone-resource-count"><strong>${countLabel}</strong><span>项资源</span></div>
+        <div class="zone-resource-count"><strong>${escapeHtml(countLabel)}</strong><span>项资源</span></div>
       </div>
       ${content}
       <div class="zone-footer-nav"><a href="#zones-title">↑ 返回资源专区导航</a></div>
@@ -313,7 +321,7 @@ function render(){
   zoneResourceSections.innerHTML = sections || '<div class="empty">没有匹配的资源，请尝试调整关键词或难度。</div>';
 }
 
-function updateRubric(){
+function updateRubric() {
   const rubricGrid = document.querySelector('.rubric-grid');
   const gradeNote = document.querySelector('.grade-note');
   if (rubricGrid) rubricGrid.innerHTML = `
@@ -324,30 +332,10 @@ function updateRubric(){
     <div><strong>10</strong><span>AI/计算融合程度</span></div>
     <div><strong>5</strong><span>获取便利性</span></div>
     <div><strong>5</strong><span>时效性</span></div>`;
-  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、领域专用AI项目、成熟金融工程工具和可复现实验优先；“案例”只保留有明确金融机构、业务场景、AI使用方式和一手证据的真实案例；通用投教、市场数据和泛行业材料不进入案例专区。';
+  if (gradeNote) gradeNote.innerHTML = '<b>筛选原则：</b>课程、教材、方法工具优先完整性和可复用性；“案例”必须有真实金融业务流程与一手证据；“AI赋能教学”优先系统课程、Agentic Research、完整讲义/Notebook、可复用作业与高校教学实践。第三至第五专区均采用高门槛替换制。';
 }
 
-function activateZoneCards(){
-  document.querySelectorAll('.zone-nav-card').forEach(card => {
-    const link = card.querySelector('h3 a');
-    if (!link) return;
-    card.setAttribute('role','link');
-    card.setAttribute('tabindex','0');
-    card.setAttribute('aria-label',`查看${link.textContent.trim()}`);
-    card.addEventListener('click', event => {
-      if (event.target.closest('a')) return;
-      document.querySelector(link.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-    });
-    card.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        document.querySelector(link.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-      }
-    });
-  });
-}
-
-async function loadResources(){
+async function loadResources() {
   try {
     const urls = [
       'data/resources.json',
@@ -363,39 +351,22 @@ async function loadResources(){
       'data/resources-ai-industry-cases.tsv',
       'data/curation.json'
     ];
-    const responses = await Promise.all(
-      urls.map(url => fetch(`${url}?v=${BUILD_VERSION}`, { cache: 'no-store' }))
-    );
-    if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
+    const responses = await Promise.all(urls.map(url => fetch(`${url}?v=${BUILD_VERSION}`, { cache: 'no-store' })));
+    if (!responses.every(response => response.ok)) throw new Error('resource fetch failed');
 
     const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curatedAdditionsText, githubQualityText, aiCasesText, curationData] = await Promise.all([
-      responses[0].json(),
-      responses[1].text(),
-      responses[2].text(),
-      responses[3].text(),
-      responses[4].text(),
-      responses[5].text(),
-      responses[6].text(),
-      responses[7].text(),
-      responses[8].text(),
-      responses[9].text(),
-      responses[10].text(),
-      responses[11].json()
+      responses[0].json(), responses[1].text(), responses[2].text(), responses[3].text(),
+      responses[4].text(), responses[5].text(), responses[6].text(), responses[7].text(),
+      responses[8].text(), responses[9].text(), responses[10].text(), responses[11].json()
     ]);
 
     curation = curationData;
     const candidateResources = [
       ...(base.resources || []),
-      ...parseTSV(text1),
-      ...parseTSV(text2),
-      ...parseTSV(text3),
-      ...parseTSV(booksText),
-      ...parseTSV(booksExtraText),
-      ...parseTSV(booksCnText),
-      ...parseTSV(coursesExtraText),
-      ...parseTSV(curatedAdditionsText),
-      ...parseTSV(githubQualityText),
-      ...parseTSV(aiCasesText)
+      ...parseTSV(text1), ...parseTSV(text2), ...parseTSV(text3),
+      ...parseTSV(booksText), ...parseTSV(booksExtraText), ...parseTSV(booksCnText),
+      ...parseTSV(coursesExtraText), ...parseTSV(curatedAdditionsText),
+      ...parseTSV(githubQualityText), ...parseTSV(aiCasesText)
     ];
 
     resources = applyCuration(candidateResources);
@@ -404,17 +375,18 @@ async function loadResources(){
     render();
   } catch (error) {
     console.error(error);
-    zoneResourceSections.innerHTML = '<div class="empty">资源目录加载失败，请稍后刷新页面。</div>';
+    resultCount.textContent = '资源加载失败';
+    zoneResourceSections.innerHTML = '<div class="empty">资源目录加载失败，请刷新页面重试。</div>';
   }
 }
 
-[searchInput, levelFilter].forEach(el => el.addEventListener('input', render));
+[searchInput, levelFilter].forEach(element => element.addEventListener('input', render));
 resetFilters.addEventListener('click', () => {
   searchInput.value = '';
   levelFilter.value = '';
   render();
+  searchInput.focus();
 });
 
-activateZoneCards();
 updateRubric();
 loadResources();
