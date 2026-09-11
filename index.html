@@ -12,6 +12,7 @@
     <div class="container nav-wrap">
       <a class="brand" href="#top">AI＋金融工程教师开放资源中心</a>
       <nav class="nav" aria-label="主导航">
+        <a href="#zones-title">资源专区</a>
         <a href="#resources">资源库</a>
         <a href="#paths">学习路径</a>
         <a href="#rubric">筛选标准</a>
@@ -28,7 +29,7 @@
           <h1>把“AI＋金融工程”资源，变成教师真正能用的教学工具</h1>
           <p class="lead">以经典教材和顶尖课程为知识骨架，进一步整合AI前沿、代码实验、金融机构案例与AI教学方法，通过中文导读、课程映射和教师学习路径完成二次加工。</p>
           <div class="hero-actions">
-            <a class="btn primary" href="#resources">浏览资源</a>
+            <a class="btn primary" href="#zones-title">选择资源专区</a>
             <a class="btn secondary" href="#paths">查看学习路径</a>
           </div>
           <p class="fineprint">外部资源以官方链接为主；版权归原作者或机构所有。平台自建资源将单独标注。</p>
@@ -42,43 +43,69 @@
       </div>
     </section>
 
-    <section class="container section" aria-labelledby="zones-title">
+    <section id="zoneNav" class="container section" aria-labelledby="zones-title">
       <div class="section-head">
         <div>
-          <span class="eyebrow">平台结构</span>
+          <span class="eyebrow">按专区浏览</span>
           <h2 id="zones-title">6个核心资源专区</h2>
         </div>
-        <p>按教师真实使用场景重组资源：先建立知识框架，再获取课程范例、前沿内容、计算实验、市场案例和AI教学方法。</p>
+        <p>点击专区名称即可直接跳到对应资源，不需要再从全部资源中逐项翻找。</p>
       </div>
       <div class="zones-grid">
-        <article><span>01</span><h3>经典教材与专著</h3><p>AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学与因果推断的核心书架。</p></article>
-        <article><span>02</span><h3>顶尖高校课程</h3><p>优先收录有讲义、课件、代码、习题、考试或视频的高质量开放课程。</p></article>
-        <article><span>03</span><h3>AI＋金融/金融工程前沿</h3><p>金融机器学习、深度学习、强化学习、金融LLM、Agent与前沿AI金融应用。</p></article>
-        <article><span>04</span><h3>工具、代码与实验</h3><p>整合量化工具、Python库、Jupyter Notebook、优化、定价、回测与金融数据实验。</p></article>
-        <article><span>05</span><h3>金融机构与市场案例</h3><p>整合交易所与金融机构投教、真实市场数据、衍生品案例和课堂讨论素材。</p></article>
-        <article><span>06</span><h3>AI赋能教学</h3><p>覆盖备课、知识解释、习题案例、编程辅导、作业评价和教学反馈。</p></article>
+        <article class="zone-nav-card">
+          <span>01</span>
+          <h3><a href="#zone-books">经典教材与专著</a></h3>
+          <p>AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学与因果推断的核心书架。</p>
+          <div class="zone-count" data-zone-count="经典教材与专著">— 项资源</div>
+        </article>
+        <article class="zone-nav-card">
+          <span>02</span>
+          <h3><a href="#zone-courses">顶尖高校课程</a></h3>
+          <p>优先收录有讲义、课件、代码、习题、考试或视频的高质量开放课程。</p>
+          <div class="zone-count" data-zone-count="顶尖高校课程">— 项资源</div>
+        </article>
+        <article class="zone-nav-card">
+          <span>03</span>
+          <h3><a href="#zone-frontier">AI＋金融/金融工程前沿</a></h3>
+          <p>金融机器学习、深度学习、强化学习、金融LLM、Agent与前沿AI金融应用。</p>
+          <div class="zone-count" data-zone-count="AI＋金融/金融工程前沿">— 项资源</div>
+        </article>
+        <article class="zone-nav-card">
+          <span>04</span>
+          <h3><a href="#zone-labs">工具、代码与实验</a></h3>
+          <p>整合量化工具、Python库、Jupyter Notebook、优化、定价、回测与金融数据实验。</p>
+          <div class="zone-count" data-zone-count="工具、代码与实验">— 项资源</div>
+        </article>
+        <article class="zone-nav-card">
+          <span>05</span>
+          <h3><a href="#zone-cases">金融机构与市场案例</a></h3>
+          <p>整合交易所与金融机构投教、真实市场数据、衍生品案例和课堂讨论素材。</p>
+          <div class="zone-count" data-zone-count="金融机构与市场案例">— 项资源</div>
+        </article>
+        <article class="zone-nav-card">
+          <span>06</span>
+          <h3><a href="#zone-teaching">AI赋能教学</a></h3>
+          <p>覆盖备课、知识解释、习题案例、编程辅导、作业评价和教学反馈。</p>
+          <div class="zone-count" data-zone-count="AI赋能教学">— 项资源</div>
+        </article>
       </div>
-      <p class="fineprint" style="color:var(--muted);margin-top:18px">“教师学习路径”作为独立导航模块保留，不再计入资源专区。</p>
+      <p class="fineprint zone-note">“教师学习路径”作为独立导航模块保留，不计入资源专区。</p>
     </section>
 
     <section id="resources" class="resource-section">
       <div class="container section">
         <div class="section-head">
           <div>
-            <span class="eyebrow">资源目录</span>
-            <h2>精选资源库</h2>
+            <span class="eyebrow">专区资源库</span>
+            <h2>按专区查看精选资源</h2>
           </div>
-          <p>每项资源均包含来源、课程映射、AI标签、难度、教学价值、使用建议和核验时间。</p>
+          <p>六个专区分别展示。关键词和难度筛选会在各专区内部同步生效。</p>
         </div>
 
-        <div class="filters" role="search">
+        <div class="filters compact-filters" role="search">
           <label>
             <span>关键词</span>
             <input id="searchInput" type="search" placeholder="搜索课程、教材、工具、案例、机构或主题…" />
-          </label>
-          <label>
-            <span>核心专区</span>
-            <select id="zoneFilter"><option value="">全部专区</option></select>
           </label>
           <label>
             <span>难度</span>
@@ -96,7 +123,7 @@
           <span id="resultCount">正在加载资源…</span>
           <span>更新时间：2026-09-11</span>
         </div>
-        <div id="resourceGrid" class="resource-grid" aria-live="polite"></div>
+        <div id="zoneResourceSections" class="zone-resource-sections" aria-live="polite"></div>
       </div>
     </section>
 
