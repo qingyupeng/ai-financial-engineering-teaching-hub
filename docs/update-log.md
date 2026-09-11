@@ -1,5 +1,28 @@
 # 更新日志
 
+## 2026-09-11 · v0.4 · 核心教材查漏补缺
+
+- 在原有14本“经典教材与专著”基础上新增10本，教材专区扩充至 **24本/套**。
+- 根据教师反馈补入 *Machine Learning for Finance*（James Le、Jannes Klaas）和 *Probabilistic Machine Learning for Finance and Investing*（Deepak K. Kanungo）。
+- 进一步补入8本重要经典/核心教材：*Financial Signal Processing and Machine Learning*、*Pattern Recognition and Machine Learning*、Murphy 两卷 *Probabilistic Machine Learning*、*Deep Learning*、*Reinforcement Learning: An Introduction*、*Applied Causal Inference Powered by ML and AI*、*Deep Learning: Foundations and Concepts*。
+- 教材结构由三条线扩展为四条线：AI＋金融/金融工程；机器学习/概率机器学习/深度学习；AI＋经济学；因果推断＋机器学习。
+- 前台精选资源由100项增加至 **110项**；候选资源总量增加至124项，仍有14项纯培养方案/项目介绍页保留在后台对标库。
+- 北京大学金融工程实验室“机器学习与资产定价”继续保持前台第一位。
+- 首页“经典教材与专著”核心书架同步更新，重点展示新增金融机器学习教材。
+
+### 当前前台精选结构
+
+- 顶尖高校课程：7项
+- 金融机构教育资源：19项
+- 经典教材与专著：24项
+- AI＋金融工程专题：13项
+- 金融工程AI工具箱：9项
+- Python / Jupyter实验库：22项
+- 教学案例库：11项
+- AI辅助教学方法：5项
+
+合计：**110项**。
+
 ## 2026-09-11 · v0.3 · 教材与资源结构优化
 
 - 根据教师使用反馈，新增“**经典教材与专著**”专区。
@@ -10,19 +33,6 @@
 - 首页资源专区由8个调整为9个，新增“经典教材与专著”。
 - 资源排序规则进一步强调系统教材、讲义、代码、Notebook、习题、视频、数据和案例的实质可用性。
 - 更新README、资源目录、前端加载逻辑和排序规则。
-
-### 当前前台精选结构
-
-- 顶尖高校课程：7项
-- 金融机构教育资源：19项
-- 经典教材与专著：14项
-- AI＋金融工程专题：13项
-- 金融工程AI工具箱：9项
-- Python / Jupyter实验库：22项
-- 教学案例库：11项
-- AI辅助教学方法：5项
-
-合计：**100项**。
 
 ## 2026-09-11 · v0.2 · 100项高质量资源库
 
