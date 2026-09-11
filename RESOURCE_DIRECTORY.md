@@ -1,18 +1,18 @@
-# AI＋金融工程高质量资源目录（前台精选110项）
+# AI＋金融工程高质量资源目录（前台精选120项）
 
-> 更新时间：2026-09-11。平台维护124项候选资源，经人工复核后形成 **110项前台精选教学资源**。信息架构由原先9个混合专区优化为 **6个核心资源专区＋独立教师学习路径**。
+> 更新时间：2026-09-11。平台维护134项候选资源，经人工复核后形成 **120项前台精选教学资源**。信息架构采用 **6个核心资源专区＋独立教师学习路径**。
 
 ## 六个核心专区
 
 | 核心专区 | 数量 | 说明 |
 |---|---:|---|
 | **1. 经典教材与专著** | **24** | 系统知识框架与长期自学主线 |
-| **2. 顶尖高校课程** | **7** | 有实质讲义、代码、习题、视频等材料的开放课程 |
+| **2. 顶尖高校课程** | **17** | AI＋金融、金融工程、AI＋经济学的高质量课程资源 |
 | **3. AI＋金融/金融工程前沿** | **13** | 金融ML、深度学习、RL、LLM、Agent等 |
 | **4. 工具、代码与实验** | **31** | 量化工具＋Python/Jupyter实验统一入口 |
 | **5. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
 | **6. AI赋能教学** | **5** | 备课、讲解、编程、评价与教学反馈 |
-| **合计** | **110** | |
+| **合计** | **120** | |
 
 > “教师学习路径”不再作为资源专区，而作为跨专区的使用导航层独立保留。
 
@@ -54,17 +54,34 @@
 23. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
 24. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
 
-## 2. 顶尖高校课程（7项）
+## 2. 顶尖高校课程（17项）
+
+### AI＋金融 / 金融工程
 
 1. **机器学习与资产定价** — 北京大学金融工程实验室
-2. **Machine Learning in Finance & Insurance** — ETH Zürich
-3. **Machine Learning for Finance & Complex Systems** — ETH Zürich
-4. **Finance Theory I** — MIT OpenCourseWare
-5. **Analytics of Finance** — MIT OpenCourseWare
-6. **Introduction to Financial Mathematics** — Princeton University ORFE
-7. **Financial Markets** — Yale Open Courses
+2. **Machine Learning in Finance** — EPFL Financial Engineering
+3. **AI and Finance** — MIT
+4. **Machine Learning in Finance & Insurance** — ETH Zürich
+5. **Machine Learning for Finance & Complex Systems** — ETH Zürich
+6. **AI and Data Science in Finance** — University of Pennsylvania, Wharton
+7. **Machine Learning in Financial Engineering** — New York University, Tandon
+8. **Stochastic Optimization and Machine Learning in Finance** — Princeton University ORFE
+9. **A.I. in Finance** — University of Toronto Engineering
+10. **Finance Theory I** — MIT OpenCourseWare
+11. **Analytics of Finance** — MIT OpenCourseWare
+12. **Introduction to Financial Mathematics** — Princeton University ORFE
+13. **Financial Markets** — Yale Open Courses
 
-> 课程体系和培养方案类页面仍保留在后台候选数据中，但不占据前台主资源库位置。
+### AI＋经济学 / 宏观金融 / 因果机器学习
+
+14. **Machine Learning & Causal Inference: A Short Course** — Stanford Graduate School of Business / SIEPR
+15. **The AI Awakening: Implications for the Economy and Society** — Stanford Digital Economy Lab
+16. **Machine Learning for Economists** — The University of Chicago
+17. **Machine Learning Applications in Macroeconomic Finance** — University of Toronto Economics
+
+### 本轮深度检索的质量取舍
+
+本轮还检索到 Columbia 的 *AI Applications in Finance*、*Advanced Machine Learning for Finance*，Duke 的 *Machine Learning for FinTech*，Cornell 的 *Financial Data, Markets, and Mayhem for Scientists and Engineers*，Yale 的 *Financial Econometrics and Machine Learning*、*Machine Learning for Economic Analysis*，以及 Stanford 的 *Machine Learning in Economics*、*Computational Economics and Machine Learning* 等课程。它们主题高度相关，但目前公开网页主要是课程说明或catalog信息，开放讲义、代码、视频或syllabus的可获得性弱于本轮入选课程，因此暂不进入主资源库。
 
 ## 3. AI＋金融/金融工程前沿（13项）
 
@@ -177,12 +194,13 @@
 
 ## 数据维护说明
 
-底层数据仍保留较细的原始标签（如“金融工程AI工具箱”“Python / Jupyter实验库”“金融机构教育资源”“教学案例库”），前端通过映射将其归并到6个核心专区。这样既简化教师浏览体验，又不损失后台维护粒度。
+底层数据仍保留较细的原始标签，前端通过映射将其归并到6个核心专区。这样既简化教师浏览体验，又不损失后台维护粒度。
 
 - `data/resources.json`：首批资源
 - `data/resources-extra-1.tsv`、`resources-extra-2.tsv`、`resources-extra-3.tsv`：扩展资源
 - `data/resources-books.tsv`：首批14本经典教材与专著
 - `data/resources-books-extra.tsv`：新增10本核心教材与专著
+- `data/resources-courses-extra.tsv`：深度检索新增10项顶尖高校课程
 - `data/curation.json`：排序、降权与隐藏规则
 
 ## 使用与维护原则
@@ -190,4 +208,4 @@
 1. 外部资源优先保留高校、出版社、交易所、监管机构、金融机构或项目官方链接。
 2. 教材只提供官方页面、开放版本或作者许可的资源入口，不重新上传受版权保护的教材全文。
 3. 每项资源必须能对应《金融工程》的具体模块、AI/计算方法或教师教学流程。
-4. 后续采用“新增一项、评估一项、核验一项、必要时淘汰一项”的维护机制，保持前台资源库在80–120项目标区间内并优先保证质量。
+4. 前台精选资源当前达到120项，后续原则上以“新增一项、评估一项、必要时淘汰一项”的方式维持精品规模，而不继续机械扩容。
