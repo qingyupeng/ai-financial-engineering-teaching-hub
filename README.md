@@ -4,12 +4,12 @@
 
 ## 当前建设进度
 
-平台目前维护 **114项候选资源**，经人工质量复核后形成 **100项前台精选教学资源**：
+平台目前维护 **124项候选资源**，经人工质量复核后形成 **110项前台精选教学资源**：
 
-- **100项进入前台精选教学资源库**；
+- **110项进入前台精选教学资源库**；
 - **14项纯培养方案/项目介绍页退出主资源库前台**，仅保留为课程体系对标参考；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于资源库第一位；
-- 新增 **14项“经典教材与专著”**，覆盖AI＋金融工程、AI＋金融、机器学习方法基础以及AI/机器学习＋经济学与因果推断；
+- **“经典教材与专著”专区已扩充至24本/套**，覆盖AI＋金融工程、AI＋金融、概率机器学习、深度学习、强化学习、机器学习＋经济学与因果推断；
 - 优先展示具有教材、讲义、代码、习题、数据、Notebook、视频、案例或完整教程的资源。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
@@ -47,30 +47,43 @@
 
 ## 经典教材与专著
 
-该专区目前收录14本/套核心书目，按三条线组织：
+该专区目前收录 **24本/套** 核心书目，按四条线组织。
 
 ### AI＋金融 / 金融工程
 
 - *Machine Learning in Finance: From Theory to Practice* — Dixon, Halperin, Bilokon
+- *Machine Learning for Algorithmic Trading, 2nd Edition* — Stefan Jansen
+- *Probabilistic Machine Learning for Finance and Investing* — Deepak K. Kanungo
+- *Machine Learning for Finance* — James Le, Jannes Klaas
 - *Advances in Financial Machine Learning* — Marcos López de Prado
 - *Machine Learning for Asset Managers* — Marcos M. López de Prado
 - *Artificial Intelligence in Finance* — Yves Hilpisch
-- *Machine Learning for Algorithmic Trading, 2nd Edition* — Stefan Jansen
+- *Financial Signal Processing and Machine Learning* — Ali N. Akansu, Sanjeev R. Kulkarni, Dmitry Malioutov (eds.)
 
-### 机器学习方法基础
+### 机器学习、概率机器学习与深度学习基础
 
 - *The Elements of Statistical Learning*
 - *An Introduction to Statistical Learning: with Applications in Python*
 - *Statistical Learning with Sparsity: The Lasso and Generalizations*
 - *Computer Age Statistical Inference*
+- *Pattern Recognition and Machine Learning* — Christopher M. Bishop
+- *Probabilistic Machine Learning: An Introduction* — Kevin P. Murphy
+- *Probabilistic Machine Learning: Advanced Topics* — Kevin P. Murphy
+- *Deep Learning* — Ian Goodfellow, Yoshua Bengio, Aaron Courville
+- *Deep Learning: Foundations and Concepts* — Christopher M. Bishop, Hugh Bishop
+- *Reinforcement Learning: An Introduction, 2nd Edition* — Richard S. Sutton, Andrew G. Barto
 
-### AI / 机器学习＋经济学与因果推断
+### AI / 机器学习＋经济学
 
 - *The Economics of Artificial Intelligence: An Agenda*
 - *Prediction Machines: The Simple Economics of Artificial Intelligence*
-- *Causal Inference: The Mixtape*
-- *The Effect: An Introduction to Research Design and Causality*
-- *Causal Inference and Machine Learning: In Economics, Social, and Health Sciences*
+
+### 因果推断＋机器学习
+
+- *Applied Causal Inference Powered by ML and AI* — Chernozhukov, Hansen, Kallus, Spindler, Syrgkanis
+- *Causal Inference: The Mixtape* — Scott Cunningham
+- *The Effect: An Introduction to Research Design and Causality* — Nick Huntington-Klein
+- *Causal Inference and Machine Learning: In Economics, Social, and Health Sciences* — Mutlu Yuksel, Yigit Aydede
 
 ## 100分评价框架
 
@@ -112,6 +125,7 @@
 │   ├── resources-extra-2.tsv
 │   ├── resources-extra-3.tsv
 │   ├── resources-books.tsv
+│   ├── resources-books-extra.tsv
 │   └── curation.json
 ├── docs/
 │   ├── resource-selection.md
@@ -140,7 +154,7 @@ https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
 下一阶段不再优先追求数量，而是继续做三件事：
 
-1. 逐项核验100项主资源的“实质材料丰富度”；
+1. 逐项核验110项主资源的“实质材料丰富度”；
 2. 用更优资源替换仍然偏弱的入口型资源；
 3. 增加项目组原创教学资源、Notebook和Prompt模板。
 
