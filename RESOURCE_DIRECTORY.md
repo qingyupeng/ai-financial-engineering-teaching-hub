@@ -1,143 +1,171 @@
-# AI＋金融工程高质量资源目录（100项）
+# AI＋金融工程高质量资源目录（前台精选100项）
 
-> 更新时间：2026-09-11。平台已完成第一阶段资源扩充：由16项种子资源扩充至100项。每项资源均保留来源、课程映射、AI标签、难度、评分、中文教学价值、建议用途、官方链接与核验日期。
+> 更新时间：2026-09-11。平台维护114项候选资源，经人工复核后，14项仅含培养方案/项目介绍的页面退出前台主资源库，新增14本“经典教材与专著”，最终形成 **100项前台精选教学资源**。北京大学金融工程实验室“机器学习与资产定价”置于第一位。
 
-## 质量概览
+## 质量原则
 
-- 资源总数：**100**
-- A级资源（≥85分）：**98**
-- B级资源（70–84分）：**2**
-- 中文资源：**11**
-- 英文资源：**89**
-- 数据文件：`data/resources.json`（首批16项）＋ `data/resources-extra-1.tsv`、`resources-extra-2.tsv`、`resources-extra-3.tsv`（新增84项）
+主资源库按“能否真正用于教学”排序。系统教材、讲义、代码、Notebook、习题、考试、视频、数据、案例和完整教程优先；只有课程名、培养方案或简短介绍的页面仅作为后台对标参考。
 
-## 分类目录
+## 分类概览
 
-### 顶尖高校课程（21项）
+| 专区 | 数量 |
+|---|---:|
+| 顶尖高校课程 | 7 |
+| 金融机构教育资源 | 19 |
+| 经典教材与专著 | 14 |
+| AI＋金融工程专题 | 13 |
+| 金融工程AI工具箱 | 9 |
+| Python / Jupyter实验库 | 22 |
+| 教学案例库 | 11 |
+| AI辅助教学方法 | 5 |
+| **合计** | **100** |
 
-- **MSCF Curriculum** — Carnegie Mellon University · MSCF · A级 97分
-- **Machine Learning for Finance & Complex Systems** — ETH Zürich · Department of Mathematics · A级 97分
-- **Machine Learning and AI Concentration** — The University of Chicago · Financial Mathematics · A级 97分
-- **Master of Financial Engineering Curriculum** — UC Berkeley · Haas · A级 97分
-- **MSc Mathematical and Computational Finance** — University of Oxford · Mathematical Institute · A级 97分
-- **机器学习与资产定价** — 北京大学金融工程实验室 · A级 97分
-- **MSCF Data Science Curriculum** — Carnegie Mellon University · MSCF · A级 96分
-- **MS Financial Engineering Curriculum** — Columbia University · IEOR · A级 96分
-- **Machine Learning in Finance & Insurance** — ETH Zürich · Department of Mathematics · A级 96分
-- **MSc Risk Management & Financial Engineering** — Imperial College London · Business School · A级 96分
-- **MSc Mathematics and Finance** — Imperial College London · Mathematics · A级 95分
-- **Analytics of Finance** — MIT OpenCourseWare · A级 95分
-- **Introduction to Financial Mathematics** — Princeton University · ORFE · A级 95分
-- **ORFE Graduate Courses** — Princeton University · ORFE · A级 95分
-- **金融专业硕士课程体系：金融科技与人工智能方向** — 清华大学五道口金融学院 · A级 95分
-- **清华经管AI＋金融课程群** — 清华大学经济管理学院 · A级 95分
-- **BS Operations Research: Financial Engineering Track** — Columbia University · IEOR · A级 94分
-- **Finance Theory I** — MIT OpenCourseWare · A级 94分
-- **Machine Learning & Computational Statistics** — New York University · Courant Mathematics in Finance · A级 94分
-- **Financial Markets** — Yale Open Courses · A级 91分
-- **金融MBA课程体系中的AI金融模块** — 复旦大学国际金融学院 · A级 90分
+## 1. 顶尖高校课程（7项）
 
-### 金融机构教育资源（19项）
+1. **机器学习与资产定价** — 北京大学金融工程实验室
+2. **Machine Learning in Finance & Insurance** — ETH Zürich
+3. **Machine Learning for Finance & Complex Systems** — ETH Zürich
+4. **Finance Theory I** — MIT OpenCourseWare
+5. **Analytics of Finance** — MIT OpenCourseWare
+6. **Introduction to Financial Mathematics** — Princeton University ORFE
+7. **Financial Markets** — Yale Open Courses
 
-- **上交所期权学苑** — 上海证券交易所 · A级 96分
-- **Academic Resources** — CME Group · A级 95分
-- **The Options Institute** — Cboe Global Markets · A级 95分
-- **上交所期权初中高级课程** — 上海证券交易所 · A级 95分
-- **CME Education Course Catalog** — CME Group · A级 94分
-- **Options Institute Learning Portal** — Cboe Global Markets · A级 94分
-- **Understanding Options Greeks** — Options Industry Council · A级 94分
-- **上海期货交易所投资者教育平台** — 上海期货交易所 · A级 94分
-- **上交所投资者教育平台** — 上海证券交易所 · A级 94分
-- **All Options Strategies** — Options Industry Council · A级 93分
-- **Options Basics** — Options Industry Council · A级 93分
-- **Options Pricing** — Options Industry Council · A级 93分
-- **深交所股票期权知识库** — 深圳证券交易所 · A级 93分
-- **Introduction to Options** — CME Group · A级 92分
-- **Options on Futures Guide** — CME Group · A级 91分
-- **Spread Strategies** — Cboe Options Institute · A级 91分
-- **深交所期权入市手册与规则解读** — 深圳证券交易所 · A级 91分
-- **CME Group Education** — CME Group · A级 90分
-- **How Options Trades Happen** — Cboe Options Institute · A级 89分
+> 课程体系和培养方案类页面仍保留在候选数据中，但不占据主资源库位置。
 
-### AI＋金融工程专题（13项）
+## 2. 金融机构教育资源（19项）
 
-- **FinRL** — AI4Finance Foundation · A级 95分
-- **Machine Learning for Trading** — Stefan Jansen · GitHub · A级 95分
-- **FinGPT** — AI4Finance Foundation · A级 94分
-- **AI4Finance Foundation** — AI4Finance Foundation · A级 93分
-- **PyTorch Tutorials** — PyTorch · A级 93分
-- **FinRobot** — AI4Finance Foundation · A级 92分
-- **FinRL-Meta** — AI4Finance Foundation · A级 91分
-- **Text Classification with Transformers** — Hugging Face · A级 91分
-- **Financial Services Resources** — OpenAI Academy · A级 91分
-- **XGBoost Tutorials** — XGBoost · A级 91分
-- **ChatGPT for Financial Services Solution Kit** — OpenAI Academy · A级 90分
-- **TensorFlow Time Series Forecasting** — TensorFlow · A级 90分
-- **scikit-learn User Guide** — scikit-learn · A级 90分
+1. 上交所期权学苑 — 上海证券交易所
+2. 上交所期权初中高级课程 — 上海证券交易所
+3. 上交所投资者教育平台 — 上海证券交易所
+4. 深交所股票期权知识库 — 深圳证券交易所
+5. 深交所期权入市手册与规则解读 — 深圳证券交易所
+6. 上海期货交易所投资者教育平台 — 上海期货交易所
+7. CME Education Course Catalog — CME Group
+8. Academic Resources — CME Group
+9. CME Group Education — CME Group
+10. Introduction to Options — CME Group
+11. Options on Futures Guide — CME Group
+12. The Options Institute — Cboe Global Markets
+13. Options Institute Learning Portal — Cboe Global Markets
+14. Spread Strategies — Cboe Options Institute
+15. How Options Trades Happen — Cboe Options Institute
+16. Options Basics — Options Industry Council
+17. Understanding Options Greeks — Options Industry Council
+18. Options Pricing — Options Industry Council
+19. All Options Strategies — Options Industry Council
 
-### 金融工程AI工具箱（9项）
+## 3. 经典教材与专著（14项）
 
-- **Qlib** — Microsoft Research · A级 96分
-- **QuantLib** — QuantLib Project · A级 95分
-- **PyPortfolioOpt** — PyPortfolioOpt Project · A级 94分
-- **Riskfolio-Lib** — Riskfolio-Lib Project · A级 94分
-- **CVXPY Tutorial** — CVXPY Project · A级 93分
-- **Options Calculator** — Cboe Options Institute · A级 91分
-- **OpenBB Documentation** — OpenBB · A级 90分
-- **backtesting.py** — backtesting.py · A级 89分
-- **py_vollib** — vollib Project · A级 88分
+### AI＋金融 / 金融工程
 
-### Python / Jupyter实验库（22项）
+1. **Machine Learning in Finance: From Theory to Practice** — Matthew F. Dixon, Igor Halperin, Paul Bilokon
+2. **Advances in Financial Machine Learning** — Marcos López de Prado
+3. **Machine Learning for Asset Managers** — Marcos M. López de Prado
+4. **Artificial Intelligence in Finance** — Yves Hilpisch
+5. **Machine Learning for Algorithmic Trading, 2nd Edition** — Stefan Jansen
 
-- **FRED API** — Federal Reserve Bank of St. Louis · A级 95分
-- **EDGAR Application Programming Interfaces** — U.S. Securities and Exchange Commission · A级 94分
-- **ARCH Volatility Processes** — arch · A级 93分
-- **Qlib Quick Start** — Microsoft Research · A级 92分
-- **Black-Litterman with PyPortfolioOpt** — PyPortfolioOpt Project · A级 92分
-- **Riskfolio-Lib Examples** — Riskfolio-Lib Project · A级 92分
-- **statsmodels Time Series Analysis** — statsmodels · A级 92分
-- **statsmodels User Guide** — statsmodels · A级 92分
-- **CVXPY Quadratic Program Example** — CVXPY Project · A级 91分
-- **Stochastic Volatility with PyMC** — PyMC Project · A级 91分
-- **pandas Time Series** — pandas · A级 91分
-- **Plotly Financial Charts** — Plotly · A级 89分
-- **backtesting.py Quick Start** — backtesting.py · A级 89分
-- **pandas Getting Started Tutorials** — pandas · A级 89分
-- **statsmodels Forecasting Notebook** — statsmodels · A级 89分
-- **NumPy Documentation** — NumPy · A级 88分
-- **NumPy Quickstart** — NumPy · A级 88分
-- **pandas Documentation** — pandas · A级 88分
-- **Matplotlib Tutorials** — Matplotlib · A级 87分
-- **Plotly Candlestick Charts** — Plotly · A级 86分
-- **SciPy Optimize** — SciPy · A级 86分
-- **Jupyter Documentation** — Project Jupyter · B级 84分
+### 机器学习方法基础
 
-### 教学案例库（11项）
+6. **The Elements of Statistical Learning** — Trevor Hastie, Robert Tibshirani, Jerome Friedman
+7. **An Introduction to Statistical Learning: with Applications in Python** — Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor
+8. **Statistical Learning with Sparsity: The Lasso and Generalizations** — Trevor Hastie, Robert Tibshirani, Martin Wainwright
+9. **Computer Age Statistical Inference** — Bradley Efron, Trevor Hastie
 
-- **Kenneth R. French Data Library** — Dartmouth · Tuck School of Business · A级 97分
-- **FRED Economic Data** — Federal Reserve Bank of St. Louis · A级 96分
-- **BIS Data Portal** — Bank for International Settlements · A级 95分
-- **BIS Exchange-Traded Derivatives Statistics** — Bank for International Settlements · A级 95分
-- **Daily Treasury Par Yield Curve Rates** — U.S. Department of the Treasury · A级 95分
-- **ECB Data Portal** — European Central Bank · A级 94分
-- **ECB Yield Curve Methodology** — European Central Bank · A级 93分
-- **IMF Data** — International Monetary Fund · A级 92分
-- **上交所期权学习汇编书籍** — 上海证券交易所 · A级 92分
-- **Options 101** — Cboe Options Institute · A级 88分
-- **How Financial Indices Do Their Thing** — Cboe Options Institute · B级 83分
+### AI / 机器学习＋经济学与因果推断
 
-### AI辅助教学方法（5项）
+10. **The Economics of Artificial Intelligence: An Agenda** — Ajay Agrawal, Joshua Gans, Avi Goldfarb (eds.)
+11. **Prediction Machines: The Simple Economics of Artificial Intelligence** — Ajay Agrawal, Joshua Gans, Avi Goldfarb
+12. **Causal Inference: The Mixtape** — Scott Cunningham
+13. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
+14. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
 
-- **Data Analysis with ChatGPT** — OpenAI Help Center · A级 92分
-- **Finance Workflows with ChatGPT Work** — OpenAI Academy · A级 91分
-- **Finance Use Cases and Prompts** — OpenAI Academy · A级 89分
-- **ChatGPT Workflows for Finance Teams** — OpenAI Academy · A级 87分
-- **ChatGPT for Excel and Google Sheets** — OpenAI Help Center · A级 87分
+## 4. AI＋金融工程专题（13项）
+
+1. FinRL
+2. Machine Learning for Trading
+3. FinGPT
+4. AI4Finance Foundation
+5. PyTorch Tutorials
+6. FinRobot
+7. FinRL-Meta
+8. Text Classification with Transformers
+9. Financial Services Resources
+10. XGBoost Tutorials
+11. ChatGPT for Financial Services Solution Kit
+12. TensorFlow Time Series Forecasting
+13. scikit-learn User Guide
+
+## 5. 金融工程AI工具箱（9项）
+
+1. Qlib
+2. QuantLib
+3. PyPortfolioOpt
+4. Riskfolio-Lib
+5. CVXPY Tutorial
+6. Options Calculator
+7. OpenBB Documentation
+8. backtesting.py
+9. py_vollib
+
+## 6. Python / Jupyter实验库（22项）
+
+1. FRED API
+2. EDGAR Application Programming Interfaces
+3. ARCH Volatility Processes
+4. Qlib Quick Start
+5. Black-Litterman with PyPortfolioOpt
+6. Riskfolio-Lib Examples
+7. statsmodels Time Series Analysis
+8. statsmodels User Guide
+9. CVXPY Quadratic Program Example
+10. Stochastic Volatility with PyMC
+11. pandas Time Series
+12. Plotly Financial Charts
+13. backtesting.py Quick Start
+14. pandas Getting Started Tutorials
+15. statsmodels Forecasting Notebook
+16. NumPy Documentation
+17. NumPy Quickstart
+18. pandas Documentation
+19. Matplotlib Tutorials
+20. Plotly Candlestick Charts
+21. SciPy Optimize
+22. Jupyter Documentation
+
+## 7. 教学案例库（11项）
+
+1. Kenneth R. French Data Library
+2. FRED Economic Data
+3. BIS Data Portal
+4. BIS Exchange-Traded Derivatives Statistics
+5. Daily Treasury Par Yield Curve Rates
+6. ECB Data Portal
+7. ECB Yield Curve Methodology
+8. IMF Data
+9. 上交所期权学习汇编书籍
+10. Options 101
+11. How Financial Indices Do Their Thing
+
+## 8. AI辅助教学方法（5项）
+
+1. Data Analysis with ChatGPT
+2. Finance Workflows with ChatGPT Work
+3. Finance Use Cases and Prompts
+4. ChatGPT Workflows for Finance Teams
+5. ChatGPT for Excel and Google Sheets
+
+## 数据文件
+
+- `data/resources.json`：首批资源
+- `data/resources-extra-1.tsv`、`resources-extra-2.tsv`、`resources-extra-3.tsv`：扩展资源
+- `data/resources-books.tsv`：经典教材与专著
+- `data/curation.json`：排序、降权与隐藏规则
+
+每项资源的评分、教学价值、建议用途、官方链接、难度和核验日期均保存在结构化数据文件中，由网站前端统一加载。
 
 ## 使用与维护原则
 
-1. 外部资源优先保留高校、交易所、监管机构、金融机构或项目官方链接，不重新上传未经授权的课件、视频与文档。
-2. 不是按“网站知名度”机械收集；每项资源均要求能够对应《金融工程》的具体课程模块、AI/计算方法或教师教学流程。
-3. A级资源优先进入课程优化、教师培训、课堂案例、Python实验和后续原创资源转化。
-4. 后续复核时重点检查：链接是否失效、课程内容是否更新、工具是否停止维护、教学价值说明是否需要修订。
-5. 当前100项是平台的第一版稳定资源池；后续扩充原则上采用“新增一项、评估一项、核验一项”，避免重新演变为链接合集。
+1. 外部资源优先保留高校、出版社、交易所、监管机构、金融机构或项目官方链接。
+2. 教材只提供官方页面、开放版本或作者许可的资源入口，不重新上传受版权保护的教材全文。
+3. 每项资源必须能对应《金融工程》的具体模块、AI/计算方法或教师教学流程。
+4. 后续采用“新增一项、评估一项、核验一项、必要时淘汰一项”的维护机制，保持前台资源库约100项的精品规模。
