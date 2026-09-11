@@ -1,6 +1,6 @@
 # AI＋金融工程高质量资源目录（前台精选96项）
 
-> 更新时间：2026-09-11。平台维护179项候选资源，经人工复核后形成 **96项前台精选教学资源**。信息架构采用 **5个核心资源专区＋独立教师学习路径**。
+> 更新时间：2026-09-11。平台维护179项候选资源，经人工复核后形成 **96项前台精选教学资源**。信息架构采用 **5个核心资源专区**。
 
 ## 五个核心专区
 
@@ -171,12 +171,6 @@
 - 对AI可靠性、验证、学术诚信、数据安全或人机责任边界有明确讨论。
 
 以下7项已退出前台精选，保留在后台候选库：`Data Analysis with ChatGPT`、`Finance Workflows with ChatGPT Work`、`Finance Use Cases and Prompts`、`ChatGPT Workflows for Finance Teams`、`ChatGPT for Excel and Google Sheets`、`Financial Services Resources`、`ChatGPT for Financial Services Solution Kit`。
-
-## 独立模块：教师学习路径
-
-- **A 金融工程教师AI入门**：生成式AI → Prompt → AI辅助Python → 数据分析 → 教学规范
-- **B AI＋金融工程进阶**：Python → 机器学习 → 金融数据建模 → 风险与资产配置 → 深度学习/强化学习
-- **C 生成式AI赋能教学与科研**：备课 → 讲解 → 习题案例 → 编程辅导 → 辅助评价 → Agentic Research → 核验与学术诚信
 
 ## 数据维护说明
 
