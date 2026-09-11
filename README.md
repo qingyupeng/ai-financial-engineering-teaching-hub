@@ -4,13 +4,13 @@
 
 ## 当前建设进度
 
-平台目前维护 **134项候选资源**，经人工质量复核后形成 **120项前台精选教学资源**：
+平台目前维护 **140项候选资源**，经人工质量复核后形成 **126项前台精选教学资源**：
 
-- **120项进入前台精选教学资源库**；
+- **126项进入前台精选教学资源库**；
 - **14项纯培养方案/项目介绍页退出主资源库前台**，仅保留为课程体系对标参考；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于课程资源第一位；
 - **“经典教材与专著”专区收录24本/套**，覆盖AI＋金融工程、AI＋金融、概率机器学习、深度学习、强化学习、AI＋经济学与因果推断；
-- **“顶尖高校课程”扩充至17项**，重点补入Stanford、MIT、Wharton、NYU、Princeton、EPFL、Chicago、Toronto等AI＋金融、金融工程和AI＋经济学课程；
+- **“顶尖高校课程”扩充至23项**，其中国内高校7项、海外高校16项；
 - 平台采用 **6个核心资源专区＋3条独立教师学习路径** 的前台结构。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
@@ -27,33 +27,43 @@
 
 ## 六个核心资源专区
 
-平台不再把“工具”“实验”“案例”“金融机构投教”等高度重叠的类型机械拆开，而按教师真实使用场景整合为六个专区。
-
 1. **经典教材与专著（24项）**  
-   放在第一位。用于建立AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学和因果推断的系统知识框架。
+   用于建立AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学和因果推断的系统知识框架。
 
-2. **顶尖高校课程（17项）**  
-   优先收录有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；纯培养方案和项目介绍页不进入主资源库。
+2. **顶尖高校课程（23项）**  
+   优先收录有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；前台进一步分为**国内高校7项**与**海外高校16项**。
 
 3. **AI＋金融/金融工程前沿（13项）**  
    聚合金融机器学习、深度学习、强化学习、金融LLM、Agent及其他前沿AI金融应用。
 
 4. **工具、代码与实验（31项）**  
-   合并原“金融工程AI工具箱”和“Python / Jupyter实验库”，统一组织量化工具、Python库、Notebook、优化、定价、回测和数据实验。
+   统一组织量化工具、Python库、Notebook、优化、定价、回测和数据实验。
 
 5. **金融机构与市场案例（30项）**  
-   合并原“金融机构教育资源”和“教学案例库”，统一组织交易所/金融机构投教、真实市场数据、衍生品案例和课堂讨论材料。
+   统一组织交易所/金融机构投教、真实市场数据、衍生品案例和课堂讨论材料。
 
 6. **AI赋能教学（5项）**  
    面向教师教学全过程，覆盖备课、知识解释、习题与案例设计、编程实验辅导、作业评价和教学反馈。
 
 ### 教师学习路径不是“第七专区”
 
-“教师学习路径”属于**导航层**而不是资源类型，因此独立保留三条路线：金融工程教师AI入门、AI＋金融工程进阶、生成式AI赋能教学全过程。学习路径会跨专区调用教材、课程、工具、案例和教学方法资源。
+“教师学习路径”属于**导航层**而不是资源类型，因此独立保留三条路线：金融工程教师AI入门、AI＋金融工程进阶、生成式AI赋能教学全过程。
 
-## 顶尖高校课程扩充
+## 顶尖高校课程
 
-在原有7项课程基础上，新增10项经过深度检索和人工筛选的课程资源：
+### 国内高校（7项）
+
+1. **机器学习与资产定价** — 北京大学金融工程实验室
+2. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
+3. **机器学习与智能金融** — 中央财经大学金融学院
+4. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
+5. **Artificial Intelligence in FinTech** — 复旦大学
+6. **机器学习与金融应用** — 东北财经大学
+7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院
+
+国内课程筛选同样坚持“实质材料优先”：清华课程提供完整教学安排、作业与代码项目要求；中央财经大学提供慕课、课件和代码；湖南大学提供机器学习资产定价虚拟仿真实验；复旦提供完整syllabus和Python项目；东北财经大学课程具有较高实验学时占比；对外经济贸易大学公开量化投资、金融计算和衍生品定价实验材料。
+
+### 海外高校（16项）
 
 - Stanford GSB — *Machine Learning & Causal Inference: A Short Course*
 - Stanford Digital Economy Lab — *The AI Awakening: Implications for the Economy and Society*
@@ -65,8 +75,12 @@
 - University of Chicago — *Machine Learning for Economists*
 - University of Toronto Engineering — *A.I. in Finance*
 - University of Toronto Economics — *Machine Learning Applications in Macroeconomic Finance*
-
-筛选时优先保留能够看到公开Slides、视频、R Markdown、课程大纲、syllabus、Python编码要求或清晰课程结构的资源。只看到课程名和一段简介的候选课程暂不进入主资源库。
+- ETH Zürich — *Machine Learning in Finance & Insurance*
+- ETH Zürich — *Machine Learning for Finance & Complex Systems*
+- MIT OpenCourseWare — *Finance Theory I*
+- MIT OpenCourseWare — *Analytics of Finance*
+- Princeton ORFE — *Introduction to Financial Mathematics*
+- Yale Open Courses — *Financial Markets*
 
 ## 主资源库筛选原则
 
@@ -148,6 +162,7 @@
 ├── index.html
 ├── assets/
 │   ├── styles.css
+│   ├── course-groups.css
 │   └── app.js
 ├── data/
 │   ├── resources.json
@@ -173,11 +188,15 @@ https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
 ## 后续建设重点
 
-资源库已经达到 **120项精选资源** 的目标上限，后续不再优先扩充数量，而是继续做三件事：
+**不再设置120项硬性上限。** 后续仍坚持“质量优先、实质材料优先”，只要发现真正有教学价值的课程、教材、代码、案例或工具即可继续加入；同时持续淘汰失效或内容过弱的资源。
 
-1. 逐项核验120项主资源的“实质材料丰富度”；
-2. 用更优资源替换仍然偏弱的入口型资源；
-3. 增加项目组原创教学资源、Notebook和Prompt模板。
+下一阶段重点：
+
+1. 继续核验主资源的实质材料丰富度与链接有效性；
+2. 增加项目组原创教学资源与中文导读；
+3. 建设可运行 Python / Jupyter 教学案例；
+4. 建设AI教学Prompt模板；
+5. 形成教师试用、反馈与平台迭代证据。
 
 ## 版权说明
 
