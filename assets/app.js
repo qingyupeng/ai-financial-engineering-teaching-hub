@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-1118';
+const BUILD_VERSION = '20260911-1125';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -24,7 +24,7 @@ const coreZones = [
     id: 'zone-courses',
     name: '顶尖高校课程',
     number: '02',
-    description: '优先保留具有讲义、课件、代码、习题、考试或视频等实质教学材料的高质量开放课程。',
+    description: '优先保留具有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；内部按国内高校与海外高校分组。',
     sourceZones: ['顶尖高校课程']
   },
   {
@@ -57,9 +57,24 @@ const coreZones = [
   }
 ];
 
+const domesticCourseMarkers = [
+  '北京大学',
+  '清华大学',
+  '中央财经大学',
+  '湖南大学',
+  '复旦大学',
+  '东北财经大学',
+  '对外经济贸易大学'
+];
+
 function coreZone(resource){
   const group = coreZones.find(g => g.sourceZones.includes(resource.zone));
   return group ? group.name : resource.zone;
+}
+
+function isDomesticCourse(resource){
+  if (coreZone(resource) !== '顶尖高校课程') return false;
+  return domesticCourseMarkers.some(marker => String(resource.source || '').includes(marker));
 }
 
 function parseTSV(text){
@@ -129,6 +144,26 @@ function renderCard(resource){
   </article>`;
 }
 
+function renderCourseSubgroup(title, subtitle, items){
+  if (!items.length) return '';
+  return `<div class="course-subgroup">
+    <div class="course-subgroup-head">
+      <div><h4>${title}</h4><p>${subtitle}</p></div>
+      <span>${items.length} 项</span>
+    </div>
+    <div class="resource-grid">${items.map(renderCard).join('')}</div>
+  </div>`;
+}
+
+function renderCourseGroups(items){
+  const domestic = items.filter(isDomesticCourse);
+  const overseas = items.filter(r => !isDomesticCourse(r));
+  return [
+    renderCourseSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资和机器学习课程。', domestic),
+    renderCourseSubgroup('海外高校', '国际顶尖高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
+  ].join('');
+}
+
 function updateZoneCounts(){
   document.querySelectorAll('[data-zone-count]').forEach(node => {
     const zoneName = node.getAttribute('data-zone-count');
@@ -157,6 +192,13 @@ function render(){
       ? `${items.length} / ${allInZone.length}`
       : `${allInZone.length}`;
 
+    let content = '<div class="empty">该专区暂无匹配资源。</div>';
+    if (items.length) {
+      content = group.name === '顶尖高校课程'
+        ? renderCourseGroups(items)
+        : `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
+    }
+
     return `<section id="${group.id}" class="zone-resource-block" aria-labelledby="${group.id}-title">
       <div class="zone-resource-head">
         <div class="zone-resource-heading">
@@ -168,9 +210,7 @@ function render(){
         </div>
         <div class="zone-resource-count"><strong>${countLabel}</strong><span>项资源</span></div>
       </div>
-      ${items.length
-        ? `<div class="resource-grid">${items.map(renderCard).join('')}</div>`
-        : '<div class="empty">该专区暂无匹配资源。</div>'}
+      ${content}
       <div class="zone-footer-nav"><a href="#zones-title">↑ 返回资源专区导航</a></div>
     </section>`;
   }).join('');
