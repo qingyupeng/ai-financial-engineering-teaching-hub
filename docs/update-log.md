@@ -1,5 +1,37 @@
 # 更新日志
 
+## 2026-09-11 · v0.7 · 顶尖高校课程深度扩充
+
+- 根据教师反馈，对“顶尖高校课程”专区进行第二轮深度检索，重点寻找 **AI＋金融、AI＋金融工程、AI＋经济学、宏观金融＋机器学习、因果机器学习** 等交叉课程。
+- 坚持“实质教学材料优先”原则，不以学校名气或课程名称数量为目标；优先收录公开Slides、视频、R Markdown、syllabus、课程大纲、Python编码要求或完整课程结构较清晰的资源。
+- 新增10项课程资源：
+  1. Stanford GSB — *Machine Learning & Causal Inference: A Short Course*
+  2. Stanford Digital Economy Lab — *The AI Awakening: Implications for the Economy and Society*
+  3. MIT — *AI and Finance*
+  4. Wharton — *AI and Data Science in Finance*
+  5. NYU Tandon — *Machine Learning in Financial Engineering*
+  6. Princeton ORFE — *Stochastic Optimization and Machine Learning in Finance*
+  7. EPFL — *Machine Learning in Finance*
+  8. University of Chicago — *Machine Learning for Economists*
+  9. University of Toronto Engineering — *A.I. in Finance*
+  10. University of Toronto Economics — *Machine Learning Applications in Macroeconomic Finance*
+- “顶尖高校课程”由 **7项扩充至17项**。
+- 前台精选资源由 **110项增加至120项**；候选资源总量由124项增加至134项。
+- 北京大学金融工程实验室“机器学习与资产定价”继续保持课程专区第一位。
+- 本轮同时检索到Columbia、Duke、Cornell、Yale、Stanford等若干高度相关课程，但因目前公开页面主要停留在课程说明/catalog层面，开放讲义、代码、视频或syllabus不足，暂不升入主资源库。
+- 新增结构化数据文件 `data/resources-courses-extra.tsv`，并同步更新前端加载、排序、README和资源总目录。
+
+### 当前六大专区
+
+1. 经典教材与专著：24项
+2. 顶尖高校课程：17项
+3. AI＋金融/金融工程前沿：13项
+4. 工具、代码与实验：31项
+5. 金融机构与市场案例：30项
+6. AI赋能教学：5项
+
+合计：**120项**。
+
 ## 2026-09-11 · v0.6 · 专区直达与分区展示
 
 - 根据教师浏览反馈，取消“全部资源混在一个大网格中”的展示方式。
@@ -10,17 +42,6 @@
 - 保留关键词和难度筛选；筛选结果仍按专区分组显示，零匹配专区自动隐藏。
 - 经典教材不再额外建立重复书架区块，统一归入第一专区“经典教材与专著”，避免同一资源重复出现。
 - 首页专区卡片动态显示各专区资源数量。
-
-### 当前六大专区
-
-1. 经典教材与专著：24项
-2. 顶尖高校课程：7项
-3. AI＋金融/金融工程前沿：13项
-4. 工具、代码与实验：31项
-5. 金融机构与市场案例：30项
-6. AI赋能教学：5项
-
-合计：**110项**。
 
 ## 2026-09-11 · v0.5 · 六大核心专区重构
 
@@ -66,7 +87,7 @@
 
 ## 下一阶段
 
-资源数量目标已经完成，后续不再以单纯扩充链接数量为重点。下一阶段优先建设：
+资源数量已经达到120项精选资源上限，后续不再以单纯扩充链接数量为重点。下一阶段优先建设：
 
 1. 项目组原创教学资源 ≥20项；
 2. 可运行 Python / Jupyter 教学案例 ≥10个；
