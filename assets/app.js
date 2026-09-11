@@ -68,6 +68,24 @@ function render(){
   }).join('') : '<div class="empty">没有匹配的资源，请尝试调整关键词或筛选条件。</div>';
 }
 
+function updateRubric(){
+  const rubricGrid = document.querySelector('.rubric-grid');
+  const gradeNote = document.querySelector('.grade-note');
+  if (rubricGrid) {
+    rubricGrid.innerHTML = `
+      <div><strong>30</strong><span>实质教学资源丰富度</span></div>
+      <div><strong>20</strong><span>金融工程相关度</span></div>
+      <div><strong>20</strong><span>可直接使用/改造程度</span></div>
+      <div><strong>10</strong><span>来源权威性</span></div>
+      <div><strong>10</strong><span>AI/计算融合程度</span></div>
+      <div><strong>5</strong><span>获取便利性</span></div>
+      <div><strong>5</strong><span>时效性</span></div>`;
+  }
+  if (gradeNote) {
+    gradeNote.innerHTML = '<b>排序原则：</b>讲义、代码、习题、视频、数据、Notebook和案例优先；只有课程名称或培养方案的页面不进入主资源库前列。';
+  }
+}
+
 async function loadResources(){
   try {
     const [baseResponse, batch1, batch2, batch3, curationResponse] = await Promise.all([
@@ -109,4 +127,5 @@ async function loadResources(){
 [searchInput,zoneFilter,levelFilter].forEach(el => el.addEventListener('input',render));
 resetFilters.addEventListener('click',()=>{ searchInput.value=''; zoneFilter.value=''; levelFilter.value=''; render(); });
 
+updateRubric();
 loadResources();
