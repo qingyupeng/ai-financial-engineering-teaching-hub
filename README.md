@@ -76,15 +76,13 @@
 
 其中，前4项重点服务教师科研方法、Agentic Coding、LLM社会科学研究与项目式课程建设；后2项重点服务课程设计、作业设计、课堂AI政策、assessment、tutor bot与高校教师真实教学案例。
 
-原有的 `Data Analysis with ChatGPT`、`Finance Workflows with ChatGPT Work`、`Finance Use Cases and Prompts`、`ChatGPT Workflows for Finance Teams`、`ChatGPT for Excel and Google Sheets`、`Financial Services Resources`、`ChatGPT for Financial Services Solution Kit` 已退出前台精选库，保留在后台候选数据中。
-
 ## 教师学习路径
 
 教师学习路径属于导航层，不是第六专区：
 
 - **A 金融工程教师AI入门**：生成式AI → Prompt → AI辅助Python → 数据分析 → 教学规范
 - **B AI＋金融工程进阶**：Python → 机器学习 → 金融数据建模 → 风险与资产配置 → 深度学习/强化学习
-- **C 生成式AI赋能教学全过程**：备课 → 讲解 → 习题案例 → 编程辅导 → 作业试题 → 辅助评价 → 教学反馈
+- **C 生成式AI赋能教学与科研**：备课 → 讲解 → 习题案例 → 编程辅导 → 辅助评价 → Agentic Research → 核验与学术诚信
 
 ## 100分评价框架
 
@@ -98,7 +96,18 @@
 | 获取便利性 | 5 |
 | 时效性 | 5 |
 
-详细说明见 [`docs/resource-selection.md`](docs/resource-selection.md)。
+详细标准见 [`docs/resource-selection.md`](docs/resource-selection.md)。
+
+## 质量控制与教师试用
+
+平台不是静态链接合集，而按照“资源收集—质量筛选—二次加工—教师试用—反馈优化—持续更新”的过程维护：
+
+- [`docs/resource-selection.md`](docs/resource-selection.md)：资源筛选、100分评价框架及案例/AI赋能教学专项准入标准；
+- [`docs/teacher-testing.md`](docs/teacher-testing.md)：教师试用任务、反馈问卷和结项证据建议；
+- [`docs/update-log.md`](docs/update-log.md)：主要版本与资源结构调整记录；
+- [`CONTRIBUTING.md`](CONTRIBUTING.md)：资源共建、分类写入和复核流程。
+
+GitHub Pages每次部署前自动运行 `scripts/validate-data.mjs` 并检查前端JavaScript语法。必填字段缺失、重复标题、无效URL或前台/后台归属异常时，错误版本不会发布。
 
 ## 数据文件
 
@@ -108,7 +117,8 @@
 - `data/resources-curated-additions.tsv`：人工核验新增的智能体、AI金融、AI经济学及AI教学资源
 - `data/resources-github-quality.tsv`：GitHub高质量AI金融、交易与计算经济学资源
 - `data/resources-ai-industry-cases.tsv`：金融业真实使用AI的精选案例
-- `data/curation.json`：排序、降权与前台隐藏规则
+- `data/curation.json`：前台排序与后台候选规则
+- `scripts/validate-data.mjs`：数据完整性与分类状态自动校验
 
 ## 维护原则
 
@@ -120,4 +130,4 @@ https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
 ## 版权说明
 
-本站外部资源的课程、教材、课件、文档、视频、代码等版权归原作者或机构所有。本项目原则上只提供官方入口、中文导读与教学用途说明，不重新分发受版权保护的教材全文。项目组原创资源将单独注明作者、许可和使用范围。
+本站外部资源的课程、教材、课件、文档、视频、代码等版权归原作者或机构所有。本项目原则上只提供原始入口、中文导读与教学用途说明，不重新分发受版权保护的教材全文。项目组原创资源将单独注明作者、许可和使用范围。
