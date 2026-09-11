@@ -15,10 +15,12 @@ const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 const bookSpotlightOrder = [
   'Machine Learning in Finance: From Theory to Practice',
   'Machine Learning for Algorithmic Trading, 2nd Edition',
+  'Probabilistic Machine Learning for Finance and Investing',
+  'Machine Learning for Finance',
   'Advances in Financial Machine Learning',
   'Artificial Intelligence in Finance',
   'The Economics of Artificial Intelligence: An Agenda',
-  'Causal Inference and Machine Learning: In Economics, Social, and Health Sciences'
+  'Applied Causal Inference Powered by ML and AI'
 ];
 
 function parseTSV(text){
@@ -80,19 +82,15 @@ function render(){
 function updateRubric(){
   const rubricGrid = document.querySelector('.rubric-grid');
   const gradeNote = document.querySelector('.grade-note');
-  if (rubricGrid) {
-    rubricGrid.innerHTML = `
-      <div><strong>30</strong><span>实质教学资源丰富度</span></div>
-      <div><strong>20</strong><span>金融工程相关度</span></div>
-      <div><strong>20</strong><span>可直接使用/改造程度</span></div>
-      <div><strong>10</strong><span>来源权威性</span></div>
-      <div><strong>10</strong><span>AI/计算融合程度</span></div>
-      <div><strong>5</strong><span>获取便利性</span></div>
-      <div><strong>5</strong><span>时效性</span></div>`;
-  }
-  if (gradeNote) {
-    gradeNote.innerHTML = '<b>排序原则：</b>讲义、代码、习题、视频、数据、Notebook、案例和系统教材优先；只有课程名称或培养方案的页面不进入主资源库前列。';
-  }
+  if (rubricGrid) rubricGrid.innerHTML = `
+    <div><strong>30</strong><span>实质教学资源丰富度</span></div>
+    <div><strong>20</strong><span>金融工程相关度</span></div>
+    <div><strong>20</strong><span>可直接使用/改造程度</span></div>
+    <div><strong>10</strong><span>来源权威性</span></div>
+    <div><strong>10</strong><span>AI/计算融合程度</span></div>
+    <div><strong>5</strong><span>获取便利性</span></div>
+    <div><strong>5</strong><span>时效性</span></div>`;
+  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>讲义、代码、习题、视频、数据、Notebook、案例和系统教材优先；只有课程名称或培养方案的页面不进入主资源库前列。';
 }
 
 function injectBookshelfStyles(){
@@ -103,7 +101,7 @@ function injectBookshelfStyles(){
     .zones-grid article{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
     .zones-grid article:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,58,99,.10);border-color:#b9cad9}
     .bookshelf-section{background:#fff7e8;border-top:1px solid #ead8b4;border-bottom:1px solid #ead8b4}
-    .bookshelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .bookshelf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .book-card{background:#fff;border:1px solid #e7d7b8;border-radius:18px;padding:22px;display:flex;flex-direction:column;min-height:300px}
     .book-kicker{font-size:.75rem;font-weight:900;color:#9a6713;letter-spacing:.06em;margin-bottom:8px}
     .book-card h3{margin:0 0 8px;font-size:1.08rem;line-height:1.45}
@@ -111,7 +109,7 @@ function injectBookshelfStyles(){
     .book-card p{color:var(--muted)}
     .book-card a{margin-top:auto;font-weight:800;color:var(--primary-2);text-decoration:none}
     .bookshelf-actions{display:flex;gap:12px;align-items:center}
-    @media(max-width:980px){.bookshelf-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:1100px){.bookshelf-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.bookshelf-grid{grid-template-columns:1fr}.bookshelf-actions{display:block}.bookshelf-actions .btn{margin-top:10px}}
   `;
   document.head.appendChild(style);
@@ -141,7 +139,6 @@ function activateZoneCards(){
 function renderBookshelf(){
   const books = resources.filter(r => r.zone === '经典教材与专著');
   if (!books.length) return;
-
   let section = document.querySelector('#bookshelf');
   if (!section) {
     section = document.createElement('section');
@@ -150,18 +147,11 @@ function renderBookshelf(){
     const resourceSection = document.querySelector('#resources');
     resourceSection?.parentNode?.insertBefore(section,resourceSection);
   }
-
-  const spotlight = bookSpotlightOrder
-    .map(title => books.find(b => b.title === title))
-    .filter(Boolean);
-
+  const spotlight = bookSpotlightOrder.map(title => books.find(b => b.title === title)).filter(Boolean);
   section.innerHTML = `
     <div class="container section">
       <div class="section-head">
-        <div>
-          <span class="eyebrow">核心书架</span>
-          <h2>经典教材与专著</h2>
-        </div>
+        <div><span class="eyebrow">核心书架</span><h2>经典教材与专著</h2></div>
         <div class="bookshelf-actions">
           <p>系统覆盖AI＋金融工程、AI＋金融，以及机器学习＋经济学与因果推断。当前收录 <strong>${books.length}</strong> 本/套。</p>
           <button id="showAllBooks" class="btn secondary" type="button">查看全部${books.length}本</button>
@@ -177,9 +167,7 @@ function renderBookshelf(){
         </article>`).join('')}
       </div>
     </div>`;
-
   document.querySelector('#showAllBooks')?.addEventListener('click',()=>filterToZone('经典教材与专著'));
-
   const nav = document.querySelector('.nav');
   if (nav && !nav.querySelector('a[href="#bookshelf"]')) {
     const link = document.createElement('a');
@@ -191,29 +179,31 @@ function renderBookshelf(){
 
 async function loadResources(){
   try {
-    const [baseResponse, batch1, batch2, batch3, booksResponse, curationResponse] = await Promise.all([
-      fetch('data/resources.json'),
-      fetch('data/resources-extra-1.tsv'),
-      fetch('data/resources-extra-2.tsv'),
-      fetch('data/resources-extra-3.tsv'),
-      fetch('data/resources-books.tsv'),
-      fetch('data/curation.json')
+    const urls = [
+      'data/resources.json',
+      'data/resources-extra-1.tsv',
+      'data/resources-extra-2.tsv',
+      'data/resources-extra-3.tsv',
+      'data/resources-books.tsv',
+      'data/resources-books-extra.tsv',
+      'data/curation.json'
+    ];
+    const responses = await Promise.all(urls.map(url => fetch(url)));
+    if (!responses.every(r=>r.ok)) throw new Error('resource fetch failed');
+    const [base,text1,text2,text3,booksText,booksExtraText,curationData] = await Promise.all([
+      responses[0].json(), responses[1].text(), responses[2].text(), responses[3].text(),
+      responses[4].text(), responses[5].text(), responses[6].json()
     ]);
-    if (![baseResponse,batch1,batch2,batch3,booksResponse,curationResponse].every(r=>r.ok)) throw new Error('resource fetch failed');
-    const [base, text1, text2, text3, booksText, curationData] = await Promise.all([
-      baseResponse.json(), batch1.text(), batch2.text(), batch3.text(), booksResponse.text(), curationResponse.json()
-    ]);
-
     curation = curationData;
     const candidateResources = [
       ...(base.resources || []),
       ...parseTSV(text1),
       ...parseTSV(text2),
       ...parseTSV(text3),
-      ...parseTSV(booksText)
+      ...parseTSV(booksText),
+      ...parseTSV(booksExtraText)
     ];
     resources = applyCuration(candidateResources);
-
     resourceCount.textContent = resources.length;
     zoneFilter.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());
     [...new Set(resources.map(r=>r.zone))].sort().forEach(zone => {
