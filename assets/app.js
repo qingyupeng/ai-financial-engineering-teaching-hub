@@ -8,6 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
+const BUILD_VERSION = '20260911-1048';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -222,7 +223,9 @@ async function loadResources(){
       'data/resources-books-extra.tsv',
       'data/curation.json'
     ];
-    const responses = await Promise.all(urls.map(url => fetch(url)));
+    const responses = await Promise.all(
+      urls.map(url => fetch(`${url}?v=${BUILD_VERSION}`, { cache: 'no-store' }))
+    );
     if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
 
     const [base, text1, text2, text3, booksText, booksExtraText, curationData] = await Promise.all([
