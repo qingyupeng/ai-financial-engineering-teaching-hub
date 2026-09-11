@@ -8,24 +8,24 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-1125';
+const BUILD_VERSION = '20260911-course-first';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
 const coreZones = [
   {
-    id: 'zone-books',
-    name: '经典教材与专著',
-    number: '01',
-    description: '系统教材与经典专著，覆盖AI＋金融工程、AI＋金融、机器学习基础、概率建模、强化学习、AI＋经济学与因果推断。',
-    sourceZones: ['经典教材与专著']
-  },
-  {
     id: 'zone-courses',
     name: '顶尖高校课程',
-    number: '02',
+    number: '01',
     description: '优先保留具有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；内部按国内高校与海外高校分组。',
     sourceZones: ['顶尖高校课程']
+  },
+  {
+    id: 'zone-books',
+    name: '经典教材与专著',
+    number: '02',
+    description: '系统教材与经典专著，覆盖AI＋金融工程、AI＋金融、机器学习基础、概率建模、强化学习、AI＋经济学与因果推断。',
+    sourceZones: ['经典教材与专著']
   },
   {
     id: 'zone-frontier',
