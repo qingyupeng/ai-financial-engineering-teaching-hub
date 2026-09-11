@@ -4,161 +4,87 @@
 
 ## 当前建设进度
 
-平台目前维护 **174项候选资源**，经人工质量复核后形成 **98项前台精选教学资源**：
+平台目前维护 **179项候选资源**，经人工质量复核后形成 **96项前台精选教学资源**：
 
-- **98项进入前台精选教学资源库**；
-- **76项资源保留在后台候选/对标库**，包括培养方案、项目介绍、通用文档、重复Quick Start、组织导航页、原交易所投教/市场数据资源以及与核心资源高度重合的条目；
-- **“顶尖高校课程”为第一资源专区，共24项，其中国内高校7项、海外高校17项**；
-- 北京大学金融工程实验室 **“机器学习与资产定价”** 置于课程资源第一位；
-- **“经典教材与专著”为第二资源专区，共34本/套，其中文教材与专著10项、英文教材与专著24项**；
-- 第三专区 **“AI＋金融工程方法、工具与实验”** 精选22项；
-- 第四专区重构为 **“案例”**，只保留金融机构真实使用AI的 **10项高质量案例**；
-- 平台采用 **5个核心资源专区＋3条独立教师学习路径** 的前台结构。
+- **96项进入前台精选教学资源库**；
+- **83项保留在后台候选/对标库**，包括培养方案、项目介绍、通用文档、重复Quick Start、组织导航页、原交易所投教/市场数据资源，以及教学增量不足的AI功能页；
+- **顶尖高校课程：24项**，其中国内高校7项、海外高校17项；
+- **经典教材与专著：34项**，其中中文10项、英文24项；
+- **AI＋金融工程方法、工具与实验：22项**；
+- **案例：10项**，只保留金融机构真实使用AI的高质量案例；
+- **AI赋能教学：6项**，只保留体系化、可复用、能直接服务教师教学或科研能力建设的资源。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
 
-## 核心定位
-
-- **教师导向**：服务《金融工程》教师获取资源和自主学习。
-- **实质内容优先**：系统教材、讲义、Slides、代码、Notebook、习题、考试、视频、数据和案例优先于课程简介。
-- **课程映射**：资源与远期、期货、互换、期权、数值定价、投资组合、风险管理、金融计算、量化研究和宏观金融等模块关联。
-- **AI标签**：机器学习、深度学习、生成式AI、强化学习、金融LLM、AI Agent、Agentic Coding等。
-- **案例高门槛**：案例专区要求有明确金融机构、业务场景、AI使用方式及可核验的一手来源，不用一般行业新闻或泛投教材料凑数。
-- **二次加工**：每项主资源均标注“教学价值”和“建议用途”。
-- **持续更新**：记录核验日期、更新日志和教师反馈。
-- **版权合规**：外部资源优先链接官方入口，不未经授权重新托管原始课件或教材。
-
 ## 五个核心资源专区
 
-1. **顶尖高校课程（24项）**  
-   优先收录有讲义、课件、代码、习题、考试、视频、syllabus、虚拟实验或完整课程结构的高质量课程；前台分为**国内高校7项**与**海外高校17项**。
+### 1. 顶尖高校课程（24项）
 
-2. **经典教材与专著（34项）**  
-   前台分为**中文教材与专著10项**与**英文教材与专著24项**。
+优先收录具有讲义、课件、代码、习题、考试、视频、syllabus、虚拟实验或完整课程结构的高质量课程。前台分为国内高校7项与海外高校17项。
 
-3. **AI＋金融工程方法、工具与实验（22项）**  
-   强调领域专用、可运行、可复现和高教学增量，内部划分为4组：
-   - 金融LLM与智能体：6项
-   - 金融机器学习与因果方法：4项
-   - 量化交易与金融工程工具：8项
-   - 计算金融与计算经济学：4项
+国内代表资源包括：北京大学“机器学习与资产定价”、中山大学“经济金融智能体设计”、清华大学“Artificial Intelligence and Quantitative Finance”、中央财经大学“机器学习与智能金融”、湖南大学机器学习资产定价虚拟仿真实验、复旦大学“Artificial Intelligence in FinTech”、对外经济贸易大学量化投资与金融工程实验资源。
 
-4. **案例（10项）**  
-   只收录金融业真实使用AI的高质量案例，覆盖投行与资本市场、资产管理与量化投资、财富管理、市场监测与合规。原来的交易所投教、市场数据和一般衍生品案例全部退出本专区前台。
+海外资源覆盖 Stanford、MIT、Wharton、NYU Tandon、Princeton ORFE、EPFL、ETH Zürich、Chicago、Toronto、Yale，以及 Zhigang Feng 的 **Quantitative Macroeconomics with AI and Machine Learning**。
 
-5. **AI赋能教学（8项）**  
-   面向教师教学与科研全过程，覆盖备课、知识解释、习题与案例设计、编程实验辅导、作业评价、金融工作流、Agentic Coding科研工作流和教学反馈。
+### 2. 经典教材与专著（34项）
 
-### 教师学习路径不是“第六专区”
+前台分为：
 
-“教师学习路径”属于**导航层**而不是资源类型，因此独立保留三条路线：金融工程教师AI入门、AI＋金融工程进阶、生成式AI赋能教学全过程。
+- 中文教材与专著：10项
+- 英文教材与专著：24项
 
-## 顶尖高校课程
+覆盖金融机器学习、AI金融、量化投资、金融计算、概率机器学习、深度学习、强化学习、AI经济学与因果推断。完整书目见 [`RESOURCE_DIRECTORY.md`](RESOURCE_DIRECTORY.md)。
 
-### 国内高校（7项）
+### 3. AI＋金融工程方法、工具与实验（22项）
 
-1. **机器学习与资产定价** — 北京大学金融工程实验室
-2. **经济金融智能体设计** — 中山大学岭南学院
-3. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
-4. **机器学习与智能金融** — 中央财经大学金融学院
-5. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
-6. **Artificial Intelligence in FinTech** — 复旦大学
-7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院
+本专区坚持“少而精”，内部划分为4组：
 
-> 东北财经大学《机器学习与金融应用》目前只能从官方培养方案和教务信息确认课程存在，尚未找到公开课程主页、课件、代码、实验材料或独立教学大纲，因此保留在后台候选/对标库。
+- **金融LLM与智能体（6项）**：TradingAgents、AI Hedge Fund、AI-Trader、Vibe-Trading、FinGPT、FinRobot
+- **金融机器学习与因果方法（4项）**：FinRL、Machine Learning for Trading、EconML、DoubleML
+- **量化交易与金融工程工具（8项）**：Qlib、QuantLib、PyPortfolioOpt、Riskfolio-Lib、QuantConnect LEAN、NautilusTrader、vectorbt、backtesting.py
+- **计算金融与计算经济学（4项）**：QuantEcon.py、HARK、CVXPY Tutorial、ARCH Volatility Processes
 
-### 海外高校（17项）
+通用基础文档、重复Quick Start、组织导航页以及教学增量有限的条目保留在后台候选库，不进入前台。
 
-包括 Stanford GSB、Stanford Digital Economy Lab、MIT、Wharton、NYU Tandon、Princeton ORFE、EPFL、ETH Zürich、University of Chicago、University of Toronto、University of Nebraska–Omaha 与 Yale Open Courses 等课程。其中 **Zhigang Feng 的 Quantitative Macroeconomics with AI and Machine Learning** 提供课程说明、Slides、Jupyter Notebooks 和视频，系统覆盖量化宏观、资产定价、机器学习、强化学习与LLM。
+### 4. 案例（10项）
 
-## AI＋金融工程方法、工具与实验：22项精选资源
+只收录**金融业真实使用AI**的高质量案例，要求有明确机构、业务场景、AI使用方式和可核验的一手来源。
 
-### 1. 金融LLM与智能体（6项）
+当前案例覆盖：
 
-- **TradingAgents**
-- **AI Hedge Fund**
-- **AI-Trader**
-- **Vibe-Trading**
-- **FinGPT**
-- **FinRobot**
+1. Morgan Stanley — AskResearchGPT
+2. JPMorgan Chase — LLM Suite 与 Prime Finance AI
+3. Goldman Sachs — One Goldman Sachs 3.0
+4. Citi — Markets交易确认自动化与Wealth AI
+5. Bridgewater — PAT / AI Pocket Analyst
+6. Man Group — AlphaGPT
+7. BlackRock — Aladdin Copilot
+8. Two Sigma — AI与机器学习嵌入系统化投资
+9. UBS — STAAT Insights
+10. Nasdaq — AI Market Surveillance
 
-### 2. 金融机器学习与因果方法（4项）
+### 5. AI赋能教学（6项）
 
-- **FinRL**
-- **Machine Learning for Trading**
-- **EconML**
-- **DoubleML**
+本专区不收“产品功能说明”“提示词合集”或浅层操作指南，只保留具有**系统课程、连续专题、完整讲义/Notebook、可复用作业/案例或Agentic Research工作流**的资源。
 
-### 3. 量化交易与金融工程工具（8项）
+1. **智能体与社会科学研究（Agentic Coding in Social Sciences Research）** — 王彬 / 暨南大学经济学院
+2. **Vibe Researching with Coding Agents / Open Scholar Skill** — Yongjun Zhang / Stony Brook University
+3. **LLMs for Social Science** — University of Oxford DPIR / Nuffield College
+4. **Large Language Models for the Economic and Social Sciences** — University of Mannheim
+5. **AI Pedagogy Project** — metaLAB at Harvard / Berkman Klein Center
+6. **Teach with Generative AI / Harvard GenAI Library for Teaching and Learning** — Harvard University / VPAL
 
-- **Qlib**
-- **QuantLib**
-- **PyPortfolioOpt**
-- **Riskfolio-Lib**
-- **QuantConnect LEAN**
-- **NautilusTrader**
-- **vectorbt**
-- **backtesting.py**
+其中，前4项重点服务教师科研方法、Agentic Coding、LLM社会科学研究与项目式课程建设；后2项重点服务课程设计、作业设计、课堂AI政策、assessment、tutor bot与高校教师真实教学案例。
 
-### 4. 计算金融与计算经济学（4项）
+原有的 `Data Analysis with ChatGPT`、`Finance Workflows with ChatGPT Work`、`Finance Use Cases and Prompts`、`ChatGPT Workflows for Finance Teams`、`ChatGPT for Excel and Google Sheets`、`Financial Services Resources`、`ChatGPT for Financial Services Solution Kit` 已退出前台精选库，保留在后台候选数据中。
 
-- **QuantEcon.py**
-- **HARK**
-- **CVXPY Tutorial**
-- **ARCH Volatility Processes**
+## 教师学习路径
 
-## 案例：10项金融业AI应用精选
+教师学习路径属于导航层，不是第六专区：
 
-### 投行、资本市场与研究（4项）
-
-1. **摩根士丹利 AskResearchGPT：服务投行、销售交易与研究的生成式AI助手**
-2. **JPMorgan Chase：LLM Suite 与 Prime Finance AI**
-3. **Goldman Sachs One Goldman Sachs 3.0：AI 重构投行与资管工作流**
-4. **Citi：Markets 交易确认自动化与 Wealth AI 助手**
-
-### 资产管理与量化投资（4项）
-
-5. **桥水基金 PAT：AI Pocket Analyst 投资研究助手**
-6. **Man Group AlphaGPT：Agentic AI 驱动量化研究**
-7. **BlackRock Aladdin Copilot：机构投资组合与风险分析的生成式AI**
-8. **Two Sigma：AI 与机器学习嵌入系统化投资全流程**
-
-### 财富管理与客户洞察（1项）
-
-9. **UBS STAAT Insights：AI 赋能财富顾问客户洞察**
-
-### 市场监测与合规（1项）
-
-10. **Nasdaq AI Market Surveillance：AI 辅助市场操纵监测与调查**
-
-### 案例筛选规则
-
-案例专区采用**高门槛＋替换制**。进入前台至少应满足：
-
-1. 金融机构、投资机构、投行、资管机构、交易平台或市场基础设施机构的真实应用；
-2. 能说明AI具体进入哪个业务流程，而不只是“机构重视AI”；
-3. 有机构官网、年报、官方产品页或官方研究材料等一手来源；
-4. 能形成明确教学问题，例如效率提升、投研流程、人机协作、模型风险、合规、可解释性、数据与隐私治理；
-5. 与已收录案例相比具有新增行业场景或教学增量。
-
-## 经典教材与专著
-
-### 中文教材与专著（10项）
-
-1. **金融智能** — 张晓燕主编，吴辉航、李志勇、张欣然副主编
-2. **人工智能与量化交易** — 张军欢
-3. **Python量化金融与人工智能** — 朱顺泉
-4. **金融机器学习（中文版）** — Marcos López de Prado 著，林华等译
-5. **Python金融大数据分析（第2版，中文版）** — Yves Hilpisch 著，姚军译
-6. **量化投资从理论到实践** — 温硕、陈婷秀
-7. **Python量化投资：技术、模型与策略** — 赵志强、刘志伟
-8. **Python金融数据分析（微课视频版·题库版）** — 李蕾、张春越、郭瑞波、高炜
-9. **金融计算与量化投资——MATLAB金融工具箱的应用** — 李合龙、胡云鹤、袁宜晨、杨苏鹏
-10. **金融科技实务教程** — 林健武、袁先智、马小峰、罗彤、何丽峰
-
-### 英文教材与专著（24项）
-
-英文组继续覆盖AI＋金融/金融工程、机器学习与概率建模、AI经济学和因果推断等主线，完整书目见 [`RESOURCE_DIRECTORY.md`](RESOURCE_DIRECTORY.md)。
+- **A 金融工程教师AI入门**：生成式AI → Prompt → AI辅助Python → 数据分析 → 教学规范
+- **B AI＋金融工程进阶**：Python → 机器学习 → 金融数据建模 → 风险与资产配置 → 深度学习/强化学习
+- **C 生成式AI赋能教学全过程**：备课 → 讲解 → 习题案例 → 编程辅导 → 作业试题 → 辅助评价 → 教学反馈
 
 ## 100分评价框架
 
@@ -179,18 +105,18 @@
 - `data/resources-books-cn.tsv`：中文教材与专著
 - `data/resources-books.tsv`、`data/resources-books-extra.tsv`：英文教材与专著
 - `data/resources-courses-extra.tsv`：扩展高校课程
-- `data/resources-curated-additions.tsv`：人工核验新增的智能体、AI金融与AI经济学资源
+- `data/resources-curated-additions.tsv`：人工核验新增的智能体、AI金融、AI经济学及AI教学资源
 - `data/resources-github-quality.tsv`：GitHub高质量AI金融、交易与计算经济学资源
 - `data/resources-ai-industry-cases.tsv`：金融业真实使用AI的精选案例
 - `data/curation.json`：排序、降权与前台隐藏规则
 
+## 维护原则
+
+候选资源不设置固定数量上限，但前台始终坚持精简。第三专区、第四专区和第五专区均采用**高门槛＋替换制**：新资源只有在质量、体系完整度、教学/科研可复用性或代表性上明显补充现有精选资源时，才进入前台；否则先进入后台候选库。
+
 ## GitHub Pages
 
 https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
-
-## 后续建设重点
-
-**不设置候选资源数量上限，但前台坚持精简。** 第三专区和案例专区均采用替换制：新资源只有在质量、教学增量或代表性上能够替代/补充现有精选资源时，才进入前台；否则先进入后台候选库。
 
 ## 版权说明
 
