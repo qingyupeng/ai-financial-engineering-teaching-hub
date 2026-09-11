@@ -8,7 +8,7 @@
 
 - **140项进入前台精选教学资源库**；
 - **15项培养方案/项目介绍等仅适合课程体系对标的页面退出主资源库前台**；
-- **“顶尖高校课程”为第一资源专区，共23项，其中国内高校7项、海外高校16项**；
+- **“顶尖高校课程”为第一资源专区，共24项，其中国内高校7项、海外高校17项**；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于课程资源第一位；
 - **“经典教材与专著”为第二资源专区，共34本/套，其中文教材与专著10项、英文教材与专著24项**；
 - 平台采用 **6个核心资源专区＋3条独立教师学习路径** 的前台结构。
@@ -27,14 +27,14 @@
 
 ## 六个核心资源专区
 
-1. **顶尖高校课程（23项）**  
-   第一专区。优先收录有讲义、课件、代码、习题、考试、视频、syllabus、虚拟实验或完整课程结构的高质量课程；前台分为**国内高校7项**与**海外高校16项**。
+1. **顶尖高校课程（24项）**  
+   第一专区。优先收录有讲义、课件、代码、习题、考试、视频、syllabus、虚拟实验或完整课程结构的高质量课程；前台分为**国内高校7项**与**海外高校17项**。
 
 2. **经典教材与专著（34项）**  
    第二专区。前台分为**中文教材与专著10项**与**英文教材与专著24项**。
 
-3. **AI＋金融/金融工程前沿（15项）**  
-   聚合金融机器学习、深度学习、强化学习、金融LLM、Agent、自主交易以及AI＋量化宏观等前沿应用。
+3. **AI＋金融/金融工程前沿（14项）**  
+   聚合金融机器学习、深度学习、强化学习、金融LLM、Agent与自主交易等前沿应用。
 
 4. **工具、代码与实验（32项）**  
    统一组织量化工具、Python库、Notebook、优化、定价、回测、金融数据实验与Agent交易研究框架。
@@ -65,17 +65,17 @@
 
 > 东北财经大学《机器学习与金融应用》目前只能从官方培养方案和教务信息确认课程存在，暂未找到公开课程主页、课件、代码、实验材料或独立教学大纲，因此保留在后台候选/对标库，不计入前台精选课程。
 
-### 海外高校（16项）
+### 海外高校（17项）
 
-包括 Stanford GSB、Stanford Digital Economy Lab、MIT、Wharton、NYU Tandon、Princeton ORFE、EPFL、ETH Zürich、University of Chicago、University of Toronto 与 Yale Open Courses 等课程。
+包括 Stanford GSB、Stanford Digital Economy Lab、MIT、Wharton、NYU Tandon、Princeton ORFE、EPFL、ETH Zürich、University of Chicago、University of Toronto、University of Nebraska–Omaha 与 Yale Open Courses 等课程。其中 **Zhigang Feng 的 Quantitative Macroeconomics with AI and Machine Learning** 提供课程说明、Slides、Jupyter Notebooks 和视频，系统覆盖量化宏观、资产定价、机器学习、强化学习与LLM，因此归入海外高校课程组。
 
 ## 本轮新增智能体与AI经济学资源
 
 - **经济金融智能体设计** — 中山大学岭南学院 → 顶尖高校课程
+- **Quantitative Macroeconomics with AI and Machine Learning** — Zhigang Feng / University of Nebraska–Omaha → 顶尖高校课程（海外高校）
 - **AI-Trader** — HKU Data Intelligence Lab / Chao Huang → AI＋金融/金融工程前沿
 - **Vibe-Trading** — HKU Data Intelligence Lab / Chao Huang → 工具、代码与实验
 - **智能体与社会科学研究（Agentic Coding in Social Sciences Research）** — 王彬 → AI赋能教学
-- **Quantitative Macroeconomics with AI and Machine Learning** — Zhigang Feng → AI＋金融/金融工程前沿
 
 ## 经典教材与专著
 
