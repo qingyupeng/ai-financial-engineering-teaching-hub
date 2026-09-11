@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-methods-tools-labs';
+const BUILD_VERSION = '20260911-ai-cases';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -36,10 +36,10 @@ const coreZones = [
   },
   {
     id: 'zone-cases',
-    name: '金融机构与市场案例',
+    name: '案例',
     number: '04',
-    description: '交易所和金融机构教育资源、真实金融数据、市场制度、衍生品案例以及课堂讨论素材。',
-    sourceZones: ['金融机构教育资源', '教学案例库']
+    description: '只收录金融机构真实使用AI的高质量案例，覆盖投行与资本市场、资产管理与量化投资、财富管理以及市场监测与合规；优先采用机构一手公开材料。',
+    sourceZones: ['AI金融行业案例']
   },
   {
     id: 'zone-teaching',
@@ -75,6 +75,39 @@ const methodGroups = [
     title: '计算金融与计算经济学',
     subtitle: '面向优化、波动率建模、动态经济模型和异质性主体计算，强调可直接改造为Notebook实验。',
     titles: ['QuantEcon.py', 'HARK', 'CVXPY Tutorial', 'ARCH Volatility Processes']
+  }
+];
+
+const caseGroups = [
+  {
+    title: '投行、资本市场与研究',
+    subtitle: '关注生成式AI如何进入投行、研究、销售交易、市场业务、KYC、风险和销售赋能等核心金融流程。',
+    titles: [
+      '摩根士丹利 AskResearchGPT：服务投行、销售交易与研究的生成式AI助手',
+      'JPMorgan Chase：LLM Suite 与 Prime Finance AI',
+      'Goldman Sachs One Goldman Sachs 3.0：AI 重构投行与资管工作流',
+      'Citi：Markets 交易确认自动化与 Wealth AI 助手'
+    ]
+  },
+  {
+    title: '资产管理与量化投资',
+    subtitle: '聚焦AI在机构投研、Alpha发现、系统化投资、投资组合与风险分析中的真实应用。',
+    titles: [
+      '桥水基金 PAT：AI Pocket Analyst 投资研究助手',
+      'Man Group AlphaGPT：Agentic AI 驱动量化研究',
+      'BlackRock Aladdin Copilot：机构投资组合与风险分析的生成式AI',
+      'Two Sigma：AI 与机器学习嵌入系统化投资全流程'
+    ]
+  },
+  {
+    title: '财富管理与客户洞察',
+    subtitle: '关注AI如何增强财富顾问的客户洞察、会议准备与个性化服务，同时保留顾问的人类判断。',
+    titles: ['UBS STAAT Insights：AI 赋能财富顾问客户洞察']
+  },
+  {
+    title: '市场监测与合规',
+    subtitle: '关注AI在市场异常检测、警报筛选、调查辅助和金融市场基础设施中的应用及治理边界。',
+    titles: ['Nasdaq AI Market Surveillance：AI 辅助市场操纵监测与调查']
   }
 ];
 
@@ -210,6 +243,14 @@ function renderMethodGroups(items){
   }).join('');
 }
 
+function renderCaseGroups(items){
+  return caseGroups.map(group => {
+    const titleSet = new Set(group.titles);
+    const groupItems = items.filter(item => titleSet.has(item.title));
+    return renderSubgroup(group.title, group.subtitle, groupItems);
+  }).join('');
+}
+
 function updateZoneCounts(){
   document.querySelectorAll('[data-zone-count]').forEach(node => {
     const zoneName = node.getAttribute('data-zone-count');
@@ -246,6 +287,8 @@ function render(){
         content = renderBookGroups(items);
       } else if (group.name === 'AI＋金融工程方法、工具与实验') {
         content = renderMethodGroups(items);
+      } else if (group.name === '案例') {
+        content = renderCaseGroups(items);
       } else {
         content = `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
       }
@@ -281,7 +324,7 @@ function updateRubric(){
     <div><strong>10</strong><span>AI/计算融合程度</span></div>
     <div><strong>5</strong><span>获取便利性</span></div>
     <div><strong>5</strong><span>时效性</span></div>`;
-  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、领域专用AI项目、成熟金融工程工具和可复现实验优先；通用文档、重复Quick Start、组织导航页和教学增量较低的条目保留在后台候选库，不进入前台精选。';
+  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、领域专用AI项目、成熟金融工程工具和可复现实验优先；“案例”只保留有明确金融机构、业务场景、AI使用方式和一手证据的真实案例；通用投教、市场数据和泛行业材料不进入案例专区。';
 }
 
 function activateZoneCards(){
@@ -317,6 +360,7 @@ async function loadResources(){
       'data/resources-courses-extra.tsv',
       'data/resources-curated-additions.tsv',
       'data/resources-github-quality.tsv',
+      'data/resources-ai-industry-cases.tsv',
       'data/curation.json'
     ];
     const responses = await Promise.all(
@@ -324,7 +368,7 @@ async function loadResources(){
     );
     if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
 
-    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curatedAdditionsText, githubQualityText, curationData] = await Promise.all([
+    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curatedAdditionsText, githubQualityText, aiCasesText, curationData] = await Promise.all([
       responses[0].json(),
       responses[1].text(),
       responses[2].text(),
@@ -335,7 +379,8 @@ async function loadResources(){
       responses[7].text(),
       responses[8].text(),
       responses[9].text(),
-      responses[10].json()
+      responses[10].text(),
+      responses[11].json()
     ]);
 
     curation = curationData;
@@ -349,7 +394,8 @@ async function loadResources(){
       ...parseTSV(booksCnText),
       ...parseTSV(coursesExtraText),
       ...parseTSV(curatedAdditionsText),
-      ...parseTSV(githubQualityText)
+      ...parseTSV(githubQualityText),
+      ...parseTSV(aiCasesText)
     ];
 
     resources = applyCuration(candidateResources);
