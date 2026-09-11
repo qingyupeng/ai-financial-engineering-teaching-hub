@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-cn-books';
+const BUILD_VERSION = '20260911-agent-resources';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -52,7 +52,7 @@ const coreZones = [
     id: 'zone-teaching',
     name: 'AI赋能教学',
     number: '06',
-    description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、课程论文辅助评价和教学反馈组织资源。',
+    description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、课程论文辅助评价、教师科研工作流和教学反馈组织资源。',
     sourceZones: ['AI辅助教学方法']
   }
 ];
@@ -64,7 +64,8 @@ const domesticCourseMarkers = [
   '湖南大学',
   '复旦大学',
   '东北财经大学',
-  '对外经济贸易大学'
+  '对外经济贸易大学',
+  '中山大学'
 ];
 
 function coreZone(resource){
@@ -164,7 +165,7 @@ function renderCourseGroups(items){
   const domestic = items.filter(isDomesticCourse);
   const overseas = items.filter(r => !isDomesticCourse(r));
   return [
-    renderSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资和机器学习课程。', domestic),
+    renderSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资、智能体和机器学习课程。', domestic),
     renderSubgroup('海外高校', '国际顶尖高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
   ].join('');
 }
@@ -281,6 +282,7 @@ async function loadResources(){
       'data/resources-books-extra.tsv',
       'data/resources-books-cn.tsv',
       'data/resources-courses-extra.tsv',
+      'data/resources-curated-additions.tsv',
       'data/curation.json'
     ];
     const responses = await Promise.all(
@@ -288,7 +290,7 @@ async function loadResources(){
     );
     if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
 
-    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curationData] = await Promise.all([
+    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curatedAdditionsText, curationData] = await Promise.all([
       responses[0].json(),
       responses[1].text(),
       responses[2].text(),
@@ -297,7 +299,8 @@ async function loadResources(){
       responses[5].text(),
       responses[6].text(),
       responses[7].text(),
-      responses[8].json()
+      responses[8].text(),
+      responses[9].json()
     ]);
 
     curation = curationData;
@@ -309,7 +312,8 @@ async function loadResources(){
       ...parseTSV(booksText),
       ...parseTSV(booksExtraText),
       ...parseTSV(booksCnText),
-      ...parseTSV(coursesExtraText)
+      ...parseTSV(coursesExtraText),
+      ...parseTSV(curatedAdditionsText)
     ];
 
     resources = applyCuration(candidateResources);
