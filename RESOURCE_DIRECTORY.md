@@ -6,8 +6,8 @@
 
 | 核心专区 | 数量 | 说明 |
 |---|---:|---|
-| **1. 经典教材与专著** | **24** | 系统知识框架与长期自学主线 |
-| **2. 顶尖高校课程** | **23** | 国内7项＋海外16项高质量课程资源 |
+| **1. 顶尖高校课程** | **23** | 国内7项＋海外16项高质量课程资源 |
+| **2. 经典教材与专著** | **24** | 系统知识框架与长期自学主线 |
 | **3. AI＋金融/金融工程前沿** | **13** | 金融ML、深度学习、RL、LLM、Agent等 |
 | **4. 工具、代码与实验** | **31** | 量化工具＋Python/Jupyter实验统一入口 |
 | **5. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
@@ -16,7 +16,42 @@
 
 > “教师学习路径”不作为资源专区，而作为跨专区的使用导航层独立保留。
 
-## 1. 经典教材与专著（24项）
+## 1. 顶尖高校课程（23项）
+
+### 国内高校（7项）
+
+1. **机器学习与资产定价** — 北京大学金融工程实验室
+2. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
+3. **机器学习与智能金融** — 中央财经大学金融学院
+4. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
+5. **Artificial Intelligence in FinTech** — 复旦大学
+6. **机器学习与金融应用** — 东北财经大学
+7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院金融工程系
+
+### 海外高校（16项）
+
+1. **Machine Learning & Causal Inference: A Short Course** — Stanford GSB / SIEPR
+2. **Machine Learning in Finance** — EPFL Financial Engineering
+3. **AI and Finance** — MIT
+4. **Machine Learning in Finance & Insurance** — ETH Zürich
+5. **Machine Learning for Finance & Complex Systems** — ETH Zürich
+6. **AI and Data Science in Finance** — University of Pennsylvania, Wharton
+7. **Machine Learning in Financial Engineering** — New York University, Tandon
+8. **Stochastic Optimization and Machine Learning in Finance** — Princeton University ORFE
+9. **The AI Awakening: Implications for the Economy and Society** — Stanford Digital Economy Lab
+10. **Machine Learning for Economists** — The University of Chicago
+11. **A.I. in Finance** — University of Toronto Engineering
+12. **Machine Learning Applications in Macroeconomic Finance** — University of Toronto Economics
+13. **Finance Theory I** — MIT OpenCourseWare
+14. **Analytics of Finance** — MIT OpenCourseWare
+15. **Introduction to Financial Mathematics** — Princeton University ORFE
+16. **Financial Markets** — Yale Open Courses
+
+### 国内课程筛选说明
+
+国内课程仍坚持“实质教学材料优先”：清华大学课程公开完整周次安排、作业、编码作业与课程项目要求；中央财经大学公开慕课、配套课件和代码；湖南大学提供机器学习资产定价虚拟仿真实验；复旦大学公开完整课程syllabus并包含Python项目；东北财经大学课程54学时中含36学时实验；对外经济贸易大学公开量化投资、金融计算和多项金融工程实验资料。
+
+## 2. 经典教材与专著（24项）
 
 ### AI＋金融 / 金融工程
 
@@ -53,48 +88,6 @@
 22. **Causal Inference: The Mixtape** — Scott Cunningham
 23. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
 24. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
-
-## 2. 顶尖高校课程（23项）
-
-### 国内高校（7项）
-
-1. **机器学习与资产定价** — 北京大学金融工程实验室
-2. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
-3. **机器学习与智能金融** — 中央财经大学金融学院
-4. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
-5. **Artificial Intelligence in FinTech** — 复旦大学
-6. **机器学习与金融应用** — 东北财经大学
-7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院金融工程系
-
-### 海外高校（16项）
-
-1. **Machine Learning & Causal Inference: A Short Course** — Stanford GSB / SIEPR
-2. **Machine Learning in Finance** — EPFL Financial Engineering
-3. **AI and Finance** — MIT
-4. **Machine Learning in Finance & Insurance** — ETH Zürich
-5. **Machine Learning for Finance & Complex Systems** — ETH Zürich
-6. **AI and Data Science in Finance** — University of Pennsylvania, Wharton
-7. **Machine Learning in Financial Engineering** — New York University, Tandon
-8. **Stochastic Optimization and Machine Learning in Finance** — Princeton University ORFE
-9. **The AI Awakening: Implications for the Economy and Society** — Stanford Digital Economy Lab
-10. **Machine Learning for Economists** — The University of Chicago
-11. **A.I. in Finance** — University of Toronto Engineering
-12. **Machine Learning Applications in Macroeconomic Finance** — University of Toronto Economics
-13. **Finance Theory I** — MIT OpenCourseWare
-14. **Analytics of Finance** — MIT OpenCourseWare
-15. **Introduction to Financial Mathematics** — Princeton University ORFE
-16. **Financial Markets** — Yale Open Courses
-
-### 国内课程筛选说明
-
-本轮新增国内课程仍坚持“实质教学材料优先”：
-
-- 清华大学课程公开完整周次安排、作业、编码作业与课程项目要求，并明确Python为默认编程语言；
-- 中央财经大学公开慕课、配套课件和代码；
-- 湖南大学提供基于机器学习的资产定价虚拟仿真实验系统，并获省级一流课程；
-- 复旦大学公开完整课程syllabus，包含Python编程、案例和课程项目；
-- 东北财经大学课程54学时中含36学时实验；
-- 对外经济贸易大学公开量化投资、金融计算和多项金融工程实验资料。
 
 ## 3. AI＋金融/金融工程前沿（13项）
 
