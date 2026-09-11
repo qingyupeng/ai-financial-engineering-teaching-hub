@@ -1,5 +1,39 @@
 # 更新日志
 
+## 2026-09-11 · v0.14 · AI＋金融/金融工程前沿专区换血
+
+- 对“AI＋金融/金融工程前沿”进行专项质量复核，不再以“使用机器学习/深度学习”为充分条件，而要求资源具有较强的**金融、金融工程、交易或经济学领域专用性**。
+- 新增4项旗舰前沿资源：
+  - **TradingAgents** — TauricResearch：多智能体LLM金融交易框架，覆盖分析、研究辩论、交易、风险管理和投资组合决策链。
+  - **AI Hedge Fund** — virattt：AI基金、alpha模型、组合决策与回测概念验证。
+  - **EconML** — PyWhy / Microsoft Research ALICE：机器学习＋计量经济学＋因果推断。
+  - **DoubleML** — DoubleML：Double Machine Learning的规范化Python实现。
+- 将5项高质量但通用的AI/ML教程从“前沿”迁至“工具、代码与实验”：PyTorch Tutorials、XGBoost Tutorials、scikit-learn User Guide、TensorFlow Time Series Forecasting、Text Classification with Transformers。
+- 将2项更偏金融AI工作流的资源从“前沿”迁至“AI赋能教学”：Financial Services Resources、ChatGPT for Financial Services Solution Kit。
+- “工具、代码与实验”新增5项GitHub高质量项目：
+  - **QuantConnect LEAN** — 多资产算法交易与回测引擎；
+  - **NautilusTrader** — 生产级事件驱动交易引擎；
+  - **vectorbt** — 高性能向量化回测与投资组合研究框架；
+  - **QuantEcon.py** — 量化经济学Python工具库；
+  - **HARK** — 异质性主体与计算经济学工具包。
+- 新增结构化数据文件 `data/resources-github-quality.tsv`，保存本轮人工核验的GitHub金融、交易与经济学资源。
+- 在 `assets/app.js` 增加专区重分类规则，保证迁区后的资源在前台专区、搜索结果与卡片标签中保持一致。
+- “AI＋金融/金融工程前沿”由 **14项调整为11项**；数量下降但领域专用性和整体质量显著提高。
+- “工具、代码与实验”由 **32项增至42项**。
+- “AI赋能教学”由 **6项增至8项**。
+- 前台精选资源由 **140项增至149项**；候选资源由 **155项增至164项**。
+
+### 当前六大专区
+
+1. 顶尖高校课程：24项（国内7项＋海外17项）
+2. 经典教材与专著：34项（中文10项＋英文24项）
+3. AI＋金融/金融工程前沿：11项
+4. 工具、代码与实验：42项
+5. 金融机构与市场案例：30项
+6. AI赋能教学：8项
+
+合计：**149项**。
+
 ## 2026-09-11 · v0.13 · Zhigang Feng课程归入顶尖高校课程
 
 - 根据教师反馈，将 **Zhigang Feng《Quantitative Macroeconomics with AI and Machine Learning》** 从“AI＋金融/金融工程前沿”调整至“顶尖高校课程—海外高校”。
@@ -8,17 +42,6 @@
 - “顶尖高校课程”由23项调整为 **24项**（国内7项＋海外17项）。
 - “AI＋金融/金融工程前沿”由15项调整为 **14项**。
 - 前台精选资源总数保持 **140项** 不变。
-
-### 当前六大专区
-
-1. 顶尖高校课程：24项（国内7项＋海外17项）
-2. 经典教材与专著：34项（中文10项＋英文24项）
-3. AI＋金融/金融工程前沿：14项
-4. 工具、代码与实验：32项
-5. 金融机构与市场案例：30项
-6. AI赋能教学：6项
-
-合计：**140项**。
 
 ## 2026-09-11 · v0.12 · 智能体与AI经济学资源扩充
 
@@ -99,4 +122,4 @@
 2. 可运行 Python / Jupyter 教学案例；
 3. AI教学Prompt模板；
 4. 教师试用、反馈与平台迭代证据；
-5. 对新增高校课程、教材、智能体项目和AI经济学资源持续核验公开材料与链接有效性。
+5. 对新增高校课程、教材、GitHub项目、智能体和AI经济学资源持续核验公开材料、维护活跃度与链接有效性。
