@@ -4,13 +4,13 @@
 
 ## 当前建设进度
 
-平台目前维护 **140项候选资源**，经人工质量复核后形成 **126项前台精选教学资源**：
+平台目前维护 **140项候选资源**，经人工质量复核后形成 **125项前台精选教学资源**：
 
-- **126项进入前台精选教学资源库**；
-- **14项纯培养方案/项目介绍页退出主资源库前台**，仅保留为课程体系对标参考；
-- **“顶尖高校课程”调整为第一资源专区，共23项，其中国内高校7项、海外高校16项**；
+- **125项进入前台精选教学资源库**；
+- **15项培养方案/项目介绍等仅适合课程体系对标的页面退出主资源库前台**；
+- **“顶尖高校课程”为第一资源专区，共22项，其中国内高校6项、海外高校16项**；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于课程资源第一位；
-- **“经典教材与专著”调整为第二资源专区，共24本/套**；
+- **“经典教材与专著”为第二资源专区，共24本/套**；
 - 平台采用 **6个核心资源专区＋3条独立教师学习路径** 的前台结构。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
@@ -27,8 +27,8 @@
 
 ## 六个核心资源专区
 
-1. **顶尖高校课程（23项）**  
-   第一专区。优先收录有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；前台进一步分为**国内高校7项**与**海外高校16项**。
+1. **顶尖高校课程（22项）**  
+   第一专区。优先收录有讲义、课件、代码、习题、考试、视频、syllabus、虚拟实验或完整课程结构的高质量课程；前台分为**国内高校6项**与**海外高校16项**。
 
 2. **经典教材与专著（24项）**  
    第二专区。用于建立AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学和因果推断的系统知识框架。
@@ -51,17 +51,16 @@
 
 ## 顶尖高校课程
 
-### 国内高校（7项）
+### 国内高校（6项）
 
 1. **机器学习与资产定价** — 北京大学金融工程实验室
 2. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
 3. **机器学习与智能金融** — 中央财经大学金融学院
 4. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
 5. **Artificial Intelligence in FinTech** — 复旦大学
-6. **机器学习与金融应用** — 东北财经大学
-7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院
+6. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院
 
-国内课程筛选坚持“实质材料优先”：清华课程提供完整教学安排、作业与代码项目要求；中央财经大学提供慕课、课件和代码；湖南大学提供机器学习资产定价虚拟仿真实验；复旦提供完整syllabus和Python项目；东北财经大学课程具有较高实验学时占比；对外经济贸易大学公开量化投资、金融计算和衍生品定价实验材料。
+> 东北财经大学《机器学习与金融应用》目前能从官方培养方案和教务信息确认课程真实存在，也能确认课程代码、学时与实验安排，但暂未找到公开的课程主页、课件、代码、实验材料或独立教学大纲。因此保留在后台候选/对标库，不计入前台精选课程。
 
 ### 海外高校（16项）
 
@@ -84,47 +83,18 @@
 
 ## 经典教材与专著
 
-该专区目前收录 **24本/套** 核心书目，按四条线组织。
+该专区目前收录 **24本/套** 核心书目，覆盖四条主线：
 
-### AI＋金融 / 金融工程
+- AI＋金融 / 金融工程
+- 机器学习 / 概率机器学习 / 深度学习基础
+- AI / 机器学习＋经济学
+- 因果推断＋机器学习
 
-- *Machine Learning in Finance: From Theory to Practice* — Dixon, Halperin, Bilokon
-- *Machine Learning for Algorithmic Trading, 2nd Edition* — Stefan Jansen
-- *Probabilistic Machine Learning for Finance and Investing* — Deepak K. Kanungo
-- *Machine Learning for Finance* — James Le, Jannes Klaas
-- *Advances in Financial Machine Learning* — Marcos López de Prado
-- *Machine Learning for Asset Managers* — Marcos M. López de Prado
-- *Artificial Intelligence in Finance* — Yves Hilpisch
-- *Financial Signal Processing and Machine Learning* — Ali N. Akansu, Sanjeev R. Kulkarni, Dmitry Malioutov (eds.)
-
-### 机器学习、概率机器学习与深度学习基础
-
-- *The Elements of Statistical Learning*
-- *An Introduction to Statistical Learning: with Applications in Python*
-- *Statistical Learning with Sparsity: The Lasso and Generalizations*
-- *Computer Age Statistical Inference*
-- *Pattern Recognition and Machine Learning* — Christopher M. Bishop
-- *Probabilistic Machine Learning: An Introduction* — Kevin P. Murphy
-- *Probabilistic Machine Learning: Advanced Topics* — Kevin P. Murphy
-- *Deep Learning* — Ian Goodfellow, Yoshua Bengio, Aaron Courville
-- *Deep Learning: Foundations and Concepts* — Christopher M. Bishop, Hugh Bishop
-- *Reinforcement Learning: An Introduction, 2nd Edition* — Richard S. Sutton, Andrew G. Barto
-
-### AI / 机器学习＋经济学
-
-- *The Economics of Artificial Intelligence: An Agenda*
-- *Prediction Machines: The Simple Economics of Artificial Intelligence*
-
-### 因果推断＋机器学习
-
-- *Applied Causal Inference Powered by ML and AI* — Chernozhukov, Hansen, Kallus, Spindler, Syrgkanis
-- *Causal Inference: The Mixtape* — Scott Cunningham
-- *The Effect: An Introduction to Research Design and Causality* — Nick Huntington-Klein
-- *Causal Inference and Machine Learning: In Economics, Social, and Health Sciences* — Mutlu Yuksel, Yigit Aydede
+完整书目见 [`RESOURCE_DIRECTORY.md`](RESOURCE_DIRECTORY.md)。
 
 ## 主资源库筛选原则
 
-资源优先级按照“是否真正可用于教学”判断，而不是只看学校、出版社或机构名气。优先展示系统教材、完整课程、代码/Notebook、习题、视频、数据与完整案例；只有课程名称、培养方案或简短介绍的页面降权或移出主资源库。
+资源优先级按照“是否真正可用于教学”判断，而不是只看学校、出版社或机构名气。优先展示系统教材、完整课程、代码/Notebook、习题、视频、数据、虚拟实验与完整案例；只有课程名称、培养方案或简短介绍的页面降权或移出主资源库。
 
 ## 100分评价框架
 
@@ -140,48 +110,13 @@
 
 详细说明见 [`docs/resource-selection.md`](docs/resource-selection.md)。
 
-## 目录结构
-
-```text
-.
-├── index.html
-├── assets/
-│   ├── styles.css
-│   ├── course-groups.css
-│   └── app.js
-├── data/
-│   ├── resources.json
-│   ├── resources-extra-1.tsv
-│   ├── resources-extra-2.tsv
-│   ├── resources-extra-3.tsv
-│   ├── resources-books.tsv
-│   ├── resources-books-extra.tsv
-│   ├── resources-courses-extra.tsv
-│   └── curation.json
-├── docs/
-│   ├── resource-selection.md
-│   ├── teacher-testing.md
-│   └── update-log.md
-├── RESOURCE_DIRECTORY.md
-├── CONTRIBUTING.md
-└── .github/workflows/pages.yml
-```
-
 ## GitHub Pages
 
 https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
 ## 后续建设重点
 
-**不再设置120项硬性上限。** 后续仍坚持“质量优先、实质材料优先”，只要发现真正有教学价值的课程、教材、代码、案例或工具即可继续加入；同时持续淘汰失效或内容过弱的资源。
-
-下一阶段重点：
-
-1. 继续核验主资源的实质材料丰富度与链接有效性；
-2. 增加项目组原创教学资源与中文导读；
-3. 建设可运行 Python / Jupyter 教学案例；
-4. 建设AI教学Prompt模板；
-5. 形成教师试用、反馈与平台迭代证据。
+**不设置固定数量上限。** 后续仍坚持“质量优先、实质材料优先”，发现真正有教学价值的课程、教材、代码、案例或工具即可继续加入，同时持续淘汰失效、内容过弱或只有项目介绍的资源。
 
 ## 版权说明
 
