@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-agent-resources';
+const BUILD_VERSION = '20260911-frontier-refresh';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -31,14 +31,14 @@ const coreZones = [
     id: 'zone-frontier',
     name: 'AI＋金融/金融工程前沿',
     number: '03',
-    description: '金融机器学习、深度学习、强化学习、金融LLM、Agent及其他AI金融前沿应用。',
+    description: '聚焦金融Agent、金融LLM、强化学习交易、金融机器学习以及AI＋经济学与因果机器学习，减少通用AI文档占比。',
     sourceZones: ['AI＋金融工程专题']
   },
   {
     id: 'zone-labs',
     name: '工具、代码与实验',
     number: '04',
-    description: '量化工具、Python库、Jupyter Notebook、优化、定价、回测、金融数据处理与可复现实验。',
+    description: '量化交易引擎、回测框架、Python/Jupyter、优化、定价、金融数据与量化经济学工具，强调可运行和可复现实验。',
     sourceZones: ['金融工程AI工具箱', 'Python / Jupyter实验库']
   },
   {
@@ -52,10 +52,20 @@ const coreZones = [
     id: 'zone-teaching',
     name: 'AI赋能教学',
     number: '06',
-    description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、课程论文辅助评价、教师科研工作流和教学反馈组织资源。',
+    description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、金融工作流、教师科研工作流和教学反馈组织资源。',
     sourceZones: ['AI辅助教学方法']
   }
 ];
+
+const zoneOverrides = new Map([
+  ['PyTorch Tutorials', '工具、代码与实验'],
+  ['XGBoost Tutorials', '工具、代码与实验'],
+  ['scikit-learn User Guide', '工具、代码与实验'],
+  ['TensorFlow Time Series Forecasting', '工具、代码与实验'],
+  ['Text Classification with Transformers', '工具、代码与实验'],
+  ['Financial Services Resources', 'AI赋能教学'],
+  ['ChatGPT for Financial Services Solution Kit', 'AI赋能教学']
+]);
 
 const domesticCourseMarkers = [
   '北京大学',
@@ -69,6 +79,8 @@ const domesticCourseMarkers = [
 ];
 
 function coreZone(resource){
+  const override = zoneOverrides.get(resource.title);
+  if (override) return override;
   const group = coreZones.find(g => g.sourceZones.includes(resource.zone));
   return group ? group.name : resource.zone;
 }
@@ -134,7 +146,7 @@ function renderCard(resource){
     .join('');
   const badge = curation.featured_order.includes(resource.title)
     ? '<span class="badge">重点教学资源</span>'
-    : `<span class="badge">${resource.zone}</span>`;
+    : `<span class="badge">${coreZone(resource)}</span>`;
 
   return `<article class="resource-card">
     <div class="card-top">${badge}<span class="grade ${grade}">${grade}级 · ${resource.score}</span></div>
@@ -248,7 +260,7 @@ function updateRubric(){
     <div><strong>10</strong><span>AI/计算融合程度</span></div>
     <div><strong>5</strong><span>获取便利性</span></div>
     <div><strong>5</strong><span>时效性</span></div>`;
-  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、代码实验、真实数据和可复用教学材料优先；仅有课程名称、培养方案或简短介绍的页面不进入主资源库前列。';
+  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、金融/经济专用AI项目、代码实验、真实数据和可复用教学材料优先；通用AI文档归入工具区，仅有课程名称、培养方案或简短介绍的页面不进入主资源库前列。';
 }
 
 function activateZoneCards(){
@@ -283,6 +295,7 @@ async function loadResources(){
       'data/resources-books-cn.tsv',
       'data/resources-courses-extra.tsv',
       'data/resources-curated-additions.tsv',
+      'data/resources-github-quality.tsv',
       'data/curation.json'
     ];
     const responses = await Promise.all(
@@ -290,7 +303,7 @@ async function loadResources(){
     );
     if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
 
-    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curatedAdditionsText, curationData] = await Promise.all([
+    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curatedAdditionsText, githubQualityText, curationData] = await Promise.all([
       responses[0].json(),
       responses[1].text(),
       responses[2].text(),
@@ -300,7 +313,8 @@ async function loadResources(){
       responses[6].text(),
       responses[7].text(),
       responses[8].text(),
-      responses[9].json()
+      responses[9].text(),
+      responses[10].json()
     ]);
 
     curation = curationData;
@@ -313,7 +327,8 @@ async function loadResources(){
       ...parseTSV(booksExtraText),
       ...parseTSV(booksCnText),
       ...parseTSV(coursesExtraText),
-      ...parseTSV(curatedAdditionsText)
+      ...parseTSV(curatedAdditionsText),
+      ...parseTSV(githubQualityText)
     ];
 
     resources = applyCuration(candidateResources);
