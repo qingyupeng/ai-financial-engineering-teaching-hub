@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-course-first';
+const BUILD_VERSION = '20260911-cn-books';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -24,7 +24,7 @@ const coreZones = [
     id: 'zone-books',
     name: '经典教材与专著',
     number: '02',
-    description: '系统教材与经典专著，覆盖AI＋金融工程、AI＋金融、机器学习基础、概率建模、强化学习、AI＋经济学与因果推断。',
+    description: '系统教材与经典专著，覆盖AI＋金融工程、AI＋金融、机器学习、量化投资、金融计算、概率建模、强化学习、AI＋经济学与因果推断；内部按中文与英文分组。',
     sourceZones: ['经典教材与专著']
   },
   {
@@ -77,6 +77,10 @@ function isDomesticCourse(resource){
   return domesticCourseMarkers.some(marker => String(resource.source || '').includes(marker));
 }
 
+function isChineseBook(resource){
+  return coreZone(resource) === '经典教材与专著' && normalize(resource.language).includes('中文');
+}
+
 function parseTSV(text){
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
@@ -115,6 +119,7 @@ function resourceMatches(resource, q, level){
     resource.finance_module,
     resource.ai_topic,
     resource.level,
+    resource.language,
     ...(resource.tags || [])
   ].join(' '));
   return (!q || haystack.includes(q)) && (!level || resource.level === level);
@@ -144,7 +149,7 @@ function renderCard(resource){
   </article>`;
 }
 
-function renderCourseSubgroup(title, subtitle, items){
+function renderSubgroup(title, subtitle, items){
   if (!items.length) return '';
   return `<div class="course-subgroup">
     <div class="course-subgroup-head">
@@ -159,8 +164,17 @@ function renderCourseGroups(items){
   const domestic = items.filter(isDomesticCourse);
   const overseas = items.filter(r => !isDomesticCourse(r));
   return [
-    renderCourseSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资和机器学习课程。', domestic),
-    renderCourseSubgroup('海外高校', '国际顶尖高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
+    renderSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资和机器学习课程。', domestic),
+    renderSubgroup('海外高校', '国际顶尖高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
+  ].join('');
+}
+
+function renderBookGroups(items){
+  const chinese = items.filter(isChineseBook);
+  const english = items.filter(r => !isChineseBook(r));
+  return [
+    renderSubgroup('中文教材与专著', '国内原创教材与高质量中译本，优先选择具有代码、案例、课件、视频或明确教学体系的AI＋金融、金融工程和量化投资书目。', chinese),
+    renderSubgroup('英文教材与专著', '国际经典教材与前沿专著，覆盖金融机器学习、概率机器学习、深度学习、强化学习、AI经济学与因果推断。', english)
   ].join('');
 }
 
@@ -194,9 +208,13 @@ function render(){
 
     let content = '<div class="empty">该专区暂无匹配资源。</div>';
     if (items.length) {
-      content = group.name === '顶尖高校课程'
-        ? renderCourseGroups(items)
-        : `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
+      if (group.name === '顶尖高校课程') {
+        content = renderCourseGroups(items);
+      } else if (group.name === '经典教材与专著') {
+        content = renderBookGroups(items);
+      } else {
+        content = `<div class="resource-grid">${items.map(renderCard).join('')}</div>`;
+      }
     }
 
     return `<section id="${group.id}" class="zone-resource-block" aria-labelledby="${group.id}-title">
@@ -261,6 +279,7 @@ async function loadResources(){
       'data/resources-extra-3.tsv',
       'data/resources-books.tsv',
       'data/resources-books-extra.tsv',
+      'data/resources-books-cn.tsv',
       'data/resources-courses-extra.tsv',
       'data/curation.json'
     ];
@@ -269,7 +288,7 @@ async function loadResources(){
     );
     if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
 
-    const [base, text1, text2, text3, booksText, booksExtraText, coursesExtraText, curationData] = await Promise.all([
+    const [base, text1, text2, text3, booksText, booksExtraText, booksCnText, coursesExtraText, curationData] = await Promise.all([
       responses[0].json(),
       responses[1].text(),
       responses[2].text(),
@@ -277,7 +296,8 @@ async function loadResources(){
       responses[4].text(),
       responses[5].text(),
       responses[6].text(),
-      responses[7].json()
+      responses[7].text(),
+      responses[8].json()
     ]);
 
     curation = curationData;
@@ -288,6 +308,7 @@ async function loadResources(){
       ...parseTSV(text3),
       ...parseTSV(booksText),
       ...parseTSV(booksExtraText),
+      ...parseTSV(booksCnText),
       ...parseTSV(coursesExtraText)
     ];
 
