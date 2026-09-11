@@ -35,17 +35,20 @@ const brokenCodes = new Set([404, 410, 451]);
 
 async function check(item) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12000);
+  const timer = setTimeout(() => controller.abort(), 8000);
   try {
     const response = await fetch(item.url, {
+      method: 'GET',
       redirect: 'follow',
       signal: controller.signal,
       headers: {
-        'user-agent': 'Mozilla/5.0 resource-link-audit/1.0',
-        'accept': 'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8'
+        'user-agent': 'Mozilla/5.0 resource-link-audit/1.1',
+        'accept': 'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8',
+        'range': 'bytes=0-1023'
       }
     });
     const result = { title: item.title, url: item.url, status: response.status, finalUrl: response.url };
+    try { await response.body?.cancel(); } catch {}
     if (response.status >= 200 && response.status < 400) ok.push(result);
     else if (restrictedCodes.has(response.status)) restricted.push(result);
     else if (brokenCodes.has(response.status)) broken.push(result);
@@ -57,7 +60,7 @@ async function check(item) {
   }
 }
 
-const concurrency = 8;
+const concurrency = 12;
 for (let i = 0; i < selected.length; i += concurrency) {
   await Promise.all(selected.slice(i, i + concurrency).map(check));
 }
