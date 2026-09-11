@@ -3,6 +3,7 @@
   "principle": "优先展示具有实质教学内容、可直接用于备课/授课/实验/作业/自学的资源；系统教材、开放课程、配套代码/Notebook、讲义、习题、视频、真实数据优先。仅有课程名称、培养方案或简要介绍的页面不进入主资源库前列，必要时从主资源库隐藏。",
   "featured_order": [
     "机器学习与资产定价",
+    "经济金融智能体设计",
     "Artificial Intelligence and Quantitative Finance",
     "机器学习与智能金融",
     "基于机器学习的资产定价虚拟仿真实验",
@@ -51,9 +52,12 @@
     "Applied Causal Inference Powered by ML and AI",
     "Causal Inference: The Mixtape",
     "Causal Inference and Machine Learning: In Economics, Social, and Health Sciences",
+    "Quantitative Macroeconomics with AI and Machine Learning",
+    "AI-Trader",
     "上交所期权初中高级课程",
     "上交所期权学习汇编书籍",
     "上交所期权学苑",
+    "Vibe-Trading",
     "Qlib Quick Start",
     "Machine Learning for Trading",
     "FinRL",
@@ -65,7 +69,8 @@
     "FRED API",
     "Kenneth R. French Data Library",
     "Daily Treasury Par Yield Curve Rates",
-    "BIS Exchange-Traded Derivatives Statistics"
+    "BIS Exchange-Traded Derivatives Statistics",
+    "智能体与社会科学研究（Agentic Coding in Social Sciences Research）"
   ],
   "deprioritized": [
     "Academic Resources",
