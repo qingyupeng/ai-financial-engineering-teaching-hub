@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-site-audit';
+const BUILD_VERSION = '20260911-course-audit';
 const normalize = (value = '') => String(value).toLowerCase().trim();
 const escapeHtml = (value = '') => String(value)
   .replaceAll('&', '&amp;')
@@ -29,9 +29,9 @@ function safeUrl(value = '') {
 const coreZones = [
   {
     id: 'zone-courses',
-    name: '顶尖高校课程',
+    name: '高校优质课程',
     number: '01',
-    description: '优先保留具有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；内部按国内高校与海外高校分组。',
+    description: '按课程资源质量而非学校标签筛选，优先保留具有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高校课程；内部按国内高校与海外高校分组。',
     sourceZones: ['顶尖高校课程']
   },
   {
@@ -152,7 +152,7 @@ function coreZone(resource) {
 }
 
 function isDomesticCourse(resource) {
-  if (coreZone(resource) !== '顶尖高校课程') return false;
+  if (coreZone(resource) !== '高校优质课程') return false;
   return domesticCourseMarkers.some(marker => String(resource.source || '').includes(marker));
 }
 
@@ -246,8 +246,8 @@ function renderCourseGroups(items) {
   const domestic = items.filter(isDomesticCourse);
   const overseas = items.filter(resource => !isDomesticCourse(resource));
   return [
-    renderSubgroup('国内高校', '985高校与排名靠前财经类院校的AI＋金融、金融工程、量化投资、智能体和机器学习课程。', domestic),
-    renderSubgroup('海外高校', '国际高水平高校的AI＋金融、金融工程、机器学习、因果推断和AI＋经济学课程。', overseas)
+    renderSubgroup('国内高校', '国内高校中实质教学材料丰富、与AI＋金融工程高度相关的优质课程资源。', domestic),
+    renderSubgroup('海外高校', '海外高校中具有完整课程结构、讲义、syllabus、代码或实验材料的优质课程资源。', overseas)
   ].join('');
 }
 
@@ -297,7 +297,7 @@ function render() {
     let content = '<div class="empty">该专区暂无匹配资源。</div>';
 
     if (items.length) {
-      if (group.name === '顶尖高校课程') content = renderCourseGroups(items);
+      if (group.name === '高校优质课程') content = renderCourseGroups(items);
       else if (group.name === '经典教材与专著') content = renderBookGroups(items);
       else if (group.name === 'AI＋金融工程方法、工具与实验') content = renderConfiguredGroups(items, methodGroups);
       else if (group.name === '案例') content = renderConfiguredGroups(items, caseGroups);
