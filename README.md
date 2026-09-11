@@ -4,13 +4,14 @@
 
 ## 当前建设进度
 
-平台目前维护 **124项候选资源**，经人工质量复核后形成 **110项前台精选教学资源**：
+平台目前维护 **134项候选资源**，经人工质量复核后形成 **120项前台精选教学资源**：
 
-- **110项进入前台精选教学资源库**；
+- **120项进入前台精选教学资源库**；
 - **14项纯培养方案/项目介绍页退出主资源库前台**，仅保留为课程体系对标参考；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于课程资源第一位；
 - **“经典教材与专著”专区收录24本/套**，覆盖AI＋金融工程、AI＋金融、概率机器学习、深度学习、强化学习、AI＋经济学与因果推断；
-- 平台由原先9个混合专区重构为 **6个核心资源专区＋3条独立教师学习路径**。
+- **“顶尖高校课程”扩充至17项**，重点补入Stanford、MIT、Wharton、NYU、Princeton、EPFL、Chicago、Toronto等AI＋金融、金融工程和AI＋经济学课程；
+- 平台采用 **6个核心资源专区＋3条独立教师学习路径** 的前台结构。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
 
@@ -31,8 +32,8 @@
 1. **经典教材与专著（24项）**  
    放在第一位。用于建立AI＋金融工程、AI＋金融、机器学习、概率建模、强化学习、AI＋经济学和因果推断的系统知识框架。
 
-2. **顶尖高校课程（7项）**  
-   只突出有讲义、课件、代码、习题、考试、视频等实质材料的课程；纯培养方案和项目介绍页不进入主资源库。
+2. **顶尖高校课程（17项）**  
+   优先收录有讲义、课件、代码、习题、考试、视频、syllabus或完整课程结构的高质量课程；纯培养方案和项目介绍页不进入主资源库。
 
 3. **AI＋金融/金融工程前沿（13项）**  
    聚合金融机器学习、深度学习、强化学习、金融LLM、Agent及其他前沿AI金融应用。
@@ -49,6 +50,23 @@
 ### 教师学习路径不是“第七专区”
 
 “教师学习路径”属于**导航层**而不是资源类型，因此独立保留三条路线：金融工程教师AI入门、AI＋金融工程进阶、生成式AI赋能教学全过程。学习路径会跨专区调用教材、课程、工具、案例和教学方法资源。
+
+## 顶尖高校课程扩充
+
+在原有7项课程基础上，新增10项经过深度检索和人工筛选的课程资源：
+
+- Stanford GSB — *Machine Learning & Causal Inference: A Short Course*
+- Stanford Digital Economy Lab — *The AI Awakening: Implications for the Economy and Society*
+- MIT — *AI and Finance*
+- Wharton — *AI and Data Science in Finance*
+- NYU Tandon — *Machine Learning in Financial Engineering*
+- Princeton ORFE — *Stochastic Optimization and Machine Learning in Finance*
+- EPFL — *Machine Learning in Finance*
+- University of Chicago — *Machine Learning for Economists*
+- University of Toronto Engineering — *A.I. in Finance*
+- University of Toronto Economics — *Machine Learning Applications in Macroeconomic Finance*
+
+筛选时优先保留能够看到公开Slides、视频、R Markdown、课程大纲、syllabus、Python编码要求或清晰课程结构的资源。只看到课程名和一段简介的候选课程暂不进入主资源库。
 
 ## 主资源库筛选原则
 
@@ -138,6 +156,7 @@
 │   ├── resources-extra-3.tsv
 │   ├── resources-books.tsv
 │   ├── resources-books-extra.tsv
+│   ├── resources-courses-extra.tsv
 │   └── curation.json
 ├── docs/
 │   ├── resource-selection.md
@@ -154,9 +173,9 @@ https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
 ## 后续建设重点
 
-下一阶段不再优先追求数量，而是继续做三件事：
+资源库已经达到 **120项精选资源** 的目标上限，后续不再优先扩充数量，而是继续做三件事：
 
-1. 逐项核验110项主资源的“实质材料丰富度”；
+1. 逐项核验120项主资源的“实质材料丰富度”；
 2. 用更优资源替换仍然偏弱的入口型资源；
 3. 增加项目组原创教学资源、Notebook和Prompt模板。
 
