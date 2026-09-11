@@ -1,6 +1,6 @@
 {
   "updated": "2026-09-11",
-  "principle": "优先展示具有实质教学内容、可直接用于备课、授课、实验、作业与自学的资源。第三专区‘AI＋金融工程方法、工具与实验’坚持领域专用、可运行、可复现和高教学增量。第四专区‘案例’只收录金融机构真实使用AI的高质量案例，要求具有明确机构、业务场景、AI应用方式和可核验的一手来源；交易所投教、市场数据、一般金融知识页不再作为案例进入前台。",
+  "principle": "优先展示具有实质教学内容、可直接用于备课、授课、实验、作业与自学的资源。第三专区‘AI＋金融工程方法、工具与实验’坚持领域专用、可运行、可复现和高教学增量。第四专区‘案例’只收录金融机构真实使用AI的高质量案例。第五专区‘AI赋能教学’采用同样的高门槛：优先系统课程、连续专题、完整讲义/Notebook、可复用作业与Agentic Research工作流；普通产品功能页、提示词合集和浅层操作指南不进入前台精选。",
   "featured_order": [
     "机器学习与资产定价",
     "经济金融智能体设计",
@@ -86,8 +86,11 @@
     "Two Sigma：AI 与机器学习嵌入系统化投资全流程",
     "Nasdaq AI Market Surveillance：AI 辅助市场操纵监测与调查",
     "智能体与社会科学研究（Agentic Coding in Social Sciences Research）",
-    "Financial Services Resources",
-    "ChatGPT for Financial Services Solution Kit"
+    "Vibe Researching with Coding Agents / Open Scholar Skill",
+    "LLMs for Social Science",
+    "Large Language Models for the Economic and Social Sciences",
+    "AI Pedagogy Project",
+    "Teach with Generative AI / Harvard GenAI Library for Teaching and Learning"
   ],
   "deprioritized": [],
   "hidden_from_main_library": [
@@ -166,7 +169,14 @@
     "IMF Data",
     "上交所期权学习汇编书籍",
     "Options 101",
-    "How Financial Indices Do Their Thing"
+    "How Financial Indices Do Their Thing",
+    "Data Analysis with ChatGPT",
+    "Finance Workflows with ChatGPT Work",
+    "Finance Use Cases and Prompts",
+    "ChatGPT Workflows for Finance Teams",
+    "ChatGPT for Excel and Google Sheets",
+    "Financial Services Resources",
+    "ChatGPT for Financial Services Solution Kit"
   ],
-  "note": "hidden_from_main_library中的资源不删除原始数据，只退出前台精选库。第四专区案例采用高门槛替换制：优先金融机构一手披露，必须能说明AI进入了什么金融业务流程、如何使用以及至少一种可讨论的价值或治理问题。"
+  "note": "hidden_from_main_library中的资源不删除原始数据，只退出前台精选库。第四专区案例与第五专区AI赋能教学均采用高门槛替换制：新资源只有在体系完整度、教学/科研可复用性和实质材料丰富度上明显优于现有精选资源时，才进入前台。"
 }
