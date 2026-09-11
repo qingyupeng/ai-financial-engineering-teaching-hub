@@ -4,33 +4,35 @@
 
 ## 当前建设进度
 
-平台目前维护 **100项候选资源**，经第二轮人工质量复核后：
+平台目前维护 **114项候选资源**，经人工质量复核后形成 **100项前台精选教学资源**：
 
-- **86项进入前台精选教学资源库**；
+- **100项进入前台精选教学资源库**；
 - **14项纯培养方案/项目介绍页退出主资源库前台**，仅保留为课程体系对标参考；
 - 北京大学金融工程实验室 **“机器学习与资产定价”** 置于资源库第一位；
-- 前20项优先展示具有讲义、代码、习题、数据、Notebook、视频、案例或完整教程的资源。
+- 新增 **14项“经典教材与专著”**，覆盖AI＋金融工程、AI＋金融、机器学习方法基础以及AI/机器学习＋经济学与因果推断；
+- 优先展示具有教材、讲义、代码、习题、数据、Notebook、视频、案例或完整教程的资源。
 
 完整候选数据位于 `data/`，排序与隐藏规则见 `data/curation.json`。
 
 ## 核心定位
 
 - **教师导向**：服务《金融工程》教师获取资源和自主学习。
-- **实质内容优先**：讲义、Slides、代码、Notebook、习题、考试、视频、数据和案例优先于课程简介。
+- **实质内容优先**：系统教材、讲义、Slides、代码、Notebook、习题、考试、视频、数据和案例优先于课程简介。
 - **课程映射**：资源与远期、期货、互换、期权、数值定价、投资组合、风险管理、金融计算等模块关联。
 - **AI标签**：机器学习、深度学习、生成式AI、强化学习、金融LLM、AI Agent等。
 - **二次加工**：每项主资源均标注“教学价值”和“建议用途”。
 - **持续更新**：记录核验日期、更新日志和教师反馈。
-- **版权合规**：外部资源优先链接官方入口，不未经授权重新托管原始课件。
+- **版权合规**：外部资源优先链接官方入口，不未经授权重新托管原始课件或教材。
 
 ## 主资源库筛选原则
 
-资源优先级按照“是否真正可用于教学”判断，而不是只看学校或机构名气。
+资源优先级按照“是否真正可用于教学”判断，而不是只看学校、出版社或机构名气。
 
 ### 优先展示
 
 具有以下一种或多种实质内容的资源：
 
+- 系统教材、经典专著或开放在线书；
 - 讲义、课件或完整课程页面；
 - Python / R / MATLAB代码、Notebook；
 - 习题、作业、考试及参考答案；
@@ -42,6 +44,33 @@
 ### 降权或移出主资源库
 
 只有课程名称、培养方案、项目介绍或一两段课程简介，无法直接支持教师备课、自学、实验或作业设计的页面。
+
+## 经典教材与专著
+
+该专区目前收录14本/套核心书目，按三条线组织：
+
+### AI＋金融 / 金融工程
+
+- *Machine Learning in Finance: From Theory to Practice* — Dixon, Halperin, Bilokon
+- *Advances in Financial Machine Learning* — Marcos López de Prado
+- *Machine Learning for Asset Managers* — Marcos M. López de Prado
+- *Artificial Intelligence in Finance* — Yves Hilpisch
+- *Machine Learning for Algorithmic Trading, 2nd Edition* — Stefan Jansen
+
+### 机器学习方法基础
+
+- *The Elements of Statistical Learning*
+- *An Introduction to Statistical Learning: with Applications in Python*
+- *Statistical Learning with Sparsity: The Lasso and Generalizations*
+- *Computer Age Statistical Inference*
+
+### AI / 机器学习＋经济学与因果推断
+
+- *The Economics of Artificial Intelligence: An Agenda*
+- *Prediction Machines: The Simple Economics of Artificial Intelligence*
+- *Causal Inference: The Mixtape*
+- *The Effect: An Introduction to Research Design and Causality*
+- *Causal Inference and Machine Learning: In Economics, Social, and Health Sciences*
 
 ## 100分评价框架
 
@@ -61,12 +90,13 @@
 
 1. 顶尖高校课程
 2. 金融机构教育资源
-3. AI＋金融工程专题
-4. 金融工程AI工具箱
-5. Python / Jupyter实验库
-6. 教学案例库
-7. AI辅助教学方法
-8. 教师学习路径
+3. **经典教材与专著**
+4. AI＋金融工程专题
+5. 金融工程AI工具箱
+6. Python / Jupyter实验库
+7. 教学案例库
+8. AI辅助教学方法
+9. 教师学习路径
 
 ## 目录结构
 
@@ -81,6 +111,7 @@
 │   ├── resources-extra-1.tsv
 │   ├── resources-extra-2.tsv
 │   ├── resources-extra-3.tsv
+│   ├── resources-books.tsv
 │   └── curation.json
 ├── docs/
 │   ├── resource-selection.md
@@ -101,7 +132,7 @@ python -m http.server 8000
 
 ## GitHub Pages
 
-仓库已经配置 GitHub Actions 自动部署。推送到 `main` 分支后会自动更新：
+仓库已经配置 GitHub Actions 自动部署：
 
 https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
@@ -109,10 +140,10 @@ https://qingyupeng.github.io/ai-financial-engineering-teaching-hub/
 
 下一阶段不再优先追求数量，而是继续做三件事：
 
-1. 逐项核验86项主资源的“实质材料丰富度”；
+1. 逐项核验100项主资源的“实质材料丰富度”；
 2. 用更优资源替换仍然偏弱的入口型资源；
 3. 增加项目组原创教学资源、Notebook和Prompt模板。
 
 ## 版权说明
 
-本站外部资源的课程、课件、文档、视频、代码等版权归原作者或原机构所有。本项目原则上只提供官方入口、中文导读与教学用途说明。项目组原创资源将单独注明作者、许可和使用范围。
+本站外部资源的课程、教材、课件、文档、视频、代码等版权归原作者或原机构所有。本项目原则上只提供官方入口、中文导读与教学用途说明，不重新分发受版权保护的教材全文。项目组原创资源将单独注明作者、许可和使用范围。
