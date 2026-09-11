@@ -1,8 +1,7 @@
-const zoneFilter = document.querySelector('#zoneFilter');
 const levelFilter = document.querySelector('#levelFilter');
 const searchInput = document.querySelector('#searchInput');
 const resetFilters = document.querySelector('#resetFilters');
-const resourceGrid = document.querySelector('#resourceGrid');
+const zoneResourceSections = document.querySelector('#zoneResourceSections');
 const resultCount = document.querySelector('#resultCount');
 const resourceCount = document.querySelector('#resourceCount');
 
@@ -13,29 +12,54 @@ const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
 const coreZones = [
-  { name: '经典教材与专著', sourceZones: ['经典教材与专著'] },
-  { name: '顶尖高校课程', sourceZones: ['顶尖高校课程'] },
-  { name: 'AI＋金融/金融工程前沿', sourceZones: ['AI＋金融工程专题'] },
-  { name: '工具、代码与实验', sourceZones: ['金融工程AI工具箱', 'Python / Jupyter实验库'] },
-  { name: '金融机构与市场案例', sourceZones: ['金融机构教育资源', '教学案例库'] },
-  { name: 'AI赋能教学', sourceZones: ['AI辅助教学方法'] }
+  {
+    id: 'zone-books',
+    name: '经典教材与专著',
+    number: '01',
+    description: '系统教材与经典专著，覆盖AI＋金融工程、AI＋金融、机器学习基础、概率建模、强化学习、AI＋经济学与因果推断。',
+    sourceZones: ['经典教材与专著']
+  },
+  {
+    id: 'zone-courses',
+    name: '顶尖高校课程',
+    number: '02',
+    description: '优先保留具有讲义、课件、代码、习题、考试或视频等实质教学材料的高质量开放课程。',
+    sourceZones: ['顶尖高校课程']
+  },
+  {
+    id: 'zone-frontier',
+    name: 'AI＋金融/金融工程前沿',
+    number: '03',
+    description: '金融机器学习、深度学习、强化学习、金融LLM、Agent及其他AI金融前沿应用。',
+    sourceZones: ['AI＋金融工程专题']
+  },
+  {
+    id: 'zone-labs',
+    name: '工具、代码与实验',
+    number: '04',
+    description: '量化工具、Python库、Jupyter Notebook、优化、定价、回测、金融数据处理与可复现实验。',
+    sourceZones: ['金融工程AI工具箱', 'Python / Jupyter实验库']
+  },
+  {
+    id: 'zone-cases',
+    name: '金融机构与市场案例',
+    number: '05',
+    description: '交易所和金融机构教育资源、真实金融数据、市场制度、衍生品案例以及课堂讨论素材。',
+    sourceZones: ['金融机构教育资源', '教学案例库']
+  },
+  {
+    id: 'zone-teaching',
+    name: 'AI赋能教学',
+    number: '06',
+    description: '围绕备课、知识解释、习题与案例、编程辅导、作业评价、课程论文辅助评价和教学反馈组织资源。',
+    sourceZones: ['AI辅助教学方法']
+  }
 ];
 
 function coreZone(resource){
   const group = coreZones.find(g => g.sourceZones.includes(resource.zone));
   return group ? group.name : resource.zone;
 }
-
-const bookSpotlightOrder = [
-  'Machine Learning in Finance: From Theory to Practice',
-  'Machine Learning for Algorithmic Trading, 2nd Edition',
-  'Probabilistic Machine Learning for Finance and Investing',
-  'Machine Learning for Finance',
-  'Advances in Financial Machine Learning',
-  'Artificial Intelligence in Finance',
-  'The Economics of Artificial Intelligence: An Agenda',
-  'Applied Causal Inference Powered by ML and AI'
-];
 
 function parseTSV(text){
   const lines = text.trim().split(/\r?\n/);
@@ -65,33 +89,92 @@ function applyCuration(items){
     .sort((a,b) => curationRank(a) - curationRank(b) || a.title.localeCompare(b.title, 'zh-CN'));
 }
 
+function resourceMatches(resource, q, level){
+  const displayZone = coreZone(resource);
+  const haystack = normalize([
+    resource.title,
+    resource.source,
+    resource.zone,
+    displayZone,
+    resource.finance_module,
+    resource.ai_topic,
+    resource.level,
+    ...(resource.tags || [])
+  ].join(' '));
+  return (!q || haystack.includes(q)) && (!level || resource.level === level);
+}
+
+function renderCard(resource){
+  const grade = gradeClass(resource.score);
+  const tags = [resource.finance_module, resource.ai_topic, resource.level]
+    .filter(Boolean)
+    .map(x => `<span class="chip">${x}</span>`)
+    .join('');
+  const badge = curation.featured_order.includes(resource.title)
+    ? '<span class="badge">重点教学资源</span>'
+    : `<span class="badge">${resource.zone}</span>`;
+
+  return `<article class="resource-card">
+    <div class="card-top">${badge}<span class="grade ${grade}">${grade}级 · ${resource.score}</span></div>
+    <h3>${resource.title}</h3>
+    <p class="source">${resource.source}</p>
+    <div class="meta">${tags}</div>
+    <p><span class="card-section-label">教学价值</span>${resource.teaching_value}</p>
+    <p><span class="card-section-label">建议用途</span>${resource.suggested_use}</p>
+    <div class="card-footer">
+      <a href="${resource.url}" target="_blank" rel="noopener noreferrer">访问官方资源 ↗</a>
+      <span class="verified">核验 ${resource.last_verified}</span>
+    </div>
+  </article>`;
+}
+
+function updateZoneCounts(){
+  document.querySelectorAll('[data-zone-count]').forEach(node => {
+    const zoneName = node.getAttribute('data-zone-count');
+    const count = resources.filter(r => coreZone(r) === zoneName).length;
+    node.textContent = `${count} 项资源`;
+  });
+}
+
 function render(){
   const q = normalize(searchInput.value);
-  const zone = zoneFilter.value;
   const level = levelFilter.value;
-  const filtered = resources.filter(r => {
-    const displayZone = coreZone(r);
-    const haystack = normalize([r.title,r.source,r.zone,displayZone,r.finance_module,r.ai_topic,r.level,...(r.tags||[])].join(' '));
-    return (!q || haystack.includes(q)) && (!zone || displayZone === zone) && (!level || r.level === level);
-  });
+  const filtered = resources.filter(r => resourceMatches(r, q, level));
+  const filtering = Boolean(q || level);
 
-  resultCount.textContent = `显示 ${filtered.length} / ${resources.length} 项精选教学资源`;
-  resourceGrid.innerHTML = filtered.length ? filtered.map(r => {
-    const grade = gradeClass(r.score);
-    const tags = [r.finance_module,r.ai_topic,r.level].filter(Boolean).map(x=>`<span class="chip">${x}</span>`).join('');
-    const featured = curation.featured_order.includes(r.title)
-      ? '<span class="badge">重点教学资源</span>'
-      : `<span class="badge">${coreZone(r)}</span>`;
-    return `<article class="resource-card">
-      <div class="card-top">${featured}<span class="grade ${grade}">${grade}级 · ${r.score}</span></div>
-      <h3>${r.title}</h3>
-      <p class="source">${r.source}</p>
-      <div class="meta">${tags}</div>
-      <p><span class="card-section-label">教学价值</span>${r.teaching_value}</p>
-      <p><span class="card-section-label">建议用途</span>${r.suggested_use}</p>
-      <div class="card-footer"><a href="${r.url}" target="_blank" rel="noopener noreferrer">访问官方资源 ↗</a><span class="verified">核验 ${r.last_verified}</span></div>
-    </article>`;
-  }).join('') : '<div class="empty">没有匹配的资源，请尝试调整关键词或筛选条件。</div>';
+  resultCount.textContent = filtering
+    ? `筛选结果：${filtered.length} / ${resources.length} 项资源`
+    : `按 6 个专区分组展示，共 ${resources.length} 项精选教学资源`;
+
+  const sections = coreZones.map(group => {
+    const allInZone = resources.filter(r => coreZone(r) === group.name);
+    const items = allInZone.filter(r => resourceMatches(r, q, level));
+
+    if (filtering && !items.length) return '';
+
+    const countLabel = filtering
+      ? `${items.length} / ${allInZone.length}`
+      : `${allInZone.length}`;
+
+    return `<section id="${group.id}" class="zone-resource-block" aria-labelledby="${group.id}-title">
+      <div class="zone-resource-head">
+        <div class="zone-resource-heading">
+          <span class="zone-number">${group.number}</span>
+          <div>
+            <h3 id="${group.id}-title">${group.name}</h3>
+            <p>${group.description}</p>
+          </div>
+        </div>
+        <div class="zone-resource-count"><strong>${countLabel}</strong><span>项资源</span></div>
+      </div>
+      ${items.length
+        ? `<div class="resource-grid">${items.map(renderCard).join('')}</div>`
+        : '<div class="empty">该专区暂无匹配资源。</div>'}
+      <div class="zone-footer-nav"><a href="#zones-title">↑ 返回资源专区导航</a></div>
+    </section>`;
+  }).join('');
+
+  zoneResourceSections.innerHTML = sections || '<div class="empty">没有匹配的资源，请尝试调整关键词或难度。</div>';
 }
 
 function updateRubric(){
@@ -108,99 +191,23 @@ function updateRubric(){
   if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、代码实验、真实数据和可复用教学材料优先；仅有课程名称、培养方案或简短介绍的页面不进入主资源库前列。';
 }
 
-function injectBookshelfStyles(){
-  if (document.querySelector('#bookshelfStyles')) return;
-  const style = document.createElement('style');
-  style.id = 'bookshelfStyles';
-  style.textContent = `
-    .zones-grid article{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-    .zones-grid article:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,58,99,.10);border-color:#b9cad9}
-    .bookshelf-section{background:#fff7e8;border-top:1px solid #ead8b4;border-bottom:1px solid #ead8b4}
-    .bookshelf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .book-card{background:#fff;border:1px solid #e7d7b8;border-radius:18px;padding:22px;display:flex;flex-direction:column;min-height:300px}
-    .book-kicker{font-size:.75rem;font-weight:900;color:#9a6713;letter-spacing:.06em;margin-bottom:8px}
-    .book-card h3{margin:0 0 8px;font-size:1.08rem;line-height:1.45}
-    .book-card .source{margin-bottom:12px}
-    .book-card p{color:var(--muted)}
-    .book-card a{margin-top:auto;font-weight:800;color:var(--primary-2);text-decoration:none}
-    .bookshelf-actions{display:flex;gap:12px;align-items:center}
-    @media(max-width:1100px){.bookshelf-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.bookshelf-grid{grid-template-columns:1fr}.bookshelf-actions{display:block}.bookshelf-actions .btn{margin-top:10px}}
-  `;
-  document.head.appendChild(style);
-}
-
-function filterToZone(zone){
-  zoneFilter.value = zone;
-  searchInput.value = '';
-  levelFilter.value = '';
-  render();
-  document.querySelector('#resources')?.scrollIntoView({behavior:'smooth'});
-}
-
 function activateZoneCards(){
-  document.querySelectorAll('.zones-grid article').forEach(card => {
-    const zone = card.querySelector('h3')?.textContent?.trim();
-    if (!zone) return;
-    card.setAttribute('role','button');
+  document.querySelectorAll('.zone-nav-card').forEach(card => {
+    const link = card.querySelector('h3 a');
+    if (!link) return;
+    card.setAttribute('role','link');
     card.setAttribute('tabindex','0');
-    card.setAttribute('aria-label',`查看${zone}`);
-    const openZone = () => filterToZone(zone);
-    card.addEventListener('click',openZone);
-    card.addEventListener('keydown',e=>{ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openZone(); } });
-  });
-}
-
-function renderBookshelf(){
-  const books = resources.filter(r => coreZone(r) === '经典教材与专著');
-  if (!books.length) return;
-  let section = document.querySelector('#bookshelf');
-  if (!section) {
-    section = document.createElement('section');
-    section.id = 'bookshelf';
-    section.className = 'bookshelf-section';
-    const resourceSection = document.querySelector('#resources');
-    resourceSection?.parentNode?.insertBefore(section,resourceSection);
-  }
-  const spotlight = bookSpotlightOrder.map(title => books.find(b => b.title === title)).filter(Boolean);
-  section.innerHTML = `
-    <div class="container section">
-      <div class="section-head">
-        <div><span class="eyebrow">核心书架 · 第一专区</span><h2>经典教材与专著</h2></div>
-        <div class="bookshelf-actions">
-          <p>系统覆盖AI＋金融工程、AI＋金融、机器学习基础、AI＋经济学与因果推断。当前收录 <strong>${books.length}</strong> 本/套。</p>
-          <button id="showAllBooks" class="btn secondary" type="button">查看全部${books.length}本</button>
-        </div>
-      </div>
-      <div class="bookshelf-grid">
-        ${spotlight.map((b,i)=>`<article class="book-card">
-          <span class="book-kicker">推荐 ${String(i+1).padStart(2,'0')} · ${b.ai_topic}</span>
-          <h3>${b.title}</h3>
-          <p class="source">${b.source}</p>
-          <p><span class="card-section-label">为什么值得读</span>${b.teaching_value}</p>
-          <a href="${b.url}" target="_blank" rel="noopener noreferrer">查看教材/配套资源 ↗</a>
-        </article>`).join('')}
-      </div>
-    </div>`;
-  document.querySelector('#showAllBooks')?.addEventListener('click',()=>filterToZone('经典教材与专著'));
-  const nav = document.querySelector('.nav');
-  if (nav && !nav.querySelector('a[href="#bookshelf"]')) {
-    const link = document.createElement('a');
-    link.href = '#bookshelf';
-    link.textContent = '经典教材';
-    nav.insertBefore(link,nav.firstChild);
-  }
-}
-
-function populateZoneFilter(){
-  zoneFilter.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());
-  coreZones.forEach(group => {
-    const count = resources.filter(r => coreZone(r) === group.name).length;
-    if (!count) return;
-    const option = document.createElement('option');
-    option.value = group.name;
-    option.textContent = `${group.name}（${count}）`;
-    zoneFilter.appendChild(option);
+    card.setAttribute('aria-label',`查看${link.textContent.trim()}`);
+    card.addEventListener('click', event => {
+      if (event.target.closest('a')) return;
+      document.querySelector(link.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+    });
+    card.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        document.querySelector(link.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+      }
+    });
   });
 }
 
@@ -216,11 +223,18 @@ async function loadResources(){
       'data/curation.json'
     ];
     const responses = await Promise.all(urls.map(url => fetch(url)));
-    if (!responses.every(r=>r.ok)) throw new Error('resource fetch failed');
-    const [base,text1,text2,text3,booksText,booksExtraText,curationData] = await Promise.all([
-      responses[0].json(), responses[1].text(), responses[2].text(), responses[3].text(),
-      responses[4].text(), responses[5].text(), responses[6].json()
+    if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
+
+    const [base, text1, text2, text3, booksText, booksExtraText, curationData] = await Promise.all([
+      responses[0].json(),
+      responses[1].text(),
+      responses[2].text(),
+      responses[3].text(),
+      responses[4].text(),
+      responses[5].text(),
+      responses[6].json()
     ]);
+
     curation = curationData;
     const candidateResources = [
       ...(base.resources || []),
@@ -230,21 +244,24 @@ async function loadResources(){
       ...parseTSV(booksText),
       ...parseTSV(booksExtraText)
     ];
+
     resources = applyCuration(candidateResources);
     resourceCount.textContent = resources.length;
-    populateZoneFilter();
+    updateZoneCounts();
     render();
-    renderBookshelf();
   } catch (error) {
     console.error(error);
-    resourceGrid.innerHTML = '<div class="empty">资源目录加载失败，请稍后刷新页面。</div>';
+    zoneResourceSections.innerHTML = '<div class="empty">资源目录加载失败，请稍后刷新页面。</div>';
   }
 }
 
-[searchInput,zoneFilter,levelFilter].forEach(el => el.addEventListener('input',render));
-resetFilters.addEventListener('click',()=>{ searchInput.value=''; zoneFilter.value=''; levelFilter.value=''; render(); });
+[searchInput, levelFilter].forEach(el => el.addEventListener('input', render));
+resetFilters.addEventListener('click', () => {
+  searchInput.value = '';
+  levelFilter.value = '';
+  render();
+});
 
-injectBookshelfStyles();
 activateZoneCards();
 updateRubric();
 loadResources();
