@@ -3,6 +3,12 @@
   "principle": "优先展示具有实质教学内容、可直接用于备课/授课/实验/作业/自学的资源；系统教材、开放课程、配套代码/Notebook、讲义、习题、视频、真实数据优先。仅有课程名称、培养方案或简要介绍的页面不进入主资源库前列，必要时从主资源库隐藏。",
   "featured_order": [
     "机器学习与资产定价",
+    "Artificial Intelligence and Quantitative Finance",
+    "机器学习与智能金融",
+    "基于机器学习的资产定价虚拟仿真实验",
+    "Artificial Intelligence in FinTech",
+    "机器学习与金融应用",
+    "量化投资导论与金融工程实验资源",
     "Machine Learning & Causal Inference: A Short Course",
     "Machine Learning in Finance",
     "AI and Finance",
