@@ -8,7 +8,7 @@ const resourceCount = document.querySelector('#resourceCount');
 let resources = [];
 let curation = { featured_order: [], deprioritized: [], hidden_from_main_library: [] };
 
-const BUILD_VERSION = '20260911-1048';
+const BUILD_VERSION = '20260911-1118';
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
@@ -221,6 +221,7 @@ async function loadResources(){
       'data/resources-extra-3.tsv',
       'data/resources-books.tsv',
       'data/resources-books-extra.tsv',
+      'data/resources-courses-extra.tsv',
       'data/curation.json'
     ];
     const responses = await Promise.all(
@@ -228,14 +229,15 @@ async function loadResources(){
     );
     if (!responses.every(r => r.ok)) throw new Error('resource fetch failed');
 
-    const [base, text1, text2, text3, booksText, booksExtraText, curationData] = await Promise.all([
+    const [base, text1, text2, text3, booksText, booksExtraText, coursesExtraText, curationData] = await Promise.all([
       responses[0].json(),
       responses[1].text(),
       responses[2].text(),
       responses[3].text(),
       responses[4].text(),
       responses[5].text(),
-      responses[6].json()
+      responses[6].text(),
+      responses[7].json()
     ]);
 
     curation = curationData;
@@ -245,7 +247,8 @@ async function loadResources(){
       ...parseTSV(text2),
       ...parseTSV(text3),
       ...parseTSV(booksText),
-      ...parseTSV(booksExtraText)
+      ...parseTSV(booksExtraText),
+      ...parseTSV(coursesExtraText)
     ];
 
     resources = applyCuration(candidateResources);
