@@ -1,5 +1,42 @@
 # 更新日志
 
+## 2026-09-11 · v0.19 · 全站质量复核与一致性优化
+
+- 对前端、数据分类、资源排序、检索、移动端、维护文档和部署流程进行全站复核。
+- 统一前台96项精选资源的 `featured_order`，避免精选资源因未进入排序表而出现排序和标识不一致。
+- 卡片评分统一采用100分制展示，不再同时使用容易与编辑优先级混淆的“A/B/C级”标签。
+- 搜索范围扩展至“教学价值”和“建议用途”，支持按DSGE、回测偏差、学术诚信、组合优化等实际教学需求检索。
+- 第3至第5专区的二级分组增加回退机制，未来新增精选资源即使尚未配置二级分组，也不会出现“计数增加但卡片不显示”的问题。
+- 第5专区按“教师科研与Agentic Research / 课程设计与教学实践”分组展示。
+- 优化移动端主导航、键盘焦点、专区直达和卡片链接语义；专区导航卡改为标准链接。
+- 统一首页、第5专区说明、教师学习路径和资源筛选文案，移除容易过时的页面版本说明。
+- 新增 `scripts/validate-data.mjs`，自动检查必填字段、重复标题、评分、难度、URL、核验日期及前台/后台归属。
+- GitHub Pages部署流程增加数据校验步骤，结构性数据错误将阻止错误版本发布。
+- 更新资源筛选标准、教师试用方案和资源共建说明，使其与当前五专区和多数据文件结构一致。
+
+### 当前五大专区
+
+1. 顶尖高校课程：24项（国内7项＋海外17项）
+2. 经典教材与专著：34项（中文10项＋英文24项）
+3. AI＋金融工程方法、工具与实验：22项
+4. 案例：10项
+5. AI赋能教学：6项
+
+合计：**96项前台精选资源**；候选资源179项，后台候选83项。
+
+## 2026-09-11 · v0.18 · AI赋能教学专区精品化
+
+- 以《智能体与社会科学研究》为质量标杆，对“AI赋能教学”专区重新筛选，不再用普通产品功能页、提示词合集或浅层操作指南补数量。
+- 保留 **王彬《智能体与社会科学研究（Agentic Coding in Social Sciences Research）》**。
+- 新增5项体系化高质量资源：
+  - **Vibe Researching with Coding Agents / Open Scholar Skill** — 教师科研与Agentic Research全流程；
+  - **LLMs for Social Science** — Oxford DPIR / Nuffield College，含syllabus、5个连续Notebook模块和示例数据；
+  - **Large Language Models for the Economic and Social Sciences** — University of Mannheim，含Lectures、Exercises、AI usage policy、grading rubric与project ideas；
+  - **AI Pedagogy Project** — metaLAB at Harvard / Berkman Klein Center，提供AI Guide、教学活动、Assignments与课堂政策；
+  - **Teach with Generative AI / Harvard GenAI Library for Teaching and Learning** — Harvard University / VPAL，覆盖课程设计、课堂使用、评价、tutor bot、学术诚信和教师实践案例。
+- 将7项教学增量不足的通用AI功能/提示词页面退出前台，保留在后台候选库。
+- “AI赋能教学”由8项调整为 **6项**；候选资源由174项增至179项；前台精选由98项调整为96项；后台候选增至83项。
+
 ## 2026-09-11 · v0.17 · 第四专区重构为金融业AI案例
 
 - 根据教师反馈，将第4专区由 **“金融机构与市场案例”** 更名为 **“案例”**。
@@ -191,6 +228,6 @@
 
 1. 项目组原创教学资源；
 2. 可运行 Python / Jupyter 教学案例；
-3. AI教学Prompt模板；
+3. 高质量AI教学与科研工作流模板；
 4. 教师试用、反馈与平台迭代证据；
 5. 持续核验新增高校课程、教材、GitHub项目及金融业AI案例的一手材料、维护状态和教学价值。
