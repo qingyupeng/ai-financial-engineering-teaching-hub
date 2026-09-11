@@ -82,22 +82,23 @@ function updateRubric(){
       <div><strong>5</strong><span>时效性</span></div>`;
   }
   if (gradeNote) {
-    gradeNote.innerHTML = '<b>排序原则：</b>讲义、代码、习题、视频、数据、Notebook和案例优先；只有课程名称或培养方案的页面不进入主资源库前列。';
+    gradeNote.innerHTML = '<b>排序原则：</b>讲义、代码、习题、视频、数据、Notebook、案例和系统教材优先；只有课程名称或培养方案的页面不进入主资源库前列。';
   }
 }
 
 async function loadResources(){
   try {
-    const [baseResponse, batch1, batch2, batch3, curationResponse] = await Promise.all([
+    const [baseResponse, batch1, batch2, batch3, booksResponse, curationResponse] = await Promise.all([
       fetch('data/resources.json'),
       fetch('data/resources-extra-1.tsv'),
       fetch('data/resources-extra-2.tsv'),
       fetch('data/resources-extra-3.tsv'),
+      fetch('data/resources-books.tsv'),
       fetch('data/curation.json')
     ]);
-    if (![baseResponse,batch1,batch2,batch3,curationResponse].every(r=>r.ok)) throw new Error('resource fetch failed');
-    const [base, text1, text2, text3, curationData] = await Promise.all([
-      baseResponse.json(), batch1.text(), batch2.text(), batch3.text(), curationResponse.json()
+    if (![baseResponse,batch1,batch2,batch3,booksResponse,curationResponse].every(r=>r.ok)) throw new Error('resource fetch failed');
+    const [base, text1, text2, text3, booksText, curationData] = await Promise.all([
+      baseResponse.json(), batch1.text(), batch2.text(), batch3.text(), booksResponse.text(), curationResponse.json()
     ]);
 
     curation = curationData;
@@ -105,7 +106,8 @@ async function loadResources(){
       ...(base.resources || []),
       ...parseTSV(text1),
       ...parseTSV(text2),
-      ...parseTSV(text3)
+      ...parseTSV(text3),
+      ...parseTSV(booksText)
     ];
     resources = applyCuration(candidateResources);
 
