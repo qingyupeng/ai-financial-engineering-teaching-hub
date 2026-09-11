@@ -1,32 +1,31 @@
-# AI＋金融工程高质量资源目录（前台精选126项）
+# AI＋金融工程高质量资源目录（前台精选125项）
 
-> 更新时间：2026-09-11。平台维护140项候选资源，经人工复核后形成 **126项前台精选教学资源**。信息架构采用 **6个核心资源专区＋独立教师学习路径**。
+> 更新时间：2026-09-11。平台维护140项候选资源，经人工复核后形成 **125项前台精选教学资源**。信息架构采用 **6个核心资源专区＋独立教师学习路径**。
 
 ## 六个核心专区
 
 | 核心专区 | 数量 | 说明 |
 |---|---:|---|
-| **1. 顶尖高校课程** | **23** | 国内7项＋海外16项高质量课程资源 |
+| **1. 顶尖高校课程** | **22** | 国内6项＋海外16项高质量课程资源 |
 | **2. 经典教材与专著** | **24** | 系统知识框架与长期自学主线 |
 | **3. AI＋金融/金融工程前沿** | **13** | 金融ML、深度学习、RL、LLM、Agent等 |
 | **4. 工具、代码与实验** | **31** | 量化工具＋Python/Jupyter实验统一入口 |
 | **5. 金融机构与市场案例** | **30** | 交易所/机构投教＋真实数据＋市场案例 |
 | **6. AI赋能教学** | **5** | 备课、讲解、编程、评价与教学反馈 |
-| **合计** | **126** | |
+| **合计** | **125** | |
 
-> “教师学习路径”不作为资源专区，而作为跨专区的使用导航层独立保留。
+## 1. 顶尖高校课程（22项）
 
-## 1. 顶尖高校课程（23项）
-
-### 国内高校（7项）
+### 国内高校（6项）
 
 1. **机器学习与资产定价** — 北京大学金融工程实验室
 2. **Artificial Intelligence and Quantitative Finance** — 清华大学交叉信息研究院
 3. **机器学习与智能金融** — 中央财经大学金融学院
 4. **基于机器学习的资产定价虚拟仿真实验** — 湖南大学金融与统计学院
 5. **Artificial Intelligence in FinTech** — 复旦大学
-6. **机器学习与金融应用** — 东北财经大学
-7. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院金融工程系
+6. **量化投资导论与金融工程实验资源** — 对外经济贸易大学金融学院金融工程系
+
+> **后台候选：东北财经大学《机器学习与金融应用》**。官方培养方案和教务信息可确认课程真实存在，并可确认课程代码、总学时和实验学时，但目前未找到公开课程主页、课件、代码、实验项目或独立教学大纲，因此不作为前台“可直接访问教学资源”。
 
 ### 海外高校（16项）
 
@@ -47,10 +46,6 @@
 15. **Introduction to Financial Mathematics** — Princeton University ORFE
 16. **Financial Markets** — Yale Open Courses
 
-### 国内课程筛选说明
-
-国内课程仍坚持“实质教学材料优先”：清华大学课程公开完整周次安排、作业、编码作业与课程项目要求；中央财经大学公开慕课、配套课件和代码；湖南大学提供机器学习资产定价虚拟仿真实验；复旦大学公开完整课程syllabus并包含Python项目；东北财经大学课程54学时中含36学时实验；对外经济贸易大学公开量化投资、金融计算和多项金融工程实验资料。
-
 ## 2. 经典教材与专著（24项）
 
 ### AI＋金融 / 金融工程
@@ -66,10 +61,10 @@
 
 ### 机器学习 / 概率机器学习 / 深度学习基础
 
-9. **The Elements of Statistical Learning** — Trevor Hastie, Robert Tibshirani, Jerome Friedman
-10. **An Introduction to Statistical Learning: with Applications in Python** — Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor
-11. **Statistical Learning with Sparsity: The Lasso and Generalizations** — Trevor Hastie, Robert Tibshirani, Martin Wainwright
-12. **Computer Age Statistical Inference** — Bradley Efron, Trevor Hastie
+9. **The Elements of Statistical Learning**
+10. **An Introduction to Statistical Learning: with Applications in Python**
+11. **Statistical Learning with Sparsity: The Lasso and Generalizations**
+12. **Computer Age Statistical Inference**
 13. **Pattern Recognition and Machine Learning** — Christopher M. Bishop
 14. **Probabilistic Machine Learning: An Introduction** — Kevin P. Murphy
 15. **Probabilistic Machine Learning: Advanced Topics** — Kevin P. Murphy
@@ -79,15 +74,15 @@
 
 ### AI / 机器学习＋经济学
 
-19. **The Economics of Artificial Intelligence: An Agenda** — Ajay Agrawal, Joshua Gans, Avi Goldfarb (eds.)
-20. **Prediction Machines: The Simple Economics of Artificial Intelligence** — Ajay Agrawal, Joshua Gans, Avi Goldfarb
+19. **The Economics of Artificial Intelligence: An Agenda**
+20. **Prediction Machines: The Simple Economics of Artificial Intelligence**
 
 ### 因果推断＋机器学习
 
-21. **Applied Causal Inference Powered by ML and AI** — Victor Chernozhukov, Christian Hansen, Nathan Kallus, Martin Spindler, Vasilis Syrgkanis
-22. **Causal Inference: The Mixtape** — Scott Cunningham
-23. **The Effect: An Introduction to Research Design and Causality** — Nick Huntington-Klein
-24. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences** — Mutlu Yuksel, Yigit Aydede
+21. **Applied Causal Inference Powered by ML and AI**
+22. **Causal Inference: The Mixtape**
+23. **The Effect: An Introduction to Research Design and Causality**
+24. **Causal Inference and Machine Learning: In Economics, Social, and Health Sciences**
 
 ## 3. AI＋金融/金融工程前沿（13项）
 
@@ -148,25 +143,25 @@
 
 ### 金融机构与交易所教育资源（19项）
 
-1. 上交所期权学苑 — 上海证券交易所
-2. 上交所期权初中高级课程 — 上海证券交易所
-3. 上交所投资者教育平台 — 上海证券交易所
-4. 深交所股票期权知识库 — 深圳证券交易所
-5. 深交所期权入市手册与规则解读 — 深圳证券交易所
-6. 上海期货交易所投资者教育平台 — 上海期货交易所
-7. CME Education Course Catalog — CME Group
+1. 上交所期权学苑
+2. 上交所期权初中高级课程
+3. 上交所投资者教育平台
+4. 深交所股票期权知识库
+5. 深交所期权入市手册与规则解读
+6. 上海期货交易所投资者教育平台
+7. CME Education Course Catalog
 8. Academic Resources — CME Group
-9. CME Group Education — CME Group
+9. CME Group Education
 10. Introduction to Options — CME Group
 11. Options on Futures Guide — CME Group
-12. The Options Institute — Cboe Global Markets
-13. Options Institute Learning Portal — Cboe Global Markets
-14. Spread Strategies — Cboe Options Institute
-15. How Options Trades Happen — Cboe Options Institute
-16. Options Basics — Options Industry Council
-17. Understanding Options Greeks — Options Industry Council
-18. Options Pricing — Options Industry Council
-19. All Options Strategies — Options Industry Council
+12. The Options Institute — Cboe
+13. Options Institute Learning Portal
+14. Spread Strategies
+15. How Options Trades Happen
+16. Options Basics — OIC
+17. Understanding Options Greeks — OIC
+18. Options Pricing — OIC
+19. All Options Strategies — OIC
 
 ### 真实市场数据与教学案例（11项）
 
@@ -196,18 +191,9 @@
 - **B AI＋金融工程进阶**：Python → 机器学习 → 金融数据建模 → 风险与资产配置 → 深度学习/强化学习
 - **C 生成式AI赋能教学全过程**：备课 → 讲解 → 习题案例 → 编程辅导 → 作业试题 → 辅助评价 → 教学反馈
 
-## 数据维护说明
-
-- `data/resources.json`：首批资源
-- `data/resources-extra-1.tsv`、`resources-extra-2.tsv`、`resources-extra-3.tsv`：扩展资源
-- `data/resources-books.tsv`：首批14本经典教材与专著
-- `data/resources-books-extra.tsv`：新增10本核心教材与专著
-- `data/resources-courses-extra.tsv`：顶尖高校课程扩展数据，目前含16项新增课程
-- `data/curation.json`：排序、降权与隐藏规则
-
 ## 使用与维护原则
 
 1. 外部资源优先保留高校、出版社、交易所、监管机构、金融机构或项目官方链接。
-2. 教材只提供官方页面、开放版本或作者许可的资源入口，不重新上传受版权保护的教材全文。
-3. 每项资源必须能对应《金融工程》的具体模块、AI/计算方法或教师教学流程。
-4. **不再设置120项硬性上限**；只要资源质量足够高、具有实质教学价值，即可继续加入，同时定期淘汰失效或内容过弱的资源。
+2. 主资源库的“访问官方资源”必须尽量指向课程主页、讲义、代码、实验平台、视频、syllabus等**实质教学资源**，不能仅以培养方案证明课程存在。
+3. 教材只提供官方页面、开放版本或作者许可的资源入口，不重新上传受版权保护的教材全文。
+4. **不设置固定数量上限**；只要资源质量足够高、具有实质教学价值，即可继续加入，同时定期淘汰失效或内容过弱的资源。
