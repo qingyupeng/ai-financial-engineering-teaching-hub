@@ -12,6 +12,20 @@ let curation = { featured_order: [], deprioritized: [], hidden_from_main_library
 const normalize = (value='') => String(value).toLowerCase().trim();
 const gradeClass = score => score >= 85 ? 'A' : score >= 70 ? 'B' : 'C';
 
+const coreZones = [
+  { name: '经典教材与专著', sourceZones: ['经典教材与专著'] },
+  { name: '顶尖高校课程', sourceZones: ['顶尖高校课程'] },
+  { name: 'AI＋金融/金融工程前沿', sourceZones: ['AI＋金融工程专题'] },
+  { name: '工具、代码与实验', sourceZones: ['金融工程AI工具箱', 'Python / Jupyter实验库'] },
+  { name: '金融机构与市场案例', sourceZones: ['金融机构教育资源', '教学案例库'] },
+  { name: 'AI赋能教学', sourceZones: ['AI辅助教学方法'] }
+];
+
+function coreZone(resource){
+  const group = coreZones.find(g => g.sourceZones.includes(resource.zone));
+  return group ? group.name : resource.zone;
+}
+
 const bookSpotlightOrder = [
   'Machine Learning in Finance: From Theory to Practice',
   'Machine Learning for Algorithmic Trading, 2nd Edition',
@@ -56,8 +70,9 @@ function render(){
   const zone = zoneFilter.value;
   const level = levelFilter.value;
   const filtered = resources.filter(r => {
-    const haystack = normalize([r.title,r.source,r.zone,r.finance_module,r.ai_topic,r.level,...(r.tags||[])].join(' '));
-    return (!q || haystack.includes(q)) && (!zone || r.zone === zone) && (!level || r.level === level);
+    const displayZone = coreZone(r);
+    const haystack = normalize([r.title,r.source,r.zone,displayZone,r.finance_module,r.ai_topic,r.level,...(r.tags||[])].join(' '));
+    return (!q || haystack.includes(q)) && (!zone || displayZone === zone) && (!level || r.level === level);
   });
 
   resultCount.textContent = `显示 ${filtered.length} / ${resources.length} 项精选教学资源`;
@@ -66,7 +81,7 @@ function render(){
     const tags = [r.finance_module,r.ai_topic,r.level].filter(Boolean).map(x=>`<span class="chip">${x}</span>`).join('');
     const featured = curation.featured_order.includes(r.title)
       ? '<span class="badge">重点教学资源</span>'
-      : `<span class="badge">${r.zone}</span>`;
+      : `<span class="badge">${coreZone(r)}</span>`;
     return `<article class="resource-card">
       <div class="card-top">${featured}<span class="grade ${grade}">${grade}级 · ${r.score}</span></div>
       <h3>${r.title}</h3>
@@ -90,7 +105,7 @@ function updateRubric(){
     <div><strong>10</strong><span>AI/计算融合程度</span></div>
     <div><strong>5</strong><span>获取便利性</span></div>
     <div><strong>5</strong><span>时效性</span></div>`;
-  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>讲义、代码、习题、视频、数据、Notebook、案例和系统教材优先；只有课程名称或培养方案的页面不进入主资源库前列。';
+  if (gradeNote) gradeNote.innerHTML = '<b>排序原则：</b>系统教材、完整课程、代码实验、真实数据和可复用教学材料优先；仅有课程名称、培养方案或简短介绍的页面不进入主资源库前列。';
 }
 
 function injectBookshelfStyles(){
@@ -126,7 +141,7 @@ function filterToZone(zone){
 function activateZoneCards(){
   document.querySelectorAll('.zones-grid article').forEach(card => {
     const zone = card.querySelector('h3')?.textContent?.trim();
-    if (!zone || zone === '教师学习路径') return;
+    if (!zone) return;
     card.setAttribute('role','button');
     card.setAttribute('tabindex','0');
     card.setAttribute('aria-label',`查看${zone}`);
@@ -137,7 +152,7 @@ function activateZoneCards(){
 }
 
 function renderBookshelf(){
-  const books = resources.filter(r => r.zone === '经典教材与专著');
+  const books = resources.filter(r => coreZone(r) === '经典教材与专著');
   if (!books.length) return;
   let section = document.querySelector('#bookshelf');
   if (!section) {
@@ -151,9 +166,9 @@ function renderBookshelf(){
   section.innerHTML = `
     <div class="container section">
       <div class="section-head">
-        <div><span class="eyebrow">核心书架</span><h2>经典教材与专著</h2></div>
+        <div><span class="eyebrow">核心书架 · 第一专区</span><h2>经典教材与专著</h2></div>
         <div class="bookshelf-actions">
-          <p>系统覆盖AI＋金融工程、AI＋金融，以及机器学习＋经济学与因果推断。当前收录 <strong>${books.length}</strong> 本/套。</p>
+          <p>系统覆盖AI＋金融工程、AI＋金融、机器学习基础、AI＋经济学与因果推断。当前收录 <strong>${books.length}</strong> 本/套。</p>
           <button id="showAllBooks" class="btn secondary" type="button">查看全部${books.length}本</button>
         </div>
       </div>
@@ -175,6 +190,18 @@ function renderBookshelf(){
     link.textContent = '经典教材';
     nav.insertBefore(link,nav.firstChild);
   }
+}
+
+function populateZoneFilter(){
+  zoneFilter.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());
+  coreZones.forEach(group => {
+    const count = resources.filter(r => coreZone(r) === group.name).length;
+    if (!count) return;
+    const option = document.createElement('option');
+    option.value = group.name;
+    option.textContent = `${group.name}（${count}）`;
+    zoneFilter.appendChild(option);
+  });
 }
 
 async function loadResources(){
@@ -205,13 +232,7 @@ async function loadResources(){
     ];
     resources = applyCuration(candidateResources);
     resourceCount.textContent = resources.length;
-    zoneFilter.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());
-    [...new Set(resources.map(r=>r.zone))].sort().forEach(zone => {
-      const option = document.createElement('option');
-      option.value = zone;
-      option.textContent = zone;
-      zoneFilter.appendChild(option);
-    });
+    populateZoneFilter();
     render();
     renderBookshelf();
   } catch (error) {
